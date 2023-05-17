@@ -1,4 +1,4 @@
-package com.space.quizapp
+package com.space.quiz_app
 
 import org.junit.Test
 
