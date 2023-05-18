@@ -9,7 +9,11 @@
         android:id="@+id/startScreenFragment"
         android:name="com.space.quiz_app.presentation.quiz_start_screen.StartScreenFragment"
         android:label="fragment_start"
-        tools:layout="@layout/fragment_start" />
+        tools:layout="@layout/fragment_start" >
+        <action
+            android:id="@+id/action_startScreenFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.space.quiz_app.presentation.quiz_home_screen.HomeFragment"

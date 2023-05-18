@@ -2,9 +2,9 @@ package com.space.quiz_app.presentation.custom_view
 
 import android.content.Context
 import android.graphics.Canvas
-import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Path
+import android.system.Os.close
 import android.util.AttributeSet
 import android.view.View
 import com.space.quiz_app.R
@@ -12,26 +12,19 @@ import com.space.quiz_app.R
 class CustomStartBackground(
     context: Context,
     attrs: AttributeSet
-) : View(context, attrs) {
+) : BaseCustomView(context, attrs) {
 
-    private val fillPaint = Paint().apply {
-            style = Paint.Style.FILL
-        }
-
-    private val path = Path()
-    private val width get() = getWidth().toFloat()
-    private val height get() = getHeight().toFloat()
     private val centerX get() = width / 2
     private val radius get() = width / 2
 
-    private fun drawBackground(canvas: Canvas) {
+    override fun drawBackground(canvas: Canvas) {
         val heightDiff = (width / 2) - (height / 3)
         val centerY1 = height / 3 + heightDiff
         val centerY2 = height * 2 / 3 - heightDiff
 
         path.apply {
             reset()
-            fillPaint.color = context.getColor(R.color.start_corner)
+            paint.color = context.getColor(R.color.start_corner)
             addCircle(centerX, centerY1, radius, Path.Direction.CW)
             addCircle(centerX, centerY2, radius, Path.Direction.CW)
 
@@ -43,26 +36,24 @@ class CustomStartBackground(
             lineTo(0f, centerY1)
             lineTo(centerX, 0f)
             close()
-            canvas.drawPath(path, fillPaint)
+            canvas.drawPath(path, paint)
         }
     }
 
     private fun drawCorner(canvas: Canvas) {
         path.apply {
             reset()
-            fillPaint.color = context.getColor(R.color.blue_secondary_default)
+            paint.color = context.getColor(R.color.blue_secondary_default)
             moveTo(0f, 0f)
             lineTo(centerX, 0f)
             lineTo(0f, height / 2)
             close()
-            canvas.drawPath(path, fillPaint)
+            canvas.drawPath(path, paint)
         }
     }
 
-    override fun onDraw(canvas: Canvas) {
-        super.onDraw(canvas)
+    override fun onBind(canvas: Canvas) {
         drawCorner(canvas)
         drawBackground(canvas)
     }
-
 }

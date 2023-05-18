@@ -11,18 +11,9 @@ import com.space.quiz_app.R
 class CustomQuestionBackground(
     context: Context,
     attrs: AttributeSet
-) : View(context, attrs) {
+) : BaseCustomView(context, attrs) {
 
-    private val fillPaint = Paint().apply {
-            isAntiAlias = true
-            style = Paint.Style.FILL
-        }
-
-    private val path = Path()
-    private val width get() = getWidth().toFloat()
-    private val height get() = getHeight().toFloat()
-
-    private fun drawVector(canvas: Canvas) {
+    override fun drawBackground(canvas: Canvas) {
         val centerX1 = width / 4
         val centerX2 = width * 3 / 4
         val radius = width / 4
@@ -30,7 +21,7 @@ class CustomQuestionBackground(
 
         path.apply {
             reset()
-            fillPaint.color = context.getColor(R.color.blue_secondary_light)
+            paint.color = context.getColor(R.color.blue_secondary_light)
             addCircle(centerX1, centerY, radius, Path.Direction.CW)
             addCircle(centerX2, centerY, radius, Path.Direction.CW)
 
@@ -44,12 +35,10 @@ class CustomQuestionBackground(
             lineTo(0f, 0f)
             close()
         }
-        canvas.drawPath(path, fillPaint)
+        canvas.drawPath(path, paint)
     }
 
-    override fun onDraw(canvas: Canvas) {
-        super.onDraw(canvas)
-        drawVector(canvas)
+    override fun onBind(canvas: Canvas) {
+        drawBackground(canvas)
     }
-
 }
