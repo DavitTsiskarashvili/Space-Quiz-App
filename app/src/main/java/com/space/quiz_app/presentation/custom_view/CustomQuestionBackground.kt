@@ -2,17 +2,17 @@ package com.space.quiz_app.presentation.custom_view
 
 import android.content.Context
 import android.graphics.Canvas
-import android.graphics.Paint
 import android.graphics.Path
 import android.util.AttributeSet
-import android.view.View
 import com.space.quiz_app.R
 
+// A custom view representing a blue background with rounded corners for questions
 class CustomQuestionBackground(
     context: Context,
     attrs: AttributeSet
 ) : BaseCustomView(context, attrs) {
 
+    // Draws the background of the custom view on the canvas
     override fun drawBackground(canvas: Canvas) {
         val centerX1 = width / 4
         val centerX2 = width * 3 / 4

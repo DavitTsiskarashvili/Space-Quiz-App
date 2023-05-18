@@ -2,13 +2,11 @@ package com.space.quiz_app.presentation.custom_view
 
 import android.content.Context
 import android.graphics.Canvas
-import android.graphics.Paint
 import android.graphics.Path
-import android.system.Os.close
 import android.util.AttributeSet
-import android.view.View
 import com.space.quiz_app.R
 
+// A custom view representing a start blue background with corner and circle shapes
 class CustomStartBackground(
     context: Context,
     attrs: AttributeSet
@@ -17,6 +15,7 @@ class CustomStartBackground(
     private val centerX get() = width / 2
     private val radius get() = width / 2
 
+    // Draws the background of the custom view on the canvas
     override fun drawBackground(canvas: Canvas) {
         val heightDiff = (width / 2) - (height / 3)
         val centerY1 = height / 3 + heightDiff
@@ -39,7 +38,7 @@ class CustomStartBackground(
             canvas.drawPath(path, paint)
         }
     }
-
+    // Draws the corner shape on the canvas
     private fun drawCorner(canvas: Canvas) {
         path.apply {
             reset()
