@@ -2,6 +2,7 @@ package com.space.quiz_app.presentation.custom_view
 
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Paint
 import android.graphics.Path
 import android.util.AttributeSet
 import com.space.quiz_app.R
@@ -12,6 +13,10 @@ class CustomQuestionBackground(
     attrs: AttributeSet
 ) : BaseCustomView(context, attrs) {
 
+    override val paint = Paint().apply {
+        style = Paint.Style.FILL
+    }
+
     // Draws the background of the custom view on the canvas
     override fun drawBackground(canvas: Canvas) {
         val centerX1 = width / 4
@@ -21,7 +26,7 @@ class CustomQuestionBackground(
 
         path.apply {
             reset()
-            paint.color = context.getColor(R.color.blue_secondary_light)
+            paint.color = context.getColor(R.color.blue_secondary_lighter)
             addCircle(centerX1, centerY, radius, Path.Direction.CW)
             addCircle(centerX2, centerY, radius, Path.Direction.CW)
 

@@ -2,6 +2,7 @@ package com.space.quiz_app.presentation.custom_view
 
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Paint
 import android.graphics.Path
 import android.util.AttributeSet
 import com.space.quiz_app.R
@@ -11,6 +12,10 @@ class CustomStartBackground(
     context: Context,
     attrs: AttributeSet
 ) : BaseCustomView(context, attrs) {
+
+    override val paint = Paint().apply {
+        style = Paint.Style.FILL
+    }
 
     private val centerX get() = width / 2
     private val radius get() = width / 2
@@ -23,7 +28,7 @@ class CustomStartBackground(
 
         path.apply {
             reset()
-            paint.color = context.getColor(R.color.start_corner)
+            paint.color = context.getColor(R.color.blue_secondary_light)
             addCircle(centerX, centerY1, radius, Path.Direction.CW)
             addCircle(centerX, centerY2, radius, Path.Direction.CW)
 

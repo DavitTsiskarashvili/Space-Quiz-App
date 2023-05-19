@@ -11,9 +11,8 @@ import android.view.View
 abstract class BaseCustomView(context: Context, attrs: AttributeSet) : View(context, attrs) {
 
     // The paint object used for drawing on the canvas
-    protected val paint = Paint().apply {
+    protected open val paint = Paint().apply {
         isAntiAlias = true
-        style = Paint.Style.FILL
     }
     // The path object used for drawing on the canvas
     protected val path = Path()
