@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/yellow_primary"
+    app:cardCornerRadius="@dimen/dimen_30_dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/dimen_39_dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/closeTextView"
+            style="@style/bigMyriadGeo_Regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_39_dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@tools:sample/lorem" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/yesButton"
+            style="@style/bigMyriadGeo_Regular"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_42_dp"
+            android:layout_marginStart="@dimen/dimen_24_dp"
+            android:layout_marginBottom="@dimen/dimen_39_dp"
+            app:backgroundTint="@color/neutral_white"
+            app:cornerRadius="@dimen/dimen_30_dp"
+            android:text="@string/yes"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/closeTextView" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/noButton"
+            style="@style/bigMyriadGeo_Regular"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_42_dp"
+            android:layout_marginStart="@dimen/dimen_10_dp"
+            android:layout_marginBottom="@dimen/dimen_39_dp"
+            app:backgroundTint="@color/neutral_white"
+            app:cornerRadius="@dimen/dimen_30_dp"
+            android:text="@string/no"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/yesButton"
+            app:layout_constraintTop_toBottomOf="@id/closeTextView" />
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

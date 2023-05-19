@@ -16,4 +16,7 @@
     <color name="neutral_03_light_grey">#A3F1F1F1</color>
     <color name="green_success">#4BB543</color>
     <color name="red_wrong">#DB1D2A</color>
+    <color name="neutral_white">#99FFFFFF</color>
+    <color name="divider_primary">#EDEAF1</color>
+
 </resources>
