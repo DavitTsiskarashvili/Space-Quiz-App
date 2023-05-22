@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/dimen_80_dp"
+    android:layout_height="wrap_content"
     android:layout_marginHorizontal="@dimen/dimen_15_dp"
     android:layout_marginBottom="@dimen/dimen_20_dp"
     app:cardBackgroundColor="@color/neutral_03_light_grey"
@@ -11,23 +11,19 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingHorizontal="@dimen/dimen_29_dp"
-        android:paddingVertical="@dimen/dimen_22_dp">
+        android:layout_height="match_parent">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/answerTextView"
             style="@style/normalMyriadGeo_Regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="@dimen/dimen_22_dp"
-            android:layout_marginBottom="@dimen/dimen_22_dp"
+            android:layout_marginStart="@dimen/dimen_30_dp"
+            android:layout_marginVertical="@dimen/dimen_22_dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.333"
             tools:text="@tools:sample/lorem" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -35,10 +31,10 @@
             style="@style/smallMyriadGeo_Regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_22_dp"
+            android:layout_marginVertical="@dimen/dimen_22_dp"
             android:layout_marginEnd="@dimen/dimen_2_dp"
-            android:layout_marginBottom="@dimen/dimen_22_dp"
             android:textStyle="bold"
+            android:gravity="center_vertical|end"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/starImageView"
             app:layout_constraintTop_toTopOf="parent"
@@ -49,6 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_star"
+            android:gravity="center_vertical|end"
             android:layout_marginEnd="@dimen/dimen_30_dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

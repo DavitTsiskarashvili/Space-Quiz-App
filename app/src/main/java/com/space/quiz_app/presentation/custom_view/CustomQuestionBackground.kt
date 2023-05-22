@@ -26,7 +26,7 @@ class CustomQuestionBackground(
 
         path.apply {
             reset()
-            paint.color = context.getColor(R.color.blue_secondary_lighter)
+            paint.color = context.getColor(R.color.blue_secondary_lightest)
             addCircle(centerX1, centerY, radius, Path.Direction.CW)
             addCircle(centerX2, centerY, radius, Path.Direction.CW)
 

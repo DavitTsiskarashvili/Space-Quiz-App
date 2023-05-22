@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/startScreenFragment">
+    app:startDestination="@id/startFragment">
     
     <fragment
-        android:id="@+id/startScreenFragment"
-        android:name="com.space.quiz_app.presentation.quiz_start_screen.StartScreenFragment"
+        android:id="@+id/startFragment"
+        android:name="com.space.quiz_app.presentation.quiz_start_screen.StartFragment"
         android:label="fragment_start"
         tools:layout="@layout/fragment_start" >
         <action
-            android:id="@+id/action_startScreenFragment_to_homeFragment"
+            android:id="@+id/action_startFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
     <fragment
@@ -22,10 +22,26 @@
         <action
             android:id="@+id/action_homeFragment_to_questionsFragment"
             app:destination="@id/questionsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_takenQuizFragment"
+            app:destination="@id/takenQuizFragment" />
     </fragment>
     <fragment
         android:id="@+id/questionsFragment"
         android:name="com.space.quiz_app.presentation.quiz_questions_screen.QuestionsFragment"
         android:label="fragment_questions"
-        tools:layout="@layout/fragment_questions" />
+        tools:layout="@layout/fragment_questions" >
+        <action
+            android:id="@+id/action_questionsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/takenQuizFragment"
+        android:name="com.space.quiz_app.presentation.taken_quiz_screen.TakenQuizFragment"
+        android:label="fragment_taken_quiz"
+        tools:layout="@layout/fragment_taken_quiz" >
+        <action
+            android:id="@+id/action_takenQuizFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

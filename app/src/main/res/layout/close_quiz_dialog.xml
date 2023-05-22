@@ -9,16 +9,16 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="@dimen/dimen_39_dp">
+        android:layout_height="match_parent">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/closeTextView"
             style="@style/bigMyriadGeo_Regular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen_24_dp"
             android:layout_marginTop="@dimen/dimen_39_dp"
-            android:gravity="center"
+            android:gravity="center_horizontal|top"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,14 +30,17 @@
             style="@style/bigMyriadGeo_Regular"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_42_dp"
             android:layout_marginStart="@dimen/dimen_24_dp"
+            android:layout_marginTop="@dimen/dimen_42_dp"
             android:layout_marginBottom="@dimen/dimen_39_dp"
+            android:paddingHorizontal="@dimen/dimen_45_dp"
+            android:paddingVertical="@dimen/dimen_6_dp"
+            android:text="@string/yes"
+            android:textStyle="bold"
             app:backgroundTint="@color/neutral_white"
             app:cornerRadius="@dimen/dimen_30_dp"
-            android:text="@string/yes"
-            android:textColor="@color/white"
-            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/noButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/closeTextView" />
 
@@ -46,19 +49,20 @@
             style="@style/bigMyriadGeo_Regular"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_42_dp"
             android:layout_marginStart="@dimen/dimen_10_dp"
+            android:layout_marginTop="@dimen/dimen_42_dp"
+            android:layout_marginEnd="@dimen/dimen_24_dp"
             android:layout_marginBottom="@dimen/dimen_39_dp"
+            android:paddingHorizontal="@dimen/dimen_45_dp"
+            android:paddingVertical="@dimen/dimen_6_dp"
+            android:text="@string/no"
+            android:textStyle="bold"
             app:backgroundTint="@color/neutral_white"
             app:cornerRadius="@dimen/dimen_30_dp"
-            android:text="@string/no"
-            android:textColor="@color/white"
-            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/yesButton"
             app:layout_constraintTop_toBottomOf="@id/closeTextView" />
-
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

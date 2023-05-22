@@ -10,46 +10,46 @@
         android:id="@+id/questionBackground"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintHeight_percent="0.26"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.25"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/subjectTextView"
+        style="@style/bigMyriadGeo_Regular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/bigMyriadGeo_Regular"
-        android:textStyle="bold"
-        tools:text="@tools:sample/lorem"
         android:layout_marginTop="@dimen/dimen_35_dp"
         android:gravity="center"
-        app:layout_constraintTop_toTopOf="parent"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@tools:sample/lorem" />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/cancelButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/ic_cancel"
         android:layout_marginTop="@dimen/dimen_35_dp"
         android:layout_marginEnd="@dimen/dimen_16_dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:background="@drawable/ic_cancel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/questionTextView"
+        style="@style/normalMyriadGeo_Regular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_42_dp"
-        style="@style/normalMyriadGeo_Regular"
-        android:gravity="center"
+        android:gravity="center_horizontal|top"
         android:maxWidth="@dimen/dimen_230_dp"
-        tools:text="@tools:sample/lorem"
-        app:layout_constraintTop_toBottomOf="@id/subjectTextView"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/subjectTextView"
+        tools:text="@tools:sample/lorem" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/questionsRecyclerView"
@@ -61,8 +61,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/questionBackground"
-        tools:listitem="@layout/question_item"/>
-
+        tools:listitem="@layout/question_item" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/nextButton"
