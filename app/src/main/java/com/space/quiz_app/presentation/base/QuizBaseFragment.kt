@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModelForClass
 import kotlin.reflect.KClass
 
-// Base Fragment of all possible child Fragments
 abstract class QuizBaseFragment<VM : ViewModel>() : Fragment() {
 
     abstract val viewModelClass: KClass<VM>

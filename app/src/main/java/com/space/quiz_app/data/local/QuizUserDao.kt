@@ -6,10 +6,10 @@ import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface UserDao {
+interface QuizUserDao {
     @Query("SELECT * FROM User_table")
-    fun getAllUserNames(): Flow<List<UserEntity>>
+    fun getAllUser(): Flow<List<QuizUserEntity>>
 
     @Insert
-    suspend fun insertUserName(userName: UserEntity)
+    suspend fun insertUser(userName: QuizUserEntity)
 }
