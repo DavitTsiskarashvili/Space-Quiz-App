@@ -5,6 +5,7 @@ import com.space.quiz_app.R
 import com.space.quiz_app.common.extensions.viewBinding
 import com.space.quiz_app.databinding.QuizGpaFragmentBinding
 import com.space.quiz_app.presentation.base.QuizBaseFragment
+import com.space.quiz_app.presentation.quiz_home_screen.QuizHomeViewModel
 import kotlin.reflect.KClass
 
 class QuizGPAFragment : QuizBaseFragment<QuizGPAViewModel>() {
@@ -13,6 +14,9 @@ class QuizGPAFragment : QuizBaseFragment<QuizGPAViewModel>() {
 
     override val layout: Int
         get() = R.layout.quiz_gpa_fragment
+
+    override val viewModelClass: KClass<QuizGPAViewModel>
+        get() = QuizGPAViewModel::class
 
     override fun onBind() {
         navigate()

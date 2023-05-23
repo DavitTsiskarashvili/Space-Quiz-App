@@ -14,6 +14,9 @@ class QuizHomeFragment : QuizBaseFragment<QuizHomeViewModel>() {
     override val layout: Int
         get() = R.layout.quiz_home_fragment
 
+    override val viewModelClass: KClass<QuizHomeViewModel>
+        get() = QuizHomeViewModel::class
+
     override fun onBind() {
         navigate()
     }
