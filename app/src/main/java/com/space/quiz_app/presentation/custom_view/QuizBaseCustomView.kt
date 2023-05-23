@@ -8,7 +8,7 @@ import android.util.AttributeSet
 import android.view.View
 
 // A base abstract class representing a custom view with basic drawing capabilities
-abstract class BaseCustomView(context: Context, attrs: AttributeSet) : View(context, attrs) {
+abstract class QuizBaseCustomView(context: Context, attrs: AttributeSet) : View(context, attrs) {
 
     // The paint object used for drawing on the canvas
     protected open val paint = Paint().apply {

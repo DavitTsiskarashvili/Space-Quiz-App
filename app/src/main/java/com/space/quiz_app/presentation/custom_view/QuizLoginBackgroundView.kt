@@ -7,11 +7,10 @@ import android.graphics.Path
 import android.util.AttributeSet
 import com.space.quiz_app.R
 
-// A custom view representing a start blue background with corner and circle shapes
-class CustomStartScreenBackground(
+class QuizLoginBackgroundView(
     context: Context,
     attrs: AttributeSet
-) : BaseCustomView(context, attrs) {
+) : QuizBaseCustomView(context, attrs) {
 
     override val paint = Paint().apply {
         style = Paint.Style.FILL
@@ -20,7 +19,8 @@ class CustomStartScreenBackground(
     private val centerX get() = width / 2
     private val radius get() = width / 2
 
-    // Draws the background of the custom view on the canvas
+    /**[drawBackground] Draws the background of the custom view on the canvas
+     */
     override fun drawBackground(canvas: Canvas) {
         //The height difference used to position the circles vertically.
         val heightDiff = (width / 2) - (height / 3)

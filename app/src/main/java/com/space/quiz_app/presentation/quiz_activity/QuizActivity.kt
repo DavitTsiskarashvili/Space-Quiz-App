@@ -4,15 +4,15 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import com.space.quiz_app.R
-import com.space.quiz_app.databinding.ActivityQuizBinding
+import com.space.quiz_app.databinding.QuizActivityBinding
 
 class QuizActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityQuizBinding
+    private lateinit var binding: QuizActivityBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityQuizBinding.inflate(layoutInflater)
+        binding = QuizActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setUpNavigation()
