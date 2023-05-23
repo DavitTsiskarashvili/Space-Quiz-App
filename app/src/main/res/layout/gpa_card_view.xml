@@ -24,10 +24,10 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/gpaTextView"
+            style="@style/bigMyriadGeo_Regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dimen_10_dp"
-            style="@style/bigMyriadGeo_Regular"
             android:text="@string/GPA"
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="@id/gpaBackgroundView"
@@ -37,12 +37,12 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/gpaScoreTextView"
+            style="@style/bigMyriadGeo_Bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dimen_4_dp"
             android:layout_marginEnd="@dimen/dimen_10_dp"
             android:textColor="@color/yellow_primary"
-            android:textStyle="bold"
             tools:text="4.0"
             app:layout_constraintBottom_toBottomOf="@id/gpaBackgroundView"
             app:layout_constraintEnd_toEndOf="@id/gpaBackgroundView"
@@ -51,9 +51,9 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/gpaDetailsTextView"
+            style="@style/smallMyriadGeo_Regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/smallMyriadGeo_Regular"
             android:text="@string/details"
             android:textColor="@color/white"
             app:drawableEndCompat="@drawable/ic_details_arrow"

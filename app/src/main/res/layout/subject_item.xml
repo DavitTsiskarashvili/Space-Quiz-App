@@ -26,7 +26,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/titleTextView"
-            style="@style/bigMyriadGeo_Regular"
+            style="@style/bigMyriadGeo_Bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dimen_18_dp"
@@ -34,7 +34,6 @@
             android:layout_marginEnd="@dimen/dimen_27_dp"
             android:layout_marginBottom="@dimen/dimen_2_dp"
             android:gravity="center_vertical"
-            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/descriptionTextView"
             app:layout_constraintStart_toEndOf="@id/subjectImageView"
             app:layout_constraintTop_toTopOf="@id/subjectImageView"

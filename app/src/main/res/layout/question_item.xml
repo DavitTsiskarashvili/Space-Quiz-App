@@ -15,12 +15,11 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/answerTextView"
-            style="@style/normalMyriadGeo_Regular"
+            style="@style/normalMyriadGeo_Bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dimen_30_dp"
             android:layout_marginVertical="@dimen/dimen_22_dp"
-            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -28,12 +27,11 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/scoreTextView"
-            style="@style/smallMyriadGeo_Regular"
+            style="@style/normalMyriadGeo_Bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/dimen_22_dp"
             android:layout_marginEnd="@dimen/dimen_2_dp"
-            android:textStyle="bold"
             android:gravity="center_vertical|end"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/starImageView"

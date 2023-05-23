@@ -1,15 +1,20 @@
 package com.space.quiz_app.presentation.quiz_activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI
 import com.space.quiz_app.R
+import com.space.quiz_app.databinding.ActivityQuizBinding
 
 class QuizActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityQuizBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityQuizBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         setUpNavigation()
     }
 
@@ -20,6 +25,3 @@ class QuizActivity : AppCompatActivity() {
     }
 
 }
-
-
-

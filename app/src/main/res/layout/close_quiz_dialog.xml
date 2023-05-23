@@ -27,7 +27,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/yesButton"
-            style="@style/bigMyriadGeo_Regular"
+            style="@style/bigMyriadGeo_Bold"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dimen_24_dp"
@@ -36,7 +36,6 @@
             android:paddingHorizontal="@dimen/dimen_45_dp"
             android:paddingVertical="@dimen/dimen_6_dp"
             android:text="@string/yes"
-            android:textStyle="bold"
             app:backgroundTint="@color/neutral_white"
             app:cornerRadius="@dimen/dimen_30_dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -46,7 +45,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/noButton"
-            style="@style/bigMyriadGeo_Regular"
+            style="@style/bigMyriadGeo_Bold"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dimen_10_dp"
@@ -56,7 +55,6 @@
             android:paddingHorizontal="@dimen/dimen_45_dp"
             android:paddingVertical="@dimen/dimen_6_dp"
             android:text="@string/no"
-            android:textStyle="bold"
             app:backgroundTint="@color/neutral_white"
             app:cornerRadius="@dimen/dimen_30_dp"
             app:layout_constraintBottom_toBottomOf="parent"

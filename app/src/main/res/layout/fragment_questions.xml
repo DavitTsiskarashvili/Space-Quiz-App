@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".presentation.quiz_questions_screen.QuestionsFragment">
 
-    <com.space.quiz_app.presentation.custom_view.CustomQuestionBackground
+    <com.space.quiz_app.presentation.custom_view.CustomQuestionScreenBackground
         android:id="@+id/questionBackground"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -17,12 +17,11 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/subjectTextView"
-        style="@style/bigMyriadGeo_Regular"
+        style="@style/bigMyriadGeo_Bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_35_dp"
         android:gravity="center"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

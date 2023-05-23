@@ -9,12 +9,11 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/greetingTextView"
+        style="@style/bigMyriadGeo_Bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_16_dp"
         android:layout_marginTop="@dimen/dimen_50_dp"
-        style="@style/bigMyriadGeo_Regular"
-        android:textStyle="bold"
         android:text="@string/hello_user"
         android:textColor="@color/yellow_primary"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,10 +67,10 @@
         android:id="@+id/logOutButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintDimensionRatio="1"
         android:layout_marginEnd="@dimen/dimen_16_dp"
         android:layout_marginBottom="@dimen/dimen_11_dp"
         android:background="@drawable/ic_log_out"
+        app:layout_constraintDimensionRatio="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

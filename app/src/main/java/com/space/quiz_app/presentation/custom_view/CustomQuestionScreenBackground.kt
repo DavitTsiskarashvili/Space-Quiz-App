@@ -8,7 +8,7 @@ import android.util.AttributeSet
 import com.space.quiz_app.R
 
 // A custom view representing a blue background with rounded corners for questions
-class CustomQuestionBackground(
+class CustomQuestionScreenBackground(
     context: Context,
     attrs: AttributeSet
 ) : BaseCustomView(context, attrs) {
@@ -19,7 +19,9 @@ class CustomQuestionBackground(
 
     // Draws the background of the custom view on the canvas
     override fun drawBackground(canvas: Canvas) {
+        //The x-coordinate of the center for the first circle.
         val centerX1 = width / 4
+        //The x-coordinate of the center for the second circle.
         val centerX2 = width * 3 / 4
         val radius = width / 4
         val centerY = height - radius

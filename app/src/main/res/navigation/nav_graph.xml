@@ -7,7 +7,7 @@
     
     <fragment
         android:id="@+id/startFragment"
-        android:name="com.space.quiz_app.presentation.quiz_start_screen.StartFragment"
+        android:name="com.space.quiz_app.presentation.quiz_start_screen.StartScreenFragment"
         android:label="fragment_start"
         tools:layout="@layout/fragment_start" >
         <action
@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/takenQuizFragment"
-        android:name="com.space.quiz_app.presentation.taken_quiz_screen.TakenQuizFragment"
+        android:name="com.space.quiz_app.presentation.taken_quiz_screen.FinishedQuizFragment"
         android:label="fragment_taken_quiz"
         tools:layout="@layout/fragment_taken_quiz" >
         <action
