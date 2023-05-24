@@ -1,4 +1,4 @@
-package com.space.quiz_app.presentation.custom_view
+package com.space.quiz_app.presentation.custom_view.base
 
 import android.content.Context
 import android.graphics.Canvas

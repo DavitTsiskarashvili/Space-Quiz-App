@@ -7,9 +7,12 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface QuizUserDao {
-    @Query("SELECT * FROM User_table")
-    fun getAllUser(): Flow<List<QuizUserEntity>>
+    @Query("SELECT EXISTS(SELECT * FROM User_table WHERE username = :username)")
+    suspend fun isUsernameRegistered(username: String): Boolean
+
+    @Query("select * from User_table where username = :username")
+    suspend fun getUsername(username: String): String
 
     @Insert
-    suspend fun insertUser(userName: QuizUserEntity)
+    suspend fun insertUser(username: QuizUserEntity)
 }

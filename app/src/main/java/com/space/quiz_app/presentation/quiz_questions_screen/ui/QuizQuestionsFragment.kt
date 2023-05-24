@@ -1,11 +1,11 @@
-package com.space.quiz_app.presentation.quiz_questions_screen
+package com.space.quiz_app.presentation.quiz_questions_screen.ui
 
 import androidx.navigation.fragment.findNavController
 import com.space.quiz_app.R
 import com.space.quiz_app.common.extensions.viewBinding
 import com.space.quiz_app.databinding.QuizQuestionsFragmentBinding
 import com.space.quiz_app.presentation.base.QuizBaseFragment
-import com.space.quiz_app.presentation.quiz_home_screen.QuizHomeViewModel
+import com.space.quiz_app.presentation.quiz_questions_screen.view_model.QuizQuestionsViewModel
 import kotlin.reflect.KClass
 
 class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
@@ -18,7 +18,7 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
     override val viewModelClass: KClass<QuizQuestionsViewModel>
         get() = QuizQuestionsViewModel::class
 
-    override fun onBind() {
+    override fun onBind(viewModel: QuizQuestionsViewModel) {
         navigate()
     }
 

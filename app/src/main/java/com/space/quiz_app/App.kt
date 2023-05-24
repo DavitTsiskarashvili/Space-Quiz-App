@@ -2,6 +2,8 @@ package com.space.quiz_app
 
 import android.app.Application
 import com.space.quiz_app.di.dataBaseModule
+import com.space.quiz_app.di.mapperModule
+import com.space.quiz_app.di.repositoryModule
 import com.space.quiz_app.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -16,7 +18,9 @@ class App : Application() {
             androidContext(this@App)
             modules(
                 dataBaseModule,
-                viewModelModule
+                viewModelModule,
+                mapperModule,
+                repositoryModule
             )
         }
     }

@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.quiz_questions_screen.QuizQuestionsFragment">
+    tools:context=".presentation.quiz_questions_screen.ui.QuizQuestionsFragment">
 
-    <com.space.quiz_app.presentation.custom_view.QuizQuestionBackgroundView
+    <com.space.quiz_app.presentation.custom_view.custom_view.QuizQuestionBackgroundView
         android:id="@+id/questionBackground"
         android:layout_width="match_parent"
         android:layout_height="0dp"

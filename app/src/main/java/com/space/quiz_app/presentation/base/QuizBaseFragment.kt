@@ -16,7 +16,7 @@ abstract class QuizBaseFragment<VM : ViewModel>() : Fragment() {
 
     protected abstract val layout: Int
 
-    abstract fun onBind()
+    abstract fun onBind(viewModel: VM)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,7 +28,7 @@ abstract class QuizBaseFragment<VM : ViewModel>() : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        onBind()
+        onBind(viewModel)
     }
 
 }

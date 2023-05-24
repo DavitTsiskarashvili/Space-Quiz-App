@@ -1,4 +1,4 @@
-package com.space.quiz_app.presentation.quiz_activity
+package com.space.quiz_app.presentation.quiz_activity.activity
 
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import com.space.quiz_app.R
 import com.space.quiz_app.databinding.QuizActivityBinding
+import com.space.quiz_app.presentation.quiz_activity.view_model.QuizActivityViewModel
 
 class QuizActivity : AppCompatActivity() {
 
