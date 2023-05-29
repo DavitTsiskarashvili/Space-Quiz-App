@@ -5,14 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
 import com.space.quiz_app.presentation.navigation.NavigationCommand
 import com.space.quiz_app.presentation.utils.observeNonNull
 import org.koin.androidx.viewmodel.ext.android.viewModelForClass
 import kotlin.reflect.KClass
 
-abstract class QuizBaseFragment<VM : BaseViewModel>() : Fragment() {
+abstract class QuizBaseFragment<VM : QuizBaseViewModel>() : Fragment() {
 
     abstract val viewModelClass: KClass<VM>
     protected val viewModel: VM by viewModelForClass(clazz = viewModelClass)
@@ -32,6 +31,7 @@ abstract class QuizBaseFragment<VM : BaseViewModel>() : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         onBind()
+        observeNavigation()
     }
 
     private fun observeNavigation() {

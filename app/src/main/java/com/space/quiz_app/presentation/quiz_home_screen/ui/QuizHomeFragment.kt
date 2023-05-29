@@ -5,18 +5,18 @@ import com.space.quiz_app.R
 import com.space.quiz_app.common.extensions.viewBinding
 import com.space.quiz_app.databinding.QuizHomeFragmentBinding
 import com.space.quiz_app.presentation.base.QuizBaseFragment
-import com.space.quiz_app.presentation.quiz_home_screen.view_model.QuizHomeViewModel
+import com.space.quiz_app.presentation.quiz_home_screen.view_model.QuizHomeViewModelQuiz
 import kotlin.reflect.KClass
 
-class QuizHomeFragment : QuizBaseFragment<QuizHomeViewModel>() {
+class QuizHomeFragment : QuizBaseFragment<QuizHomeViewModelQuiz>() {
 
     private val binding by viewBinding(QuizHomeFragmentBinding::bind)
 
     override val layout: Int
         get() = R.layout.quiz_home_fragment
 
-    override val viewModelClass: KClass<QuizHomeViewModel>
-        get() = QuizHomeViewModel::class
+    override val viewModelClass: KClass<QuizHomeViewModelQuiz>
+        get() = QuizHomeViewModelQuiz::class
 
     override fun onBind() {
         navigate()
