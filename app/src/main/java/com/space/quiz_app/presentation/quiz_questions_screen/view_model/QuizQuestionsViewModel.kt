@@ -1,7 +1,7 @@
 package com.space.quiz_app.presentation.quiz_questions_screen.view_model
 
-import androidx.lifecycle.ViewModel
+import com.space.quiz_app.presentation.base.BaseViewModel
 
-class QuizQuestionsViewModel : ViewModel() {
+class QuizQuestionsViewModel : BaseViewModel() {
 
 }
