@@ -8,7 +8,6 @@ class QuizUserUIToDomainMapper : Mapper<QuizUserUIModel, QuizUserDomainModel> {
     override fun invoke(model: QuizUserUIModel): QuizUserDomainModel =
         with(model) {
             QuizUserDomainModel(
-                userId = userId,
                 username = username
             )
         }

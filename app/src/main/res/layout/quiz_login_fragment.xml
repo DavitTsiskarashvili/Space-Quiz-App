@@ -7,6 +7,7 @@
     tools:context="com.space.quiz_app.presentation.quiz_login_screen.ui.QuizLoginFragment">
 
     <com.space.quiz_app.presentation.custom_view.custom_view.QuizLoginBackgroundView
+        android:id="@+id/backgroundView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_80_dp"
-        android:layout_marginBottom="@dimen/dimen_15_dp"
+        android:layout_marginBottom="@dimen/dimen_45_dp"
         android:text="@string/welcome_text"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/iconImageView"
@@ -32,9 +33,9 @@
         android:id="@+id/iconImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/dimen_136_dp"
+        android:layout_marginBottom="@dimen/dimen_30_dp"
         android:src="@drawable/ic_man"
-        app:layout_constraintBottom_toTopOf="@+id/usernameEditText"
+        app:layout_constraintBottom_toBottomOf="@+id/backgroundView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -44,6 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dimen_60_dp"
+        android:layout_marginTop="@dimen/dimen_100_dp"
         android:layout_marginBottom="@dimen/dimen_30_dp"
         android:background="@drawable/shp_message_edittext"
         android:hint="@string/hint_text"
@@ -53,7 +55,8 @@
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/startButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/backgroundView" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/startButton"

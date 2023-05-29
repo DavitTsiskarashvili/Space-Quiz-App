@@ -20,11 +20,6 @@ class QuizUserRepositoryImpl(
         userDao.insertUser(quizUserDomainModelToEntityMapper(username))
     }
 
-    override suspend fun getUsername(username: String): String {
-        return userDao.getUsername(username)
-
-    }
-
     override suspend fun isUsernameRegistered(username: String): Boolean {
         return userDao.isUsernameRegistered(username)
     }

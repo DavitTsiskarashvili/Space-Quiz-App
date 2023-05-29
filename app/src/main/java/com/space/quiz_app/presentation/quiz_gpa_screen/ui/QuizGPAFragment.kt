@@ -18,7 +18,7 @@ class QuizGPAFragment : QuizBaseFragment<QuizGPAViewModel>() {
     override val viewModelClass: KClass<QuizGPAViewModel>
         get() = QuizGPAViewModel::class
 
-    override fun onBind(viewModel: QuizGPAViewModel) {
+    override fun onBind() {
         navigate()
     }
 

@@ -12,11 +12,11 @@ import kotlin.reflect.KClass
 abstract class QuizBaseFragment<VM : ViewModel>() : Fragment() {
 
     abstract val viewModelClass: KClass<VM>
-    private val viewModel: VM by viewModelForClass(clazz = viewModelClass)
+    protected val viewModel: VM by viewModelForClass(clazz = viewModelClass)
 
     protected abstract val layout: Int
 
-    abstract fun onBind(viewModel: VM)
+    abstract fun onBind()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,7 +28,7 @@ abstract class QuizBaseFragment<VM : ViewModel>() : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        onBind(viewModel)
+        onBind()
     }
 
 }

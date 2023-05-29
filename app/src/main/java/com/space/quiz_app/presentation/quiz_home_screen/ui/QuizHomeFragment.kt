@@ -18,7 +18,7 @@ class QuizHomeFragment : QuizBaseFragment<QuizHomeViewModel>() {
     override val viewModelClass: KClass<QuizHomeViewModel>
         get() = QuizHomeViewModel::class
 
-    override fun onBind(viewModel: QuizHomeViewModel) {
+    override fun onBind() {
         navigate()
     }
 
@@ -27,9 +27,9 @@ class QuizHomeFragment : QuizBaseFragment<QuizHomeViewModel>() {
         binding.logOutButton.setOnClickListener {
             findNavController().navigate(QuizHomeFragmentDirections.actionHomeFragmentToQuestionsFragment())
         }
-        binding.gpaButton.gpaDetailsTextView.setOnClickListener {
-            findNavController().navigate(QuizHomeFragmentDirections.actionHomeFragmentToTakenQuizFragment())
-        }
+//        binding.gpaButton.gpaDetailsTextView.setOnClickListener {
+//            findNavController().navigate(QuizHomeFragmentDirections.actionHomeFragmentToTakenQuizFragment())
+//        }
     }
 
 }
