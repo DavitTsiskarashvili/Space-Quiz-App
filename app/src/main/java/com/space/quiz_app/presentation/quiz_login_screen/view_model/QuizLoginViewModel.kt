@@ -1,14 +1,12 @@
 package com.space.quiz_app.presentation.quiz_login_screen.view_model
 
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import com.space.quiz_app.domain.repository.QuizUserRepository
 import com.space.quiz_app.presentation.base.QuizBaseViewModel
-import com.space.quiz_app.presentation.quiz_login_screen.mapper.QuizUserUIToDomainMapper
-import com.space.quiz_app.presentation.quiz_login_screen.model.QuizUserUIModel
+import com.space.quiz_app.presentation.mapper.QuizUserUIToDomainMapper
+import com.space.quiz_app.presentation.model.QuizUserUIModel
 import com.space.quiz_app.presentation.quiz_login_screen.ui.QuizLoginFragmentDirections
 import com.space.quiz_app.presentation.utils.Regex.pattern
-import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 class QuizLoginViewModel(

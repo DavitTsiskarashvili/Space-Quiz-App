@@ -1,4 +1,4 @@
-package com.space.quiz_app.di
+package com.space.quiz_app.presentation.module
 
 import com.space.quiz_app.presentation.quiz_activity.view_model.QuizActivityViewModel
 import com.space.quiz_app.presentation.quiz_home_screen.view_model.QuizHomeViewModelQuiz

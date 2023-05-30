@@ -1,4 +1,4 @@
-package com.space.quiz_app.di
+package com.space.quiz_app.domain.module
 
 import com.space.quiz_app.data.repository.QuizUserRepositoryImpl
 import com.space.quiz_app.domain.repository.QuizUserRepository

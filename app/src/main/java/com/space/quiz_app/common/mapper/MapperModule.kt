@@ -1,9 +1,9 @@
-package com.space.quiz_app.di
+package com.space.quiz_app.common.mapper
 
 import com.space.quiz_app.data.mapper.QuizUserDomainModelToEntityMapper
 import com.space.quiz_app.data.mapper.QuizUserEntityToDomainMapper
-import com.space.quiz_app.presentation.quiz_login_screen.mapper.QuizUserDomainToUIMapper
-import com.space.quiz_app.presentation.quiz_login_screen.mapper.QuizUserUIToDomainMapper
+import com.space.quiz_app.presentation.mapper.QuizUserDomainToUIMapper
+import com.space.quiz_app.presentation.mapper.QuizUserUIToDomainMapper
 import org.koin.dsl.module
 
 val mapperModule = module {

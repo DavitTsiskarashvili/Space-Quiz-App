@@ -1,6 +1,6 @@
 package com.space.quiz_app.data.mapper
 
-import com.space.quiz_app.common.Mapper
+import com.space.quiz_app.common.mapper.Mapper
 import com.space.quiz_app.data.local.QuizUserEntity
 import com.space.quiz_app.domain.model.QuizUserDomainModel
 
@@ -8,7 +8,8 @@ class QuizUserDomainModelToEntityMapper : Mapper<QuizUserDomainModel, QuizUserEn
     override fun invoke(model: QuizUserDomainModel): QuizUserEntity =
         with(model) {
             QuizUserEntity(
-                username = username
+                username = username,
+                gpa = gpa
             )
         }
 

@@ -1,4 +1,4 @@
-package com.space.quiz_app.di
+package com.space.quiz_app.data.module
 
 import android.content.Context
 import androidx.room.Room

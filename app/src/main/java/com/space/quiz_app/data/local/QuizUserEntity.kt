@@ -6,5 +6,6 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "User_table")
 data class QuizUserEntity(
     @PrimaryKey
-    val username: String
+    val username: String,
+    val  gpa: Float
 )
