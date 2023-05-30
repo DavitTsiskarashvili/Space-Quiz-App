@@ -18,5 +18,8 @@
     <string name="do_you_want_to_cancel_quiz">ნამდვილად გსურს ქვიზის შეწყვეტა?</string>
     <string name="yes">კი</string>
     <string name="no">არა</string>
-    <string name="invalid_username">პაროლი არ უნდა იყოს 8 სიმბოლოზე ნაკლები და უნდა შეიცავდეს მინიმუმ 1 დიდ სიმბოლოს, 1 ციფრს და პატარა სიმბოლოს</string>
+    <string name="username_invalid_length_long">სახელის ზომა უნდა არ უნდა აღემატებოდეს 20 სიმბოლოს</string>
+    <string name="username_invalid_length_short">სახელის ზომა უნდა არ უნდა იყოს 8 სიმბოლოზე ნაკლები</string>
+    <string name="username_invalid_characters">სახელი უნდა შედგებოდეს 1 დიდი, 1 პატარა და 1 სპეციალური სიმბოლოსგან</string>
+    <string name="login_success">მომხამრებელი წარმატებით შევიდა სისტემაში</string>
 </resources>
