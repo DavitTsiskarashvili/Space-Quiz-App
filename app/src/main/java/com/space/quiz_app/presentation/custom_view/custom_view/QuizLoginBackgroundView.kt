@@ -3,7 +3,7 @@ package com.space.quiz_app.presentation.custom_view.custom_view
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
-import android.graphics.Path
+import android.graphics.RectF
 import android.util.AttributeSet
 import com.space.quiz_app.R
 import com.space.quiz_app.presentation.custom_view.base.QuizBaseCustomView
@@ -17,51 +17,46 @@ class QuizLoginBackgroundView(
         style = Paint.Style.FILL
     }
 
-    private val centerX get() = width / 2
-    private val radius get() = width / 2
+    private val radius get() = width
 
     /**[drawBackground] Draws the background of the custom view on the canvas
      */
     override fun drawBackground(canvas: Canvas) {
-        //The height difference used to position the circles vertically.
-        val heightDiff = (width / 2) - (height / 3)
-        //The y-coordinate of the center for the first circle.
-        val centerY1 = height / 3 + heightDiff
-        //The y-coordinate of the center for the second circle.
-        val centerY2 = height * 2 / 3 - heightDiff
 
         path.apply {
             reset()
             paint.color = context.getColor(R.color.blue_secondary_light)
-            addCircle(centerX, centerY1, radius, Path.Direction.CW)
-            addCircle(centerX, centerY2, radius, Path.Direction.CW)
+            val topRectF = RectF(0f, 0f, radius, radius)
+            val bottomRectF = RectF (width-radius, height-radius, width, height)
 
-            moveTo(centerX, 0f)
+            moveTo(radius, 0f)
             lineTo(width, 0f)
-            lineTo(width, centerY2)
-            lineTo(centerX, height)
+            lineTo(width, radius)
+            //draws arc at the right bottom side
+            arcTo(bottomRectF, 0f, 90f)
             lineTo(0f, height)
-            lineTo(0f, centerY1)
-            lineTo(centerX, 0f)
+            lineTo(0f, radius)
+            //draws arc at the top left side
+            arcTo(topRectF, 180f, 90f)
             close()
             canvas.drawPath(path, paint)
         }
     }
-    // Draws the corner shape on the canvas
-    private fun drawCorner(canvas: Canvas) {
+    // Draws the triangle in upper left corner
+    private fun drawTriangle(canvas: Canvas) {
         path.apply {
             reset()
             paint.color = context.getColor(R.color.blue_secondary_default)
             moveTo(0f, 0f)
-            lineTo(centerX, 0f)
-            lineTo(0f, height / 2)
+            lineTo(width, 0f)
+            lineTo(0f, height)
             close()
             canvas.drawPath(path, paint)
         }
     }
 
     override fun onBind(canvas: Canvas) {
-        drawCorner(canvas)
+        drawTriangle(canvas)
         drawBackground(canvas)
     }
 }
