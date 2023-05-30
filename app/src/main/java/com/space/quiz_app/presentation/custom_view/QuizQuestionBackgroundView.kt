@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Path
+import android.graphics.RectF
 import android.util.AttributeSet
 import com.space.quiz_app.R
 
@@ -20,27 +21,20 @@ class QuizQuestionBackgroundView(
     /**[drawBackground] Draws the background of the custom view on the canvas
      */
     override fun drawBackground(canvas: Canvas) {
-        //The x-coordinate of the center for the first circle.
-        val centerX1 = width / 4
-        //The x-coordinate of the center for the second circle.
-        val centerX2 = width * 3 / 4
-        val radius = width / 4
-        val centerY = height - radius
+        val radius = width / 2
 
         path.apply {
             reset()
             paint.color = context.getColor(R.color.blue_secondary_lightest)
-            addCircle(centerX1, centerY, radius, Path.Direction.CW)
-            addCircle(centerX2, centerY, radius, Path.Direction.CW)
+            val rightRectF = RectF(width-radius, height-radius, width, height)
+            val leftRectF = RectF(0f, height-radius, radius, height)
 
             moveTo(0f, 0f)
             lineTo(width, 0f)
-            lineTo(width, centerY)
-            lineTo(centerX2, height)
-
-            lineTo(centerX1, height)
-            lineTo(0f, centerY)
-            lineTo(0f, 0f)
+            //draws arc at the right bottom side
+            arcTo(rightRectF, 0f, 90f)
+            //draws arc at the left bottom side
+            arcTo(leftRectF, 90f, 90f)
             close()
         }
         canvas.drawPath(path, paint)
