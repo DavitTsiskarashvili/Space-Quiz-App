@@ -1,5 +1,6 @@
 package com.space.quiz_app.data.repository
 
+import android.util.Log
 import com.space.quiz_app.data.local.QuizUserDao
 import com.space.quiz_app.data.mapper.QuizUserDomainToEntityMapper
 import com.space.quiz_app.data.mapper.QuizUserEntityToDomainMapper
@@ -27,6 +28,7 @@ class QuizUserRepositoryImpl(
             val userEntity = userDao.getEntityIfLoggedIn()
             if( userEntity.isEmpty()){
                 emit(null)
+                Log.d("bachi", userEntity.toString())
             } else {
                 emit(quizUserEntityToDomainMapper(userEntity[0]))
             }

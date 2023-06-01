@@ -20,4 +20,6 @@ interface QuizUserDao {
     @Query("SELECT * FROM User_table WHERE username = :username")
     suspend fun getEntity(username: String): List<QuizUserEntity>
 
+
+
 }

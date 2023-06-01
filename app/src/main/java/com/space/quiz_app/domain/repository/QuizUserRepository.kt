@@ -1,6 +1,5 @@
 package com.space.quiz_app.domain.repository
 
-import com.space.quiz_app.data.local.QuizUserEntity
 import com.space.quiz_app.domain.model.QuizUserDomainModel
 import kotlinx.coroutines.flow.Flow
 
