@@ -5,6 +5,7 @@ import com.space.quiz_app.R
 import com.space.quiz_app.common.extensions.viewBinding
 import com.space.quiz_app.databinding.QuizLoginFragmentBinding
 import com.space.quiz_app.presentation.base.QuizBaseFragment
+import com.space.quiz_app.presentation.quiz_home_screen.QuizHomeViewModel
 import kotlin.reflect.KClass
 
 class QuizLoginFragment : QuizBaseFragment<QuizLoginViewModel>() {
@@ -13,6 +14,9 @@ class QuizLoginFragment : QuizBaseFragment<QuizLoginViewModel>() {
 
     override val layout: Int
         get() = R.layout.quiz_login_fragment
+
+    override val viewModelClass: KClass<QuizLoginViewModel>
+        get() = QuizLoginViewModel::class
 
     override fun onBind() {
         navigate()
