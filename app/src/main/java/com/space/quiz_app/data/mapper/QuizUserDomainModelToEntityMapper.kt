@@ -9,7 +9,8 @@ class QuizUserDomainModelToEntityMapper : Mapper<QuizUserDomainModel, QuizUserEn
         with(model) {
             QuizUserEntity(
                 username = username,
-                gpa = gpa
+                gpa = gpa,
+                isLoggedIn = isLoggedIn
             )
         }
 

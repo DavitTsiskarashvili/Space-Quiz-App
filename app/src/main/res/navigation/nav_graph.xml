@@ -24,7 +24,7 @@
             app:destination="@id/questionsFragment" />
         <action
             android:id="@+id/action_homeFragment_to_takenQuizFragment"
-            app:destination="@id/takenQuizFragment" />
+            app:destination="@id/QuizGPAFragment" />
     </fragment>
     <fragment
         android:id="@+id/questionsFragment"
@@ -36,12 +36,12 @@
             app:destination="@id/homeFragment" />
     </fragment>
     <fragment
-        android:id="@+id/takenQuizFragment"
+        android:id="@+id/QuizGPAFragment"
         android:name="com.space.quiz_app.presentation.quiz_gpa_screen.ui.QuizGPAFragment"
         android:label="fragment_taken_quiz"
         tools:layout="@layout/quiz_gpa_fragment" >
         <action
-            android:id="@+id/action_takenQuizFragment_to_homeFragment"
+            android:id="@+id/action_QuizGPAFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
 </navigation>

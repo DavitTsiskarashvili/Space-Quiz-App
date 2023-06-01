@@ -9,7 +9,8 @@ class QuizUserUIToDomainMapper : Mapper<QuizUserUIModel, QuizUserDomainModel> {
         with(model) {
             QuizUserDomainModel(
                 username = username,
-                gpa = gpa
+                gpa = gpa,
+                isLoggedIn = isLoggedIn
             )
         }
 }

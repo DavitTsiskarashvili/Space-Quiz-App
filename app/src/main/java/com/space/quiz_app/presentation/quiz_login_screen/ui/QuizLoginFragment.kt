@@ -1,5 +1,6 @@
 package com.space.quiz_app.presentation.quiz_login_screen.ui
 
+import android.util.Log
 import androidx.lifecycle.lifecycleScope
 import com.space.quiz_app.R
 import com.space.quiz_app.common.extensions.viewBinding

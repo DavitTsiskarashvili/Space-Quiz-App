@@ -13,4 +13,11 @@ interface QuizUserDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertUser(username: QuizUserEntity)
+
+    @Query("SELECT * FROM User_table WHERE isLoggedIn = true")
+    suspend fun getEntityIfLoggedIn(): List<QuizUserEntity>
+
+    @Query("SELECT * FROM User_table WHERE username = :username")
+    suspend fun getEntity(username: String): List<QuizUserEntity>
+
 }

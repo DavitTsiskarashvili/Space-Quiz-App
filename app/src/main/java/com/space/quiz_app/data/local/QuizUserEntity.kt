@@ -7,5 +7,6 @@ import androidx.room.PrimaryKey
 data class QuizUserEntity(
     @PrimaryKey
     val username: String,
-    val  gpa: Float
+    val  gpa: Float,
+    val isLoggedIn: Boolean = false
 )
