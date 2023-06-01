@@ -1,4 +1,4 @@
-package com.space.quizapp
+package com.space.quiz_app
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
