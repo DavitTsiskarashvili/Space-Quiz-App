@@ -1,8 +1,7 @@
 package com.space.quiz_app.data.repository
 
 import com.space.quiz_app.data.local.QuizUserDao
-import com.space.quiz_app.data.local.QuizUserEntity
-import com.space.quiz_app.data.mapper.QuizUserDomainModelToEntityMapper
+import com.space.quiz_app.data.mapper.QuizUserDomainToEntityMapper
 import com.space.quiz_app.data.mapper.QuizUserEntityToDomainMapper
 import com.space.quiz_app.domain.model.QuizUserDomainModel
 import com.space.quiz_app.domain.repository.QuizUserRepository
@@ -11,7 +10,7 @@ import kotlinx.coroutines.flow.flow
 
 class QuizUserRepositoryImpl(
     private val userDao: QuizUserDao,
-    private val quizUserDomainModelToEntityMapper: QuizUserDomainModelToEntityMapper,
+    private val quizUserDomainModelToEntityMapper: QuizUserDomainToEntityMapper,
     private val quizUserEntityToDomainMapper: QuizUserEntityToDomainMapper
 ) : QuizUserRepository {
 

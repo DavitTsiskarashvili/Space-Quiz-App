@@ -25,7 +25,7 @@ class QuizGPAFragment : QuizBaseFragment<QuizGPAViewModel>() {
     private fun navigate() {
         // This is just to navigate onto the next screen and test it on the actual device
         binding.backButton.setOnClickListener {
-            findNavController().navigate(QuizGPAFragmentDirections.actionQuizGPAFragmentToHomeFragment())
+            findNavController().navigate(QuizGPAFragmentDirections.actionGpaFragmentToHomeFragment())
         }
     }
 
