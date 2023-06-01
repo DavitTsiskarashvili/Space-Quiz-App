@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.space.quiz_app.presentation.quiz_login_screen.ui.QuizLoginFragment"
-        android:label="fragment_start"
+        android:label="fragment_login"
         tools:layout="@layout/quiz_login_fragment" >
         <action
             android:id="@+id/action_loginFragment_to_homeFragment"
@@ -23,8 +23,8 @@
             android:id="@+id/action_homeFragment_to_questionsFragment"
             app:destination="@id/questionsFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_takenQuizFragment"
-            app:destination="@id/QuizGPAFragment" />
+            android:id="@+id/action_homeFragment_to_GpaFragment"
+            app:destination="@id/gpaFragment" />
     </fragment>
     <fragment
         android:id="@+id/questionsFragment"
@@ -36,12 +36,12 @@
             app:destination="@id/homeFragment" />
     </fragment>
     <fragment
-        android:id="@+id/QuizGPAFragment"
+        android:id="@+id/gpaFragment"
         android:name="com.space.quiz_app.presentation.quiz_gpa_screen.ui.QuizGPAFragment"
-        android:label="fragment_taken_quiz"
+        android:label="fragment_gpa"
         tools:layout="@layout/quiz_gpa_fragment" >
         <action
-            android:id="@+id/action_QuizGPAFragment_to_homeFragment"
+            android:id="@+id/action_gpaFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
 </navigation>

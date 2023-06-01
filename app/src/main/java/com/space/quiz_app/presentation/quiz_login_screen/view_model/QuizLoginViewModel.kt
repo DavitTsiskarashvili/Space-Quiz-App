@@ -1,58 +1,37 @@
 package com.space.quiz_app.presentation.quiz_login_screen.view_model
 
-import androidx.lifecycle.viewModelScope
-import com.space.quiz_app.domain.model.QuizUserDomainModel
+import com.space.quiz_app.common.extensions.viewModelScope
 import com.space.quiz_app.domain.repository.QuizUserRepository
 import com.space.quiz_app.presentation.base.QuizBaseViewModel
-import com.space.quiz_app.presentation.mapper.QuizUserDomainToUIMapper
 import com.space.quiz_app.presentation.mapper.QuizUserUIToDomainMapper
 import com.space.quiz_app.presentation.model.QuizUserUIModel
 import com.space.quiz_app.presentation.quiz_login_screen.ui.QuizLoginFragmentDirections
-import com.space.quiz_app.presentation.utils.Validation
+import com.space.quiz_app.presentation.utils.QuizUsernameValidation
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 
 class QuizLoginViewModel(
     private val quizUserRepository: QuizUserRepository,
-    private val quizUserUIToDomainMapper: QuizUserUIToDomainMapper,
-    private val quizUserDomainToUIMapper: QuizUserDomainToUIMapper
+    private val quizUserUIToDomainMapper: QuizUserUIToDomainMapper
 ) : QuizBaseViewModel() {
 
-    private val _validationError = MutableStateFlow<Validation?>(null)
+    private val _validationError = MutableStateFlow<QuizUsernameValidation?>(null)
     val validationError = _validationError.asStateFlow()
 
-    private val _isLoggedIn = MutableStateFlow<Boolean>(false)
-    val isLoggedIn = _isLoggedIn.asStateFlow()
-
-    fun isValidUsername(username: String) {
-        viewModelScope.launch {
-            val error = Validation.validate(username)
-            if (error == Validation.LOGIN_SUCCESS) {
-                getUserIfLoggedIn(username)
+    fun checkUsernameValidity(username: String) {
+        viewModelScope {
+            val validity = QuizUsernameValidation.validate(username)
+            if (validity == QuizUsernameValidation.LOGIN_SUCCESS) {
+                insertUsername(username)
+                navigate()
             } else {
-                _validationError.emit(error)
+                _validationError.emit(validity)
             }
         }
     }
 
-    private fun getUserIfLoggedIn(username: String){
-        viewModelScope.launch {
-            quizUserRepository.getEntityIfLoggedIn().collect{
-                if (it == null){
-                    insertUsername(QuizUserUIModel(username))
-                    navigate()
-                } else {
-                    insertUsername(quizUserDomainToUIMapper(it.copy(isLoggedIn = true)))
-                    navigate()
-                }
-            }
-        }
-    }
-
-    private suspend fun insertUsername(username: QuizUserUIModel) {
-        quizUserRepository.insertUsername(quizUserUIToDomainMapper((username)))
+    private suspend fun insertUsername(username: String) {
+        quizUserRepository.insertUsername(quizUserUIToDomainMapper(QuizUserUIModel(username)))
     }
 
     private fun navigate() {
