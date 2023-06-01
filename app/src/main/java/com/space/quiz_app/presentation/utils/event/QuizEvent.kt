@@ -1,9 +1,9 @@
-package com.space.quiz_app.presentation.utils
+package com.space.quiz_app.presentation.utils.event
 
 /**
  * Used as a wrapper for data that is exposed via a LiveData that represents an event.
  */
-open class Event<out T>(private val content: T) {
+open class QuizEvent<out T>(private val content: T) {
 
     private var hasBeenHandled = false
 

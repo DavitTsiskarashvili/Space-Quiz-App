@@ -1,19 +1,14 @@
 package com.space.quiz_app.data.repository
 
-import android.os.Build.VERSION_CODES.Q
 import com.space.quiz_app.data.local.QuizUserDao
-import com.space.quiz_app.data.local.QuizUserEntity
-import com.space.quiz_app.data.mapper.QuizUserDomainModelToEntityMapper
+import com.space.quiz_app.data.mapper.QuizUserDomainToEntityMapper
 import com.space.quiz_app.data.mapper.QuizUserEntityToDomainMapper
 import com.space.quiz_app.domain.model.QuizUserDomainModel
 import com.space.quiz_app.domain.repository.QuizUserRepository
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
 
 class QuizUserRepositoryImpl(
     private val userDao: QuizUserDao,
-    private val quizUserDomainModelToEntityMapper: QuizUserDomainModelToEntityMapper,
-    private val quizUserEntityToDomainMapper: QuizUserEntityToDomainMapper
+    private val quizUserDomainModelToEntityMapper: QuizUserDomainToEntityMapper,
 ) : QuizUserRepository {
 
     override suspend fun insertUsername(username: QuizUserDomainModel) {
