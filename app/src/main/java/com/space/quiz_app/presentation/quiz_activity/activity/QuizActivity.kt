@@ -6,26 +6,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import com.space.quiz_app.R
 import com.space.quiz_app.databinding.QuizActivityBinding
-import com.space.quiz_app.presentation.quiz_activity.view_model.QuizActivityViewModel
+import com.space.quiz_app.presentation.quiz_activity.view_model.QuizViewModel
 
 class QuizActivity : AppCompatActivity() {
 
     private lateinit var binding: QuizActivityBinding
 
-    private val viewModel: QuizActivityViewModel by viewModels()
+    private val viewModel: QuizViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = QuizActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        setUpNavigation()
     }
-
-    private fun setUpNavigation() {
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        navHostFragment.navController
-    }
-
 }

@@ -28,9 +28,9 @@ class QuizUserRepositoryImpl(
             val userEntity = userDao.getEntityIfLoggedIn()
             if( userEntity.isEmpty()){
                 emit(null)
-                Log.d("bachi", userEntity.toString())
             } else {
                 emit(quizUserEntityToDomainMapper(userEntity[0]))
+                Log.d("bachi", userEntity.toString())
             }
         }
 

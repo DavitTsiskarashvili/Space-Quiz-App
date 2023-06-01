@@ -25,7 +25,7 @@ class QuizLoginViewModel(
         viewModelScope {
             val validity = QuizUsernameValidation.validate(username)
             if (validity == QuizUsernameValidation.LOGIN_SUCCESS) {
-                insertUsername(username)
+                checkUserLogState(username)
                 navigate()
             } else {
                 _validationError.emit(validity)
@@ -33,7 +33,7 @@ class QuizLoginViewModel(
         }
     }
 
-    fun checkUserLogState(username: String){
+    private fun checkUserLogState(username: String){
         viewModelScope {
             quizUserRepository.getEntityIfLoggedIn().collect{
                 if (it == null){
@@ -45,8 +45,8 @@ class QuizLoginViewModel(
         }
     }
 
-    private suspend fun insertUsername(username: String) {
-        quizUserRepository.insertUsername(quizUserUIToDomainMapper(QuizUserUIModel(username)))
+    private suspend fun insertUsername(username: QuizUserUIModel) {
+        quizUserRepository.insertUsername(quizUserUIToDomainMapper((username)))
     }
 
     private fun navigate() {
