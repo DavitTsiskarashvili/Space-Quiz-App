@@ -1,4 +1,4 @@
-package com.space.quiz_app.presentation.base
+package com.space.quiz_app.presentation.base.view_model
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

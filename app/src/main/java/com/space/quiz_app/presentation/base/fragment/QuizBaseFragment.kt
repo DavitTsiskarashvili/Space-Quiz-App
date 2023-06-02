@@ -1,4 +1,4 @@
-package com.space.quiz_app.presentation.base
+package com.space.quiz_app.presentation.base.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.space.quiz_app.presentation.base.view_model.QuizBaseViewModel
 import com.space.quiz_app.presentation.navigation.NavigationCommand
 import com.space.quiz_app.presentation.utils.observeNonNull
 import org.koin.androidx.viewmodel.ext.android.viewModelForClass

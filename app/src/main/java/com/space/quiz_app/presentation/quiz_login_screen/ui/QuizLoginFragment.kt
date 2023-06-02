@@ -4,7 +4,7 @@ import com.space.quiz_app.R
 import com.space.quiz_app.common.extensions.executeScope
 import com.space.quiz_app.common.extensions.viewBinding
 import com.space.quiz_app.databinding.QuizLoginFragmentBinding
-import com.space.quiz_app.presentation.base.QuizBaseFragment
+import com.space.quiz_app.presentation.base.fragment.QuizBaseFragment
 import com.space.quiz_app.presentation.quiz_login_screen.view_model.QuizLoginViewModel
 import kotlin.reflect.KClass
 

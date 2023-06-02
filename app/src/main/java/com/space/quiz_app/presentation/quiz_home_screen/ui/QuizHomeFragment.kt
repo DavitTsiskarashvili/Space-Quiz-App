@@ -5,7 +5,7 @@ import androidx.navigation.fragment.findNavController
 import com.space.quiz_app.R
 import com.space.quiz_app.common.extensions.viewBinding
 import com.space.quiz_app.databinding.QuizHomeFragmentBinding
-import com.space.quiz_app.presentation.base.QuizBaseFragment
+import com.space.quiz_app.presentation.base.fragment.QuizBaseFragment
 import com.space.quiz_app.presentation.quiz_home_screen.view_model.QuizHomeViewModel
 import kotlinx.coroutines.launch
 import kotlin.reflect.KClass
