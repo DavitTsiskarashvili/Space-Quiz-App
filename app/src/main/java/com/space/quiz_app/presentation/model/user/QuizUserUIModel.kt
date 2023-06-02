@@ -1,4 +1,4 @@
-package com.space.quiz_app.presentation.model
+package com.space.quiz_app.presentation.model.user
 
 data class QuizUserUIModel(
     val username: String,

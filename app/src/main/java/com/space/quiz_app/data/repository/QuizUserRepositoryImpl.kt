@@ -2,9 +2,9 @@ package com.space.quiz_app.data.repository
 
 import android.util.Log
 import com.space.quiz_app.data.local.QuizUserDao
-import com.space.quiz_app.data.mapper.QuizUserDomainToEntityMapper
-import com.space.quiz_app.data.mapper.QuizUserEntityToDomainMapper
-import com.space.quiz_app.domain.model.QuizUserDomainModel
+import com.space.quiz_app.data.mapper.user.QuizUserDomainToEntityMapper
+import com.space.quiz_app.data.mapper.user.QuizUserEntityToDomainMapper
+import com.space.quiz_app.domain.model.user.QuizUserDomainModel
 import com.space.quiz_app.domain.repository.QuizUserRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

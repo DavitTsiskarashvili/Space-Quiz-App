@@ -1,8 +1,8 @@
-package com.space.quiz_app.presentation.mapper
+package com.space.quiz_app.presentation.mapper.user
 
 import com.space.quiz_app.common.mapper.Mapper
-import com.space.quiz_app.domain.model.QuizUserDomainModel
-import com.space.quiz_app.presentation.model.QuizUserUIModel
+import com.space.quiz_app.domain.model.user.QuizUserDomainModel
+import com.space.quiz_app.presentation.model.user.QuizUserUIModel
 
 class QuizUserDomainToUIMapper : Mapper<QuizUserDomainModel, QuizUserUIModel> {
     override fun invoke(model: QuizUserDomainModel): QuizUserUIModel =
@@ -13,5 +13,4 @@ class QuizUserDomainToUIMapper : Mapper<QuizUserDomainModel, QuizUserUIModel> {
                 isLoggedIn = isLoggedIn
             )
         }
-
 }

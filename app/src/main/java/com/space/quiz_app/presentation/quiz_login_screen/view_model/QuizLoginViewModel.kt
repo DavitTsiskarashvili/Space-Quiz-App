@@ -3,9 +3,9 @@ package com.space.quiz_app.presentation.quiz_login_screen.view_model
 import com.space.quiz_app.common.extensions.viewModelScope
 import com.space.quiz_app.domain.repository.QuizUserRepository
 import com.space.quiz_app.presentation.base.view_model.QuizBaseViewModel
-import com.space.quiz_app.presentation.mapper.QuizUserDomainToUIMapper
-import com.space.quiz_app.presentation.mapper.QuizUserUIToDomainMapper
-import com.space.quiz_app.presentation.model.QuizUserUIModel
+import com.space.quiz_app.presentation.mapper.user.QuizUserDomainToUIMapper
+import com.space.quiz_app.presentation.mapper.user.QuizUserUIToDomainMapper
+import com.space.quiz_app.presentation.model.user.QuizUserUIModel
 import com.space.quiz_app.presentation.quiz_login_screen.ui.QuizLoginFragmentDirections
 import com.space.quiz_app.presentation.utils.QuizUsernameValidation
 import kotlinx.coroutines.flow.MutableStateFlow

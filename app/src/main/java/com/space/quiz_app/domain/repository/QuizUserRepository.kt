@@ -1,6 +1,6 @@
 package com.space.quiz_app.domain.repository
 
-import com.space.quiz_app.domain.model.QuizUserDomainModel
+import com.space.quiz_app.domain.model.user.QuizUserDomainModel
 import kotlinx.coroutines.flow.Flow
 
 interface QuizUserRepository {
