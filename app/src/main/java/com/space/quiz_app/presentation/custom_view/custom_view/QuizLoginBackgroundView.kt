@@ -29,8 +29,7 @@ class QuizLoginBackgroundView(
             val topRectF = RectF(0f, 0f, radius, radius)
             val bottomRectF = RectF (width-radius, height-radius, width, height)
 
-            moveTo(radius, 0f)
-            lineTo(width, 0f)
+            moveTo(width, 0f)
             lineTo(width, radius)
             //draws arc at the right bottom side
             arcTo(bottomRectF, 0f, 90f)

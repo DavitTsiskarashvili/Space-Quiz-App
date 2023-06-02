@@ -30,7 +30,6 @@ class QuizUserRepositoryImpl(
                 emit(null)
             } else {
                 emit(quizUserEntityToDomainMapper(userEntity[0]))
-                Log.d("bachi", userEntity.toString())
             }
         }
 
