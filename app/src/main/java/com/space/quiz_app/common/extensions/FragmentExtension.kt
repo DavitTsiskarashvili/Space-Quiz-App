@@ -22,7 +22,7 @@ fun Fragment.executeScope(
 
 fun <T : Any> Fragment.collectFlow(
     flow: Flow<T>,
-    coroutineContext: CoroutineContext = Dispatchers.Unconfined,
+    coroutineContext: CoroutineContext = Dispatchers.IO,
     lifecycleState: Lifecycle.State = Lifecycle.State.RESUMED,
     block: (T) -> Unit
 ) {

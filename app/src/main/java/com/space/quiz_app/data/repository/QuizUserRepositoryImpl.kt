@@ -18,7 +18,4 @@ class QuizUserRepositoryImpl(
     override suspend fun isUsernameRegistered(username: String): Boolean {
         return userDao.isUsernameRegistered(username)
     }
-
 }
-
-

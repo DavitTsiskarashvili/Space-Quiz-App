@@ -12,5 +12,4 @@ class QuizUserDomainToEntityMapper : Mapper<QuizUserDomainModel, QuizUserEntity>
                 gpa = gpa
             )
         }
-
 }
