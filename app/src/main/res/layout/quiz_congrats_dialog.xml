@@ -24,7 +24,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/congratsTextView"
-            style="@style/bigMyriadGeo_Regular"
+            style="@style/largeMyriadGeo_Regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_10_dp"
@@ -59,7 +59,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/closeTextView"
-            style="@style/bigMyriadGeo_Bold"
+            style="@style/largeMyriadGeo_Bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/dimen_12_dp"

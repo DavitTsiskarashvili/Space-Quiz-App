@@ -12,5 +12,4 @@ class QuizUserDomainToUIMapper : Mapper<QuizUserDomainModel, QuizUserUIModel> {
                 gpa = gpa
             )
         }
-
 }

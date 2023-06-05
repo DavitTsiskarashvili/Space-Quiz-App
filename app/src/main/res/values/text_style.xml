@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="bigMyriadGeo_Bold" >
+    <style name="largeMyriadGeo_Bold" >
         <item name="android:font">@font/myriad_geo</item>
         <item name="android:textSize">@dimen/dimen_16_sp</item>
         <item name="android:textColor">@color/neutral_01_dark_grey</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="bigMyriadGeo_Regular" >
+    <style name="largeMyriadGeo_Regular" >
         <item name="android:font">@font/myriad_geo</item>
         <item name="android:textSize">@dimen/dimen_16_sp</item>
         <item name="android:textColor">@color/neutral_01_dark_grey</item>

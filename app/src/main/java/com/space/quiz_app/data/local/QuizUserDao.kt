@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface QuizUserDao {
-    @Query("SELECT EXISTS(SELECT * FROM User_table WHERE username = :username)")
+    @Query("SELECT EXISTS(SELECT * FROM User_Table WHERE username = :username)")
     suspend fun isUsernameRegistered(user: String): Boolean
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
