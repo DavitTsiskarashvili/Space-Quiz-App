@@ -11,7 +11,8 @@ class QuizAnswersDTOMapper : Mapper<QuizQuestionsDTO.Answer, QuizQuestionsDomain
                 answers = answers,
                 correctAnswer = correctAnswer,
                 questionIndex = questionIndex,
-                questionTitle = questionTitle
+                questionTitle = questionTitle,
+                subjectId = subjectId
             )
         }
 }

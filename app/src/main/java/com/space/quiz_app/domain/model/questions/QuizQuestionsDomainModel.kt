@@ -12,6 +12,7 @@ data class QuizQuestionsDomainModel(
         val answers: List<String> = emptyList(),
         val correctAnswer: String?,
         val questionIndex: Int?,
-        val questionTitle: String?
+        val questionTitle: String?,
+        val subjectId: Int?
     )
 }

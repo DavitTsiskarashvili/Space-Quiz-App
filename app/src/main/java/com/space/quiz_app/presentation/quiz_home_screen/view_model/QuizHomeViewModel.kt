@@ -1,27 +1,35 @@
 package com.space.quiz_app.presentation.quiz_home_screen.view_model
 
-import androidx.lifecycle.viewModelScope
 import com.space.quiz_app.common.extensions.viewModelScope
 import com.space.quiz_app.data.remote.service.result_handler.resource.Resource
-import com.space.quiz_app.domain.model.questions.QuizQuestionsDomainModel
 import com.space.quiz_app.domain.repository.QuizSubjectsRepository
 import com.space.quiz_app.domain.repository.QuizUserRepository
 import com.space.quiz_app.presentation.base.view_model.QuizBaseViewModel
-import kotlinx.coroutines.flow.MutableSharedFlow
+import com.space.quiz_app.presentation.mapper.question.QuizQuestionDomainMapper
+import com.space.quiz_app.presentation.model.questions.QuizQuestionsUIModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.launch
 
 class QuizHomeViewModel(
     private val quizUserRepository: QuizUserRepository,
-    private val quizSubjectsRepository: QuizSubjectsRepository
+    private val quizSubjectsRepository: QuizSubjectsRepository,
+    private val quizQuestionsUIMapper: QuizQuestionDomainMapper
 ) : QuizBaseViewModel() {
 
     private val _usernameState = MutableStateFlow("")
     val usernameState = _usernameState.asStateFlow()
 
-    private val _subjectsState = MutableStateFlow< Resource<QuizQuestionsDomainModel>>(Resource.Loader(false))
+    private val _subjectsState =
+        MutableStateFlow<List<QuizQuestionsUIModel>?>(null)
     val subjectsState = _subjectsState.asStateFlow()
+
+    private val _errorState =
+        MutableStateFlow<Throwable?>(null)
+    val errorState = _errorState.asStateFlow()
+
+    private val _loadingState =
+        MutableStateFlow<Boolean?>(null)
+    val loadingState = _loadingState.asStateFlow()
 
     fun getUsername() {
         viewModelScope {
@@ -31,9 +39,22 @@ class QuizHomeViewModel(
         }
     }
 
-    fun getSubjects(){
+    fun getSubjects() {
         viewModelScope {
-            quizSubjectsRepository
+            val result = quizSubjectsRepository.getSubjects()
+            when (result) {
+                is Resource.Success -> {
+                    _subjectsState.emit(result.data.map {
+                        quizQuestionsUIMapper(it)
+                    })
+                }
+                is Resource.Error -> {
+                    _errorState.emit(result.errorMessage)
+                }
+                is Resource.Loader -> {
+                    _loadingState.emit(result.isLoading)
+                }
+            }
         }
     }
 

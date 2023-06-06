@@ -12,7 +12,8 @@ class QuizAnswersDomainMapper :
                 answers = answers,
                 questionTitle = questionTitle,
                 questionIndex = questionIndex,
-                correctAnswer = correctAnswer
+                correctAnswer = correctAnswer,
+                subjectId = subjectId
             )
         }
 }

@@ -3,9 +3,11 @@ package com.space.quiz_app.presentation.quiz_home_screen.ui
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.space.quiz_app.R
+import com.space.quiz_app.common.extensions.collectFlow
 import com.space.quiz_app.common.extensions.viewBinding
 import com.space.quiz_app.databinding.QuizHomeFragmentBinding
 import com.space.quiz_app.presentation.base.fragment.QuizBaseFragment
+import com.space.quiz_app.presentation.quiz_home_screen.adapter.QuizSubjectsAdapter
 import com.space.quiz_app.presentation.quiz_home_screen.view_model.QuizHomeViewModel
 import kotlinx.coroutines.launch
 import kotlin.reflect.KClass
@@ -20,9 +22,31 @@ class QuizHomeFragment : QuizBaseFragment<QuizHomeViewModel>() {
     override val viewModelClass: KClass<QuizHomeViewModel>
         get() = QuizHomeViewModel::class
 
+    private val subjectsAdapter by lazy {
+        QuizSubjectsAdapter()
+    }
+
     override fun onBind() {
+        initRecycler()
         navigate()
         observe()
+    }
+
+    private fun initRecycler() {
+        viewModel.getSubjects()
+        binding.subjectRecyclerView.adapter = subjectsAdapter
+        getSubjects()
+    }
+
+    private fun getSubjects() {
+        collectFlow(viewModel.subjectsState) { subjects ->
+            subjects.let {
+                subjectsAdapter.submitList(it)
+            }
+        }
+        collectFlow(viewModel.loadingState) {
+
+        }
     }
 
     private fun navigate() {
@@ -30,9 +54,6 @@ class QuizHomeFragment : QuizBaseFragment<QuizHomeViewModel>() {
         binding.logOutButton.setOnClickListener {
             findNavController().navigate(QuizHomeFragmentDirections.actionHomeFragmentToQuestionsFragment())
         }
-//        binding.gpaButton.gpaDetailsTextView.setOnClickListener {
-//            findNavController().navigate(QuizHomeFragmentDirections.actionHomeFragmentToQuizGPAFragment())
-//        }
     }
 
     private fun observe() {

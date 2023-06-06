@@ -20,7 +20,7 @@ fun Fragment.executeScope(
     }
 }
 
-fun <T : Any> Fragment.collectFlow(
+fun <T : Any?> Fragment.collectFlow(
     flow: Flow<T>,
     coroutineContext: CoroutineContext = Dispatchers.Unconfined,
     lifecycleState: Lifecycle.State = Lifecycle.State.RESUMED,
