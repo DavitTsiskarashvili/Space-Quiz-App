@@ -19,5 +19,4 @@ abstract class QuizBaseViewModel : ViewModel() {
     fun navigateBack() {
         _navigation.value = QuizEvent(NavigationCommand.Back)
     }
-
 }

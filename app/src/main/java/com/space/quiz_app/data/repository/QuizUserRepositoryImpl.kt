@@ -1,6 +1,5 @@
 package com.space.quiz_app.data.repository
 
-import android.util.Log
 import com.space.quiz_app.data.local.QuizUserDao
 import com.space.quiz_app.data.mapper.user.QuizUserDomainToEntityMapper
 import com.space.quiz_app.data.mapper.user.QuizUserEntityToDomainMapper
@@ -37,7 +36,6 @@ class QuizUserRepositoryImpl(
         flow {
             emit(quizUserEntityToDomainMapper(userDao.getEntity(username)[0]))
         }
-
 }
 
 

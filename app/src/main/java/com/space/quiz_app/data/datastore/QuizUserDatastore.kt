@@ -29,5 +29,4 @@ abstract class QuizUserDatastore(private val context: Context) : QuizDatastoreMa
         }
         return preferences
     }
-
 }

@@ -13,5 +13,4 @@ class QuizUsernameRepositoryImpl(
 
     override suspend fun getUsername(): Flow<String> =
         quizDatastoreManager.getValue()
-
 }

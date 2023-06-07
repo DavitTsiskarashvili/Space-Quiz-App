@@ -49,5 +49,4 @@ abstract class QuizBaseFragment<VM : QuizBaseViewModel>() : Fragment() {
             is NavigationCommand.Back -> findNavController().navigateUp()
         }
     }
-
 }

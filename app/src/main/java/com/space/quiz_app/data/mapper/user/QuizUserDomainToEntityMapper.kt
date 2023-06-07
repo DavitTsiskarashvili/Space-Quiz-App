@@ -13,5 +13,4 @@ class QuizUserDomainToEntityMapper : Mapper<QuizUserDomainModel, QuizUserEntity>
                 isLoggedIn = isLoggedIn
             )
         }
-
 }
