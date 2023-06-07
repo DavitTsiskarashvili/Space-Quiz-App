@@ -5,11 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.quiz_home_screen.QuizHomeFragment">
+    tools:context=".presentation.quiz_home_screen.ui.QuizHomeFragment">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/greetingTextView"
-        style="@style/bigMyriadGeo_Bold"
+        style="@style/largeMyriadGeo_Bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_16_dp"

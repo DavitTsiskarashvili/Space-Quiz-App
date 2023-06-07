@@ -24,7 +24,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/gpaTextView"
-            style="@style/bigMyriadGeo_Regular"
+            style="@style/largeMyriadGeo_Regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dimen_10_dp"
@@ -37,7 +37,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/gpaScoreTextView"
-            style="@style/bigMyriadGeo_Bold"
+            style="@style/largeMyriadGeo_Bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dimen_4_dp"
