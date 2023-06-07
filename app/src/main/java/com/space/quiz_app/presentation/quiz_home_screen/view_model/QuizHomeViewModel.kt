@@ -28,7 +28,7 @@ class QuizHomeViewModel(
     val errorState = _errorState.asStateFlow()
 
     private val _loadingState =
-        MutableStateFlow<Boolean?>(null)
+        MutableStateFlow<Boolean>(true)
     val loadingState = _loadingState.asStateFlow()
 
     fun getUsername() {
@@ -51,10 +51,9 @@ class QuizHomeViewModel(
                 is Resource.Error -> {
                     _errorState.emit(result.errorMessage)
                 }
-                is Resource.Loader -> {
-                    _loadingState.emit(result.isLoading)
-                }
+                else -> {}
             }
+            _loadingState.emit(result.loader)
         }
     }
 

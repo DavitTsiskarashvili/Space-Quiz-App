@@ -1,9 +1,12 @@
 package com.space.quiz_app.presentation.quiz_home_screen.ui
 
+import android.view.View
+import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.space.quiz_app.R
 import com.space.quiz_app.common.extensions.collectFlow
+import com.space.quiz_app.common.extensions.executeScope
 import com.space.quiz_app.common.extensions.viewBinding
 import com.space.quiz_app.databinding.QuizHomeFragmentBinding
 import com.space.quiz_app.presentation.base.fragment.QuizBaseFragment
@@ -39,13 +42,13 @@ class QuizHomeFragment : QuizBaseFragment<QuizHomeViewModel>() {
     }
 
     private fun getSubjects() {
+        collectFlow(viewModel.loadingState) {
+            binding.progressBar.isVisible = it
+        }
         collectFlow(viewModel.subjectsState) { subjects ->
             subjects.let {
                 subjectsAdapter.submitList(it)
             }
-        }
-        collectFlow(viewModel.loadingState) {
-
         }
     }
 
@@ -58,12 +61,10 @@ class QuizHomeFragment : QuizBaseFragment<QuizHomeViewModel>() {
 
     private fun observe() {
         viewModel.getUsername()
-        viewLifecycleOwner.lifecycleScope.launch {
-            with(binding) {
-                viewModel.usernameState.collect {
-                    greetingTextView.text =
-                        String.format(getString(R.string.hello_user), it)
-                }
+        executeScope {
+            viewModel.usernameState.collect {
+                binding.greetingTextView.text =
+                    String.format(getString(R.string.hello_user), it)
             }
         }
     }

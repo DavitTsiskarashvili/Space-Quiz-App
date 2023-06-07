@@ -25,16 +25,16 @@ class QuizUserRepositoryImpl(
     override suspend fun getEntityIfLoggedIn(): Flow<QuizUserDomainModel?> =
         flow {
             val userEntity = userDao.getEntityIfLoggedIn()
-            if( userEntity.isEmpty()){
+            if(userEntity == null){
                 emit(null)
             } else {
-                emit(quizUserEntityToDomainMapper(userEntity[0]))
+                emit(quizUserEntityToDomainMapper(userEntity))
             }
         }
 
     override suspend fun getEntity(username: String): Flow<QuizUserDomainModel> =
         flow {
-            emit(quizUserEntityToDomainMapper(userDao.getEntity(username)[0]))
+            emit(quizUserEntityToDomainMapper(userDao.getEntity(username)))
         }
 }
 

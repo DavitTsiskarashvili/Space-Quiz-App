@@ -15,9 +15,9 @@ interface QuizUserDao {
     suspend fun insertUser(username: QuizUserEntity)
 
     @Query("SELECT * FROM User_table WHERE isLoggedIn = true")
-    suspend fun getEntityIfLoggedIn(): List<QuizUserEntity>
+    suspend fun getEntityIfLoggedIn(): QuizUserEntity?
 
     @Query("SELECT * FROM User_table WHERE username = :username")
-    suspend fun getEntity(username: String): List<QuizUserEntity>
+    suspend fun getEntity(username: String): QuizUserEntity
 
 }
