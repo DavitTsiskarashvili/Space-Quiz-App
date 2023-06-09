@@ -10,7 +10,7 @@ import org.koin.dsl.module
 
 val viewModelModule = module {
     viewModel { QuizViewModel() }
-    viewModel { QuizHomeViewModel(get(), get(), get()) }
+    viewModel { QuizHomeViewModel(get(), get(), get(), get(), get()) }
     viewModel { QuizLoginViewModel(get(), get(), get()) }
     viewModel { QuizQuestionsViewModel() }
     viewModel { QuizGPAViewModel() }

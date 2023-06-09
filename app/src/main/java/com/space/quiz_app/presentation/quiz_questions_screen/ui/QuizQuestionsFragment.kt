@@ -29,4 +29,8 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
         }
     }
 
+    override fun onCreateFragment() {
+        TODO("Not yet implemented")
+    }
+
 }

@@ -1,7 +1,6 @@
 package com.space.quiz_app.data.repository
 
 import com.space.quiz_app.data.remote.mapper.QuizQuestionsDTOMapper
-import com.space.quiz_app.data.remote.model.QuizQuestionsDTO
 import com.space.quiz_app.data.remote.service.api.QuizServiceApi
 import com.space.quiz_app.data.remote.service.result_handler.resource.Resource
 import com.space.quiz_app.data.remote.service.result_handler.retrofit.apiDataFetcher

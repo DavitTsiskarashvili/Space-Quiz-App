@@ -20,6 +20,7 @@ abstract class QuizBaseFragment<VM : QuizBaseViewModel>() : Fragment() {
     protected abstract val layout: Int
 
     abstract fun onBind()
+    abstract fun onCreateFragment()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,6 +28,11 @@ abstract class QuizBaseFragment<VM : QuizBaseViewModel>() : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(layout, container, false)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        onCreateFragment()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

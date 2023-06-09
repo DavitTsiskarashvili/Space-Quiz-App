@@ -1,5 +1,6 @@
 package com.space.quiz_app.data.repository
 
+import android.util.Log
 import com.space.quiz_app.data.local.QuizUserDao
 import com.space.quiz_app.data.mapper.user.QuizUserDomainToEntityMapper
 import com.space.quiz_app.data.mapper.user.QuizUserEntityToDomainMapper
@@ -22,20 +23,15 @@ class QuizUserRepositoryImpl(
         return userDao.isUsernameRegistered(username)
     }
 
-    override suspend fun getEntityIfLoggedIn(): Flow<QuizUserDomainModel?> =
-        flow {
-            val userEntity = userDao.getEntityIfLoggedIn()
-            if(userEntity == null){
-                emit(null)
-            } else {
-                emit(quizUserEntityToDomainMapper(userEntity))
-            }
+    override suspend fun getUsernameIfLoggedIn(): QuizUserDomainModel? {
+        val userEntity = userDao.getUsernameIfLoggedIn()
+        return if (userEntity == null) {
+            null
+        } else {
+            quizUserEntityToDomainMapper(userEntity)
         }
+    }
 
-    override suspend fun getEntity(username: String): Flow<QuizUserDomainModel> =
-        flow {
-            emit(quizUserEntityToDomainMapper(userDao.getEntity(username)))
-        }
 }
 
 

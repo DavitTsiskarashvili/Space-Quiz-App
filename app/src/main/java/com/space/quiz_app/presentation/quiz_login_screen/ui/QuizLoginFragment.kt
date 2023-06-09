@@ -31,6 +31,7 @@ class QuizLoginFragment : QuizBaseFragment<QuizLoginViewModel>() {
         }
     }
 
+    // errors in base fragment
     private fun setErrorMessage() {
         executeScope {
             viewModel.validationError.collect() {
@@ -39,6 +40,10 @@ class QuizLoginFragment : QuizBaseFragment<QuizLoginViewModel>() {
                 }
             }
         }
+    }
+
+    override fun onCreateFragment() {
+
     }
 
 }

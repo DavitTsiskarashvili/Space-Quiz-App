@@ -32,24 +32,23 @@ class QuizLoginViewModel(
         }
     }
 
-    private fun checkUserLogState(username: String){
+    private fun checkUserLogState(username: String) {
         viewModelScope {
-            quizUserRepository.getEntityIfLoggedIn().collect{
-                if (it == null){
-                    insertUsername(QuizUserUIModel(username))
-                } else {
-                    insertUsername(quizUserDomainToUIMapper(it.copy(isLoggedIn = true)))
-                }
+            val getUsername = quizUserRepository.getUsernameIfLoggedIn()
+            if (getUsername == null) {
+                insertUsername(QuizUserUIModel(username, isLoggedIn = true))
+            } else {
+                insertUsername(quizUserDomainToUIMapper(getUsername.copy(isLoggedIn = true)))
             }
         }
     }
 
-    private suspend fun insertUsername(username: QuizUserUIModel) {
-        quizUserRepository.insertUsername(quizUserUIToDomainMapper((username)))
-    }
+private suspend fun insertUsername(username: QuizUserUIModel) {
+    quizUserRepository.insertUsername(quizUserUIToDomainMapper((username)))
+}
 
-    private fun navigate() {
-        navigate(QuizLoginFragmentDirections.actionLoginFragmentToHomeFragment())
-    }
+private fun navigate() {
+    navigate(QuizLoginFragmentDirections.actionLoginFragmentToHomeFragment())
+}
 
 }

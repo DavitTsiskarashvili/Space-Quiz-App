@@ -8,7 +8,5 @@ interface QuizUserRepository {
 
     suspend fun isUsernameRegistered(username: String): Boolean
 
-    suspend fun getEntityIfLoggedIn(): Flow<QuizUserDomainModel?>
-
-    suspend fun getEntity(username: String): Flow<QuizUserDomainModel>
+    suspend fun getUsernameIfLoggedIn(): QuizUserDomainModel?
 }

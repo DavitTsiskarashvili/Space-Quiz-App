@@ -29,4 +29,8 @@ class QuizGPAFragment : QuizBaseFragment<QuizGPAViewModel>() {
         }
     }
 
- }
+    override fun onCreateFragment() {
+        TODO("Not yet implemented")
+    }
+
+}
