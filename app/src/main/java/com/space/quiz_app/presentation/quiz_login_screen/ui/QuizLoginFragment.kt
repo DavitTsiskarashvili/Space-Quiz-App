@@ -18,6 +18,10 @@ class QuizLoginFragment : QuizBaseFragment<QuizLoginViewModel>() {
     override val viewModelClass: KClass<QuizLoginViewModel>
         get() = QuizLoginViewModel::class
 
+    override fun onCreateFragment() {
+
+    }
+
     override fun onBind() {
         logIn()
         setErrorMessage()
@@ -40,10 +44,6 @@ class QuizLoginFragment : QuizBaseFragment<QuizLoginViewModel>() {
                 }
             }
         }
-    }
-
-    override fun onCreateFragment() {
-
     }
 
 }

@@ -43,12 +43,12 @@ class QuizLoginViewModel(
         }
     }
 
-private suspend fun insertUsername(username: QuizUserUIModel) {
-    quizUserRepository.insertUsername(quizUserUIToDomainMapper((username)))
-}
+    private suspend fun insertUsername(username: QuizUserUIModel) {
+        quizUserRepository.insertUsername(quizUserUIToDomainMapper((username)))
+    }
 
-private fun navigate() {
-    navigate(QuizLoginFragmentDirections.actionLoginFragmentToHomeFragment())
-}
+    private fun navigate() {
+        navigate(QuizLoginFragmentDirections.actionGlobalHomeFragment())
+    }
 
 }

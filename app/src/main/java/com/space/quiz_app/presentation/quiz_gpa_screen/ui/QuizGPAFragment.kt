@@ -1,5 +1,6 @@
 package com.space.quiz_app.presentation.quiz_gpa_screen.ui
 
+import androidx.activity.addCallback
 import androidx.navigation.fragment.findNavController
 import com.space.quiz_app.R
 import com.space.quiz_app.common.extensions.viewBinding
@@ -18,19 +19,22 @@ class QuizGPAFragment : QuizBaseFragment<QuizGPAViewModel>() {
     override val viewModelClass: KClass<QuizGPAViewModel>
         get() = QuizGPAViewModel::class
 
+    override fun onCreateFragment() {
+
+    }
+
     override fun onBind() {
         navigate()
     }
 
     private fun navigate() {
-        // This is just to navigate onto the next screen and test it on the actual device
+        // TODO navigation will be written in ViewModel
         binding.backButton.setOnClickListener {
-            findNavController().navigate(QuizGPAFragmentDirections.actionGpaFragmentToHomeFragment())
+            findNavController().navigate(QuizGPAFragmentDirections.actionGlobalHomeFragment())
         }
-    }
-
-    override fun onCreateFragment() {
-        TODO("Not yet implemented")
+        requireActivity().onBackPressedDispatcher.addCallback {
+            findNavController().navigate(QuizGPAFragmentDirections.actionGlobalHomeFragment())
+        }
     }
 
 }

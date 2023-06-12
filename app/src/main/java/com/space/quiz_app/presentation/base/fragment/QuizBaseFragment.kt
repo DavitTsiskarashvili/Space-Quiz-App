@@ -39,6 +39,7 @@ abstract class QuizBaseFragment<VM : QuizBaseViewModel>() : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         onBind()
         observeNavigation()
+        findNavController().popBackStack()
     }
 
     private fun observeNavigation() {

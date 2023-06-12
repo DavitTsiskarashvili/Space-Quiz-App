@@ -78,11 +78,13 @@ class QuizHomeViewModel(
 
     private suspend fun replaceUsername(username: QuizUserUIModel) {
         quizUserRepository.insertUsername(quizUserUIToDomainMapper((username)))
-        navigate()
     }
 
-    private fun navigate() {
-        navigate(QuizHomeFragmentDirections.actionHomeFragmentToLoginFragment())
+    fun navigateToHome() {
+        navigate(QuizHomeFragmentDirections.actionGlobalLoginFragment())
     }
 
+    fun navigateToGPA(){
+        navigate(QuizHomeFragmentDirections.actionGlobalGpaFragment())
+    }
 }

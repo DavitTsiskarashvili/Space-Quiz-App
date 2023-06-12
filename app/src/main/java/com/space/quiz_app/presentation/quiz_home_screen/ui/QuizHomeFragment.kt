@@ -1,10 +1,8 @@
 package com.space.quiz_app.presentation.quiz_home_screen.ui
 
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.view.isVisible
 import com.space.quiz_app.R
 import com.space.quiz_app.common.extensions.collectFlow
-import com.space.quiz_app.common.extensions.executeScope
 import com.space.quiz_app.common.extensions.viewBinding
 import com.space.quiz_app.databinding.QuizHomeFragmentBinding
 import com.space.quiz_app.presentation.base.fragment.QuizBaseFragment
@@ -35,6 +33,7 @@ class QuizHomeFragment : QuizBaseFragment<QuizHomeViewModel>() {
         observe()
         initRecycler()
         logOut()
+        setNavigation()
     }
 
     private fun observe() {
@@ -71,11 +70,18 @@ class QuizHomeFragment : QuizBaseFragment<QuizHomeViewModel>() {
         val dialog = LogOutDialog(requireContext())
         dialog.setPositiveButtonClickListener {
             viewModel.logOutUser()
+            viewModel.navigateToHome()
         }
         dialog.setNegativeButtonClickListener {
 
         }
         dialog.showDialog()
+    }
+
+    private fun setNavigation(){
+        binding.gpaButton.gpaDetailsTextView.setOnClickListener {
+            viewModel.navigateToGPA()
+        }
     }
 
 }

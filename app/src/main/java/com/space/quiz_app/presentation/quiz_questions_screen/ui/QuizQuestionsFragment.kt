@@ -25,7 +25,7 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
     private fun navigate() {
         // This is just to navigate onto the next screen and test it on the actual device
         binding.cancelButton.setOnClickListener {
-            findNavController().navigate(QuizQuestionsFragmentDirections.actionQuestionsFragmentToHomeFragment())
+            findNavController().navigate(QuizQuestionsFragmentDirections.actionGlobalHomeFragment())
         }
     }
 
