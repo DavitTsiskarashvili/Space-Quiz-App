@@ -25,13 +25,8 @@ class QuizUserRepositoryImpl(
 
     override suspend fun getUsernameIfLoggedIn(): QuizUserDomainModel? {
         val userEntity = userDao.getUsernameIfLoggedIn()
-        return if (userEntity == null) {
-            null
-        } else {
-            quizUserEntityToDomainMapper(userEntity)
-        }
+        return userEntity?.let { quizUserEntityToDomainMapper(it) }
     }
-
 }
 
 

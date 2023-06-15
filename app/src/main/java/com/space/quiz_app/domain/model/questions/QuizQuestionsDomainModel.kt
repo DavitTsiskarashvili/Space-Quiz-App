@@ -6,9 +6,9 @@ data class QuizQuestionsDomainModel(
     val questionsCount: Int?,
     val quizDescription: String?,
     val quizIcon: String?,
-    val questions: List<Answer> = emptyList()
+    val questions: List<AnswerDomain> = emptyList()
 ) {
-    data class Answer(
+    data class AnswerDomain(
         val answers: List<String> = emptyList(),
         val correctAnswer: String?,
         val questionIndex: Int?,

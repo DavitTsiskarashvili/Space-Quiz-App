@@ -3,7 +3,6 @@ package com.space.quiz_app
 import android.app.Application
 import com.space.quiz_app.data.module.dataBaseModule
 import com.space.quiz_app.common.mapper.mapperModule
-import com.space.quiz_app.data.module.datastoreModule
 import com.space.quiz_app.data.remote.service.module.networkModule
 import com.space.quiz_app.domain.module.repositoryModule
 import com.space.quiz_app.presentation.module.viewModelModule
@@ -23,7 +22,6 @@ class QuizApp : Application() {
                 viewModelModule,
                 mapperModule,
                 repositoryModule,
-                datastoreModule,
                 networkModule
             )
         }

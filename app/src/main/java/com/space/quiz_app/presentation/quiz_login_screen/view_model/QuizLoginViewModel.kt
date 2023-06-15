@@ -20,11 +20,22 @@ class QuizLoginViewModel(
     private val _validationError = MutableStateFlow<QuizUsernameValidation?>(null)
     val validationError = _validationError.asStateFlow()
 
+    fun checkUserLogState() {
+        viewModelScope {
+            val getUsername = quizUserRepository.getUsernameIfLoggedIn()?.isLoggedIn
+            getUsername?.let {
+                if (it) {
+                    navigate()
+                }
+            }
+        }
+    }
+
     fun checkUsernameValidity(username: String) {
         viewModelScope {
             val validity = QuizUsernameValidation.validate(username)
             if (validity == QuizUsernameValidation.LOGIN_SUCCESS) {
-                checkUserLogState(username)
+                loginUser(username)
                 navigate()
             } else {
                 _validationError.emit(validity)
@@ -32,15 +43,17 @@ class QuizLoginViewModel(
         }
     }
 
-    private suspend fun checkUserLogState(username: String) {
+    private suspend fun loginUser(username: String) {
         val getUsername = quizUserRepository.getUsernameIfLoggedIn()
-        if (getUsername == null) {
-            insertUsername(QuizUserUIModel(username, isLoggedIn = true))
-        } else {
-            insertUsername(quizUserDomainToUIMapper(getUsername.copy(isLoggedIn = true)))
+        when {
+            getUsername == null -> {
+                insertUsername(QuizUserUIModel(username, isLoggedIn = true))
+            }
+            !getUsername.isLoggedIn -> {
+                insertUsername(quizUserDomainToUIMapper(getUsername.copy(isLoggedIn = true)))
+            }
         }
     }
-
 
     private suspend fun insertUsername(username: QuizUserUIModel) {
         quizUserRepository.insertUsername(quizUserUIToDomainMapper((username)))

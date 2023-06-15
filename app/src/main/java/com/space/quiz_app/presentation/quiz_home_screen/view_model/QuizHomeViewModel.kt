@@ -15,9 +15,11 @@ import com.space.quiz_app.presentation.model.questions.QuizQuestionsUIModel
 import com.space.quiz_app.presentation.model.user.QuizUserUIModel
 import com.space.quiz_app.presentation.quiz_home_screen.ui.QuizHomeFragment
 import com.space.quiz_app.presentation.quiz_home_screen.ui.QuizHomeFragmentDirections
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.withContext
 
 class QuizHomeViewModel(
     private val quizUserRepository: QuizUserRepository,
@@ -42,6 +44,13 @@ class QuizHomeViewModel(
         MutableStateFlow<Boolean>(true)
     val loadingState = _loadingState.asStateFlow()
 
+    fun getUsername() {
+        viewModelScope {
+            val username = quizUserRepository.getUsernameIfLoggedIn()
+            username?.let { _usernameState.emit(it.username) }
+        }
+    }
+
     fun getSubjects() {
         viewModelScope {
             val result = quizSubjectsRepository.getSubjects()
@@ -60,19 +69,11 @@ class QuizHomeViewModel(
         }
     }
 
-    fun getUsername() {
-        viewModelScope {
-            delay(50)
-            val username = quizUserRepository.getUsernameIfLoggedIn()
-            username?.let { _usernameState.emit(it.username) }
-        }
-    }
-
     fun logOutUser() {
         viewModelScope {
             val replaceUsername = quizUserRepository.getUsernameIfLoggedIn()
             replaceUsername(quizUserDomainToUIMapper(replaceUsername!!.copy(isLoggedIn = false)))
-
+            withContext(Dispatchers.Main){navigateToHome()}
         }
     }
 
@@ -80,11 +81,15 @@ class QuizHomeViewModel(
         quizUserRepository.insertUsername(quizUserUIToDomainMapper((username)))
     }
 
-    fun navigateToHome() {
+    private fun navigateToHome() {
         navigate(QuizHomeFragmentDirections.actionGlobalLoginFragment())
     }
 
     fun navigateToGPA(){
         navigate(QuizHomeFragmentDirections.actionGlobalGpaFragment())
+    }
+
+    fun navigateToQuiz(){
+        navigate(QuizHomeFragmentDirections.actionGlobalQuestionsFragment())
     }
 }

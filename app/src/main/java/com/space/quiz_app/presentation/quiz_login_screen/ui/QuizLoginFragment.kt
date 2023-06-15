@@ -19,7 +19,7 @@ class QuizLoginFragment : QuizBaseFragment<QuizLoginViewModel>() {
         get() = QuizLoginViewModel::class
 
     override fun onCreateFragment() {
-
+        viewModel.checkUserLogState()
     }
 
     override fun onBind() {

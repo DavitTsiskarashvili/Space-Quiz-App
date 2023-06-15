@@ -14,7 +14,11 @@
         android:id="@+id/homeFragment"
         android:name="com.space.quiz_app.presentation.quiz_home_screen.ui.QuizHomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/quiz_home_fragment" />
+        tools:layout="@layout/quiz_home_fragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/questionsFragment"
         android:name="com.space.quiz_app.presentation.quiz_questions_screen.ui.QuizQuestionsFragment"

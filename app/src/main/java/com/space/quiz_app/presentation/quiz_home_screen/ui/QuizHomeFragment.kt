@@ -9,6 +9,7 @@ import com.space.quiz_app.presentation.base.fragment.QuizBaseFragment
 import com.space.quiz_app.presentation.quiz_home_screen.adapter.QuizSubjectsAdapter
 import com.space.quiz_app.presentation.quiz_home_screen.log_out_dialog.LogOutDialog
 import com.space.quiz_app.presentation.quiz_home_screen.view_model.QuizHomeViewModel
+import kotlinx.coroutines.delay
 import kotlin.reflect.KClass
 
 class QuizHomeFragment : QuizBaseFragment<QuizHomeViewModel>() {
@@ -41,15 +42,6 @@ class QuizHomeFragment : QuizBaseFragment<QuizHomeViewModel>() {
             binding.greetingTextView.text =
                 String.format(getString(R.string.hello_user), it)
         }
-    }
-
-    private fun initRecycler() {
-        viewModel.getSubjects()
-        binding.subjectRecyclerView.adapter = subjectsAdapter
-        getSubjects()
-    }
-
-    private fun getSubjects() {
         collectFlow(viewModel.loadingState) {
             binding.progressBar.isVisible = it
         }
@@ -58,6 +50,11 @@ class QuizHomeFragment : QuizBaseFragment<QuizHomeViewModel>() {
                 subjectsAdapter.submitList(it)
             }
         }
+    }
+
+    private fun initRecycler() {
+        viewModel.getSubjects()
+        binding.subjectRecyclerView.adapter = subjectsAdapter
     }
 
     private fun logOut() {
@@ -70,7 +67,6 @@ class QuizHomeFragment : QuizBaseFragment<QuizHomeViewModel>() {
         val dialog = LogOutDialog(requireContext())
         dialog.setPositiveButtonClickListener {
             viewModel.logOutUser()
-            viewModel.navigateToHome()
         }
         dialog.setNegativeButtonClickListener {
 
@@ -78,9 +74,12 @@ class QuizHomeFragment : QuizBaseFragment<QuizHomeViewModel>() {
         dialog.showDialog()
     }
 
-    private fun setNavigation(){
+    private fun setNavigation() {
         binding.gpaButton.gpaDetailsTextView.setOnClickListener {
             viewModel.navigateToGPA()
+        }
+        subjectsAdapter.onItemClickListener {
+            viewModel.navigateToQuiz()
         }
     }
 

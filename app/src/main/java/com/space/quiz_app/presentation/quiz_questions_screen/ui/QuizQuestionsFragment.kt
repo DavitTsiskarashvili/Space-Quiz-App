@@ -18,6 +18,9 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
     override val viewModelClass: KClass<QuizQuestionsViewModel>
         get() = QuizQuestionsViewModel::class
 
+    override fun onCreateFragment() {
+    }
+
     override fun onBind() {
         navigate()
     }
@@ -27,10 +30,6 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
         binding.cancelButton.setOnClickListener {
             findNavController().navigate(QuizQuestionsFragmentDirections.actionGlobalHomeFragment())
         }
-    }
-
-    override fun onCreateFragment() {
-        TODO("Not yet implemented")
     }
 
 }
