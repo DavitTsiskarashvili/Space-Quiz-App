@@ -2,14 +2,13 @@ package com.space.quiz_app.presentation.quiz_home_screen.ui
 
 import androidx.core.view.isVisible
 import com.space.quiz_app.R
-import com.space.quiz_app.common.extensions.collectFlow
-import com.space.quiz_app.common.extensions.viewBinding
+import com.space.ui.extensions.collectFlow
+import com.space.ui.extensions.viewBinding
 import com.space.quiz_app.databinding.QuizHomeFragmentBinding
 import com.space.quiz_app.presentation.base.fragment.QuizBaseFragment
 import com.space.quiz_app.presentation.quiz_home_screen.adapter.QuizSubjectsAdapter
 import com.space.quiz_app.presentation.quiz_home_screen.log_out_dialog.LogOutDialog
 import com.space.quiz_app.presentation.quiz_home_screen.view_model.QuizHomeViewModel
-import kotlinx.coroutines.delay
 import kotlin.reflect.KClass
 
 class QuizHomeFragment : QuizBaseFragment<QuizHomeViewModel>() {

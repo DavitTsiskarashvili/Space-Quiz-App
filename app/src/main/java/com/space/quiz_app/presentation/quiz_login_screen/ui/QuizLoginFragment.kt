@@ -1,8 +1,8 @@
 package com.space.quiz_app.presentation.quiz_login_screen.ui
 
 import com.space.quiz_app.R
-import com.space.quiz_app.common.extensions.executeScope
-import com.space.quiz_app.common.extensions.viewBinding
+import com.space.ui.extensions.executeScope
+import com.space.ui.extensions.viewBinding
 import com.space.quiz_app.databinding.QuizLoginFragmentBinding
 import com.space.quiz_app.presentation.base.fragment.QuizBaseFragment
 import com.space.quiz_app.presentation.quiz_login_screen.view_model.QuizLoginViewModel

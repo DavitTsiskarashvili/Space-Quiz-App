@@ -2,13 +2,9 @@ package com.space.quiz_app.presentation.quiz_home_screen.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
-import com.space.quiz_app.common.extensions.loadImage
-import com.space.quiz_app.data.remote.model.QuizQuestionsDTO
+import com.space.ui.extensions.loadImage
 import com.space.quiz_app.databinding.QuizSubjectItemBinding
 import com.space.quiz_app.presentation.base.adapter.BaseAdapter
-import com.space.quiz_app.presentation.base.adapter.DiffUtilCallback
 import com.space.quiz_app.presentation.model.questions.QuizQuestionsUIModel
 
 class QuizSubjectsAdapter :

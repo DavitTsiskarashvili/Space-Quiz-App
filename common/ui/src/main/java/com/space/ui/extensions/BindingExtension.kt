@@ -1,4 +1,4 @@
-package com.space.quiz_app.common.extensions
+package com.space.ui.extensions
 
 import android.view.LayoutInflater
 import android.view.View

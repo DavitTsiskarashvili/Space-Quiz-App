@@ -1,6 +1,6 @@
 package com.space.quiz_app.presentation.quiz_login_screen.view_model
 
-import com.space.quiz_app.common.extensions.viewModelScope
+import com.space.ui.extensions.viewModelScope
 import com.space.quiz_app.domain.repository.QuizUserRepository
 import com.space.quiz_app.presentation.base.view_model.QuizBaseViewModel
 import com.space.quiz_app.presentation.mapper.user.QuizUserDomainToUIMapper

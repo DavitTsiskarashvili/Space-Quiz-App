@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.space.quiz_app.presentation.quiz_login_screen.QuizLoginFragment">
 
-    <com.space.quiz_app.presentation.custom_view.custom_view.QuizLoginBackgroundView
+    <com.space.ui.custom_view.custom_view.QuizLoginBackgroundView
         android:id="@+id/backgroundView"
         android:layout_width="match_parent"
         android:layout_height="0dp"

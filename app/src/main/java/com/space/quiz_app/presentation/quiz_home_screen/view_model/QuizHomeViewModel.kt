@@ -1,10 +1,7 @@
 package com.space.quiz_app.presentation.quiz_home_screen.view_model
 
-import androidx.navigation.fragment.NavHostFragment
-import com.space.quiz_app.R
-import com.space.quiz_app.common.extensions.viewModelScope
+import com.space.ui.extensions.viewModelScope
 import com.space.quiz_app.data.remote.service.result_handler.resource.Resource
-import com.space.quiz_app.domain.model.user.QuizUserDomainModel
 import com.space.quiz_app.domain.repository.QuizSubjectsRepository
 import com.space.quiz_app.domain.repository.QuizUserRepository
 import com.space.quiz_app.presentation.base.view_model.QuizBaseViewModel
@@ -13,13 +10,9 @@ import com.space.quiz_app.presentation.mapper.user.QuizUserDomainToUIMapper
 import com.space.quiz_app.presentation.mapper.user.QuizUserUIToDomainMapper
 import com.space.quiz_app.presentation.model.questions.QuizQuestionsUIModel
 import com.space.quiz_app.presentation.model.user.QuizUserUIModel
-import com.space.quiz_app.presentation.quiz_home_screen.ui.QuizHomeFragment
 import com.space.quiz_app.presentation.quiz_home_screen.ui.QuizHomeFragmentDirections
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.withContext
 
 class QuizHomeViewModel(
     private val quizUserRepository: QuizUserRepository,

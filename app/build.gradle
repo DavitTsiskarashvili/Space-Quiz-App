@@ -7,12 +7,12 @@ plugins {
 }
 
 android {
-    compileSdk 33
+    compileSdk ProjectConfig.compileSdk
 
     defaultConfig {
         applicationId "com.space.quizapp"
-        minSdk 28
-        targetSdk 33
+        minSdk ProjectConfig.minSdk
+        targetSdk ProjectConfig.targetSdk
         versionCode 1
         versionName "1.0"
 
@@ -79,14 +79,12 @@ dependencies {
     //Interceptor
     implementation "com.squareup.okhttp3:logging-interceptor:4.5.0"
 
-    // Navigation
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
-
     //Preferences Datastore
     implementation 'androidx.datastore:datastore-preferences:1.0.0'
 
     //Glide
     annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2'
     implementation 'com.github.bumptech.glide:glide:4.15.1'
+
+    implementation(project(":common:ui"))
 }

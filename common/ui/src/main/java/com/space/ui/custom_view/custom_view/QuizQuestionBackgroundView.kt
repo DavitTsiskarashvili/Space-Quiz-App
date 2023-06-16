@@ -1,11 +1,11 @@
-package com.space.quiz_app.presentation.custom_view.custom_view
+package com.space.ui.custom_view.custom_view
 
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.RectF
 import android.util.AttributeSet
-import com.space.quiz_app.R
+import com.space.ui.R
 import com.space.ui.custom_view.base.QuizBaseCustomView
 
 // A custom view representing a blue background with rounded corners for questions

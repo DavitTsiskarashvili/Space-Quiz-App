@@ -1,4 +1,4 @@
-package com.space.quiz_app.common.extensions
+package com.space.ui.extensions
 
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
