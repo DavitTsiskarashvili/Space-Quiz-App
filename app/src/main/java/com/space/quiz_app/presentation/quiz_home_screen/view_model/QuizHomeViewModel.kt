@@ -69,11 +69,11 @@ class QuizHomeViewModel(
         }
     }
 
-    fun logOutUser() {
+    fun logOutUser(navigate: () -> Unit) {
         viewModelScope {
             val replaceUsername = quizUserRepository.getUsernameIfLoggedIn()
             replaceUsername(quizUserDomainToUIMapper(replaceUsername!!.copy(isLoggedIn = false)))
-            withContext(Dispatchers.Main){navigateToHome()}
+            navigate()
         }
     }
 
@@ -81,7 +81,7 @@ class QuizHomeViewModel(
         quizUserRepository.insertUsername(quizUserUIToDomainMapper((username)))
     }
 
-    private fun navigateToHome() {
+    fun navigateToHome() {
         navigate(QuizHomeFragmentDirections.actionGlobalLoginFragment())
     }
 

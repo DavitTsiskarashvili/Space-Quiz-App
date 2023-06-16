@@ -66,7 +66,7 @@ class QuizHomeFragment : QuizBaseFragment<QuizHomeViewModel>() {
     private fun showDialog() {
         val dialog = LogOutDialog(requireContext())
         dialog.setPositiveButtonClickListener {
-            viewModel.logOutUser()
+            viewModel.logOutUser { viewModel.navigateToHome() }
         }
         dialog.setNegativeButtonClickListener {
 
