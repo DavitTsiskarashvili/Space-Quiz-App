@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/dimen_15_dp"
+    android:layout_marginBottom="@dimen/dimen_20_dp"
+    app:cardBackgroundColor="@color/neutral_03_light_grey"
+    app:cardCornerRadius="@dimen/dimen_25_dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/subjectImageView"
+            android:layout_width="@dimen/dimen_50_dp"
+            android:layout_height="@dimen/dimen_60_dp"
+            android:layout_marginStart="@dimen/dimen_26_dp"
+            android:layout_marginEnd="@dimen/dimen_22_dp"
+            android:gravity="center_vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/titleTextView"
+            style="@style/bigMyriadGeo_Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_18_dp"
+            android:layout_marginTop="@dimen/dimen_33_dp"
+            android:layout_marginEnd="@dimen/dimen_27_dp"
+            android:layout_marginBottom="@dimen/dimen_2_dp"
+            android:gravity="center_vertical"
+            app:layout_constraintBottom_toTopOf="@id/descriptionTextView"
+            app:layout_constraintStart_toEndOf="@id/subjectImageView"
+            app:layout_constraintTop_toTopOf="@id/subjectImageView"
+            tools:text="@tools:sample/lorem" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/descriptionTextView"
+            style="@style/smallMyriadGeo_Regular"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_18_dp"
+            android:layout_marginEnd="@dimen/dimen_30_dp"
+            android:layout_marginBottom="@dimen/dimen_34_dp"
+            android:gravity="center_vertical"
+            app:layout_constraintBottom_toBottomOf="@id/subjectImageView"
+            app:layout_constraintEnd_toStartOf="@+id/startButton"
+            app:layout_constraintStart_toEndOf="@id/subjectImageView"
+            app:layout_constraintTop_toBottomOf="@id/titleTextView"
+            tools:text="@tools:sample/lorem" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/startButton"
+            android:layout_width="@dimen/dimen_48_dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dimen_25_dp"
+            android:background="@drawable/shape_circle"
+            android:drawableEnd="@drawable/ic_next_arrow"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="@dimen/dimen_18_dp"
+            app:backgroundTint="@color/yellow_primary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

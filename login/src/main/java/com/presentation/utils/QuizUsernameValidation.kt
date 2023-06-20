@@ -1,0 +1,25 @@
+package com.presentation.utils
+
+import androidx.annotation.StringRes
+import com.common.R
+
+//TODO New way to validate username
+enum class QuizUsernameValidation(@StringRes val errorText: Int)  {
+    USERNAME_INVALID_LENGTH_LONG(R.string.username_invalid_length_long),
+    USERNAME_INVALID_LENGTH_SHORT(R.string.username_invalid_length_short),
+    USERNAME_INVALID_CHARACTERS(R.string.username_invalid_characters),
+    LOGIN_SUCCESS(R.string.login_success);
+
+    companion object {
+        fun validate(input: String): QuizUsernameValidation {
+            return when {
+                input.length <= 8 -> USERNAME_INVALID_LENGTH_SHORT
+                input.length > 20 -> USERNAME_INVALID_LENGTH_LONG
+                !input.contains(QuizRegex.usernamePattern) -> USERNAME_INVALID_CHARACTERS
+                else -> LOGIN_SUCCESS
+            }
+        }
+    }
+
+}
+

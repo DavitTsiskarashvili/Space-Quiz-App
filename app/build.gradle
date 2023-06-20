@@ -37,6 +37,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    namespace 'com.space.quiz_app'
 }
 
 dependencies {
@@ -54,39 +55,13 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
 
-    //Room Database
-    implementation "androidx.room:room-runtime:2.5.1"
-    annotationProcessor "androidx.room:room-compiler:2.5.1"
-    //To use Kotlin annotation processing tool (kapt)
-    kapt "androidx.room:room-compiler:2.5.1"
-    //Kotlin Extensions and Coroutines support for Room
-    implementation "androidx.room:room-ktx:2.5.1"
-
     // Koin
     implementation "io.insert-koin:koin-android:3.4.0"
-
-    //Data Store
-    implementation "androidx.datastore:datastore-preferences:1.0.0"
 
     // Fragment + Jetpack Nav
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
 
-    //Retrofit + Gson
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
-    //Interceptor
-    implementation "com.squareup.okhttp3:logging-interceptor:4.5.0"
 
-    // Navigation
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
-
-    //Preferences Datastore
-    implementation 'androidx.datastore:datastore-preferences:1.0.0'
-
-    //Glide
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2'
-    implementation 'com.github.bumptech.glide:glide:4.15.1'
 }

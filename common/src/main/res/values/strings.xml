@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Space Quiz App</string>
+    <string name="hello_user">გამარჯობა, %s </string>
+    <string name="hint_text">შეიყვანეთ სახელი</string>
+    <string name="welcome_text">ჩემი პირველი ქვიზი</string>
+    <string name="details">დეტალურად</string>
+    <string name="choose_subject">აირჩიე საგანი</string>
+    <string name="GPA">GPA -</string>
+    <string name="start_quiz_button">ქვიზის დაწყება</string>
+    <string name="next_button">შემდეგი</string>
+    <string name="finish_button">დასრულება</string>
+    <string name="close_button">დახურვა</string>
+    <string name="congratulations">გილოცავ</string>
+    <string name="your_score_is">შენ დააგროვე %d ქულა</string>
+    <string name="accumulated_score">დაგროვილი ქულები</string>
+    <string name="there_is_no_scores">🧐\nსამწუხაროდ,\nქულები ჯერ არ გაქვს\nდაგროვილი</string>
+    <string name="do_you_want_to_log_out">ნამდვილად გსურს გასვლა?</string>
+    <string name="do_you_want_to_cancel_quiz">ნამდვილად გსურს ქვიზის შეწყვეტა?</string>
+    <string name="yes">კი</string>
+    <string name="no">არა</string>
+    <string name="default_gpa">0.0</string>
+    <string name="username_invalid_length_long">სახელის ზომა უნდა არ უნდა აღემატებოდეს 20 სიმბოლოს</string>
+    <string name="username_invalid_length_short">სახელის ზომა უნდა არ უნდა იყოს 8 სიმბოლოზე ნაკლები</string>
+    <string name="username_invalid_characters">სახელი უნდა შედგებოდეს 1 დიდი, 1 პატარა და 1 სპეციალური სიმბოლოსგან</string>
+    <string name="login_success">მომხამრებელი წარმატებით შევიდა სისტემაში</string>
+</resources>
