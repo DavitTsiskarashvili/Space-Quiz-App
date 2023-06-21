@@ -16,13 +16,24 @@
         android:theme="@style/Theme.QuizApp"
         tools:targetApi="31">
         <activity
-            android:name=".quiz_activity.activity.QuizActivity"
+            android:name="com.space.quiz_app.quiz_activity.activity.QuizActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustNothing">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <!-- Define your deep link URI here -->
+                <data
+                    android:scheme="http"
+                    android:host="quiz_app.com"
+                    android:pathPattern="/login" />
             </intent-filter>
         </activity>
     </application>

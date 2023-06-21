@@ -9,8 +9,7 @@ import com.presentation.model.QuizUserUIModel
 import com.presentation.utils.QuizUsernameValidation
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import com.navigation.NavigationCommand.ToDirection
-
+import com.presentation.ui.QuizLoginFragmentDirections
 
 class QuizLoginViewModel(
     private val quizUserRepository: QuizUserRepository,

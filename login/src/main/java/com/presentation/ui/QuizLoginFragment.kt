@@ -1,11 +1,14 @@
 package com.presentation.ui
 
 
+import androidx.navigation.fragment.findNavController
 import com.base.fragment.QuizBaseFragment
 import com.extensions.executeScope
 import com.extensions.viewBinding
 import com.login.R
 import com.login.databinding.QuizLoginFragmentBinding
+import com.navigation.NavigationCommand
+import com.navigation.observeNonNull
 import com.presentation.view_model.QuizLoginViewModel
 import kotlin.reflect.KClass
 
@@ -26,6 +29,7 @@ class QuizLoginFragment : QuizBaseFragment<QuizLoginViewModel>() {
     override fun onBind() {
         logIn()
         setErrorMessage()
+        observeNavigation()
     }
 
     private fun logIn() {
@@ -44,6 +48,21 @@ class QuizLoginFragment : QuizBaseFragment<QuizLoginViewModel>() {
                     binding.errorTextView.text = getString(it.errorText)
                 }
             }
+        }
+    }
+
+    private fun observeNavigation() {
+        viewModel.navigation.observeNonNull(viewLifecycleOwner) {
+            it.getContentIfNotHandled()?.let { navigationCommand ->
+                handleNavigation(navigationCommand)
+            }
+        }
+    }
+
+    private fun handleNavigation(navCommand: NavigationCommand) {
+        when (navCommand) {
+            is NavigationCommand.ToDirection -> findNavController().navigate(navCommand.directions)
+            is NavigationCommand.Back -> findNavController().navigateUp()
         }
     }
 
