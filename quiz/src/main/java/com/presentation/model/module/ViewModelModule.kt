@@ -1,4 +1,4 @@
-package com.presentation.module
+package com.presentation.model.module
 
 import com.presentation.quiz_gpa_screen.view_model.QuizGPAViewModel
 import com.presentation.quiz_home_screen.view_model.QuizHomeViewModel

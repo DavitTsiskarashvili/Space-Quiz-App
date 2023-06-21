@@ -1,7 +1,7 @@
 package com.presentation.mapper.question
 
-import com.mapper.Mapper
 import com.domain.model.questions.QuizQuestionsDomainModel
+import com.mapper.Mapper
 import com.presentation.model.questions.QuizQuestionsUIModel
 
 class QuizAnswersDomainMapper :

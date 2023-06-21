@@ -1,12 +1,12 @@
-package com.space.quiz_app.presentation.quiz_gpa_screen.ui
+package com.presentation.quiz_gpa_screen.ui
 
 import androidx.activity.addCallback
 import androidx.navigation.fragment.findNavController
 import com.base.fragment.QuizBaseFragment
 import com.extensions.viewBinding
+import com.presentation.quiz_gpa_screen.view_model.QuizGPAViewModel
 import com.quiz.R
 import com.quiz.databinding.QuizGpaFragmentBinding
-import com.presentation.quiz_gpa_screen.view_model.QuizGPAViewModel
 import kotlin.reflect.KClass
 
 class QuizGPAFragment : QuizBaseFragment<QuizGPAViewModel>() {

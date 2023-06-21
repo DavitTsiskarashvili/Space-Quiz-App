@@ -16,7 +16,7 @@
         android:theme="@style/Theme.QuizApp"
         tools:targetApi="31">
         <activity
-            android:name="com.space.quiz_app.quiz_activity.activity.QuizActivity"
+            android:name=".quiz_activity.activity.QuizActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustNothing">
             <intent-filter>

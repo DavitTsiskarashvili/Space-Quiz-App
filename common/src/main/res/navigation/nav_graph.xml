@@ -9,7 +9,11 @@
         android:id="@+id/loginFragment"
         android:name="com.presentation.ui.QuizLoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/quiz_login_fragment" />
+        tools:layout="@layout/quiz_login_fragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.presentation.quiz_home_screen.ui.QuizHomeFragment"
@@ -26,7 +30,7 @@
         tools:layout="@layout/quiz_questions_fragment" />
     <fragment
         android:id="@+id/gpaFragment"
-        android:name="com.space.quiz_app.presentation.quiz_gpa_screen.ui.QuizGPAFragment"
+        android:name="com.presentation.quiz_gpa_screen.ui.QuizGPAFragment"
         android:label="fragment_gpa"
         tools:layout="@layout/quiz_gpa_fragment" />
     <action

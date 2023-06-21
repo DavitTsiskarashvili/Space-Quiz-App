@@ -8,6 +8,7 @@ import android.util.AttributeSet
 import com.custom_view.base.QuizBaseCustomView
 import com.common.R
 
+
 class QuizLoginBackgroundView(
     context: Context,
     attrs: AttributeSet
@@ -25,7 +26,7 @@ class QuizLoginBackgroundView(
 
         path.apply {
             reset()
-            paint.color = context.getColor(R.color.blue_secondary_light)
+            paint.color = context.getColor(R.color.blue_secondary_default)
             val topRectF = RectF(0f, 0f, radius, radius)
             val bottomRectF = RectF (width-radius, height-radius, width, height)
 

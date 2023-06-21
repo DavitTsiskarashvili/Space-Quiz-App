@@ -3,9 +3,9 @@ package com.presentation.quiz_questions_screen.ui
 import androidx.navigation.fragment.findNavController
 import com.base.fragment.QuizBaseFragment
 import com.extensions.viewBinding
+import com.presentation.quiz_questions_screen.view_model.QuizQuestionsViewModel
 import com.quiz.R
 import com.quiz.databinding.QuizQuestionsFragmentBinding
-import com.presentation.quiz_questions_screen.view_model.QuizQuestionsViewModel
 import kotlin.reflect.KClass
 
 class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {

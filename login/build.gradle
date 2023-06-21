@@ -50,7 +50,6 @@ dependencies {
     implementation libs.navigation.fragment.ktx
 
     implementation(project(":common"))
-    implementation(project(":app"))
 
 
 }

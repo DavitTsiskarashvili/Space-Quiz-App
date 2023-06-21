@@ -1,6 +1,7 @@
 package com.domain.module
 
 import com.data.repository.QuizSubjectsRepositoryImpl
+import com.data.repository.QuizUserRepositoryImpl
 import com.domain.repository.QuizSubjectsRepository
 import com.domain.repository.QuizUserRepository
 import org.koin.dsl.module

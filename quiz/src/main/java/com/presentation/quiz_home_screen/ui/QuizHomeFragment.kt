@@ -6,11 +6,11 @@ import com.extensions.collectFlow
 import com.extensions.viewBinding
 import com.presentation.quiz_home_screen.adapter.QuizSubjectsAdapter
 import com.presentation.quiz_home_screen.log_out_dialog.LogOutDialog
-import com.quiz.databinding.QuizHomeFragmentBinding
 import com.presentation.quiz_home_screen.view_model.QuizHomeViewModel
-import kotlin.reflect.KClass
 import com.quiz.R
-import com.common.R as commonR
+import com.quiz.databinding.QuizHomeFragmentBinding
+import kotlin.reflect.KClass
+import com.common.R as CommonR
 
 
 class QuizHomeFragment : QuizBaseFragment<QuizHomeViewModel>() {
@@ -41,7 +41,7 @@ class QuizHomeFragment : QuizBaseFragment<QuizHomeViewModel>() {
     private fun observe() {
         collectFlow(viewModel.usernameState) {
             binding.greetingTextView.text =
-                String.format(getString(commonR.string.hello_user), it)
+                String.format(getString(CommonR.string.hello_user), it)
         }
         collectFlow(viewModel.loadingState) {
             binding.progressBar.isVisible = it

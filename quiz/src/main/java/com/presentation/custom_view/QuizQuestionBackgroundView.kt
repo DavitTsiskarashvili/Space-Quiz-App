@@ -5,8 +5,8 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.RectF
 import android.util.AttributeSet
-import com.custom_view.base.QuizBaseCustomView
 import com.common.R
+import com.custom_view.base.QuizBaseCustomView
 
 // A custom view representing a blue background with rounded corners for questions
 class QuizQuestionBackgroundView(

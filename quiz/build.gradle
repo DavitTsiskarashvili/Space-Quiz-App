@@ -55,8 +55,8 @@ dependencies {
     implementation libs.glide.compiler
     implementation libs.glide
 
-    implementation(project(":common"))
-    implementation(project(":app"))
     implementation(project(":login"))
+    implementation(project(":common"))
+
 
 }

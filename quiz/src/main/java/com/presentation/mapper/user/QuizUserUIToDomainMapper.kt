@@ -1,7 +1,7 @@
 package com.presentation.mapper.user
 
-import com.mapper.Mapper
 import com.domain.model.user.QuizUserDomainModel
+import com.mapper.Mapper
 import com.presentation.model.user.QuizUserUIModel
 
 class QuizUserUIToDomainMapper : Mapper<QuizUserUIModel, QuizUserDomainModel> {

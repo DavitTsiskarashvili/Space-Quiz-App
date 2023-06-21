@@ -6,10 +6,11 @@ import com.extensions.viewModelScope
 import com.presentation.mapper.QuizUserDomainToUIMapper
 import com.presentation.mapper.QuizUserUIToDomainMapper
 import com.presentation.model.QuizUserUIModel
-import com.presentation.ui.QuizLoginFragmentDirections
 import com.presentation.utils.QuizUsernameValidation
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import com.navigation.NavigationCommand.ToDirection
+
 
 class QuizLoginViewModel(
     private val quizUserRepository: QuizUserRepository,

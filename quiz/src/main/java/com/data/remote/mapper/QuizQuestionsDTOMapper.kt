@@ -1,8 +1,8 @@
 package com.data.remote.mapper
 
-import com.mapper.Mapper
 import com.data.remote.model.QuizQuestionsDTO
 import com.domain.model.questions.QuizQuestionsDomainModel
+import com.mapper.Mapper
 
 class QuizQuestionsDTOMapper(
     private val quizAnswersDTOMapper: QuizAnswersDTOMapper
