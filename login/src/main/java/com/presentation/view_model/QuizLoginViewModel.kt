@@ -60,7 +60,7 @@ class QuizLoginViewModel(
     }
 
     private fun navigate() {
-        navigate(QuizLoginFragmentDirections.actionGlobalHomeFragment())
+        navigate(QuizLoginFragmentDirections.actionLoginFragmentToHomeFragment())
     }
 
 }

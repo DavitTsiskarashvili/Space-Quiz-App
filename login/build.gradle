@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -35,7 +37,6 @@ android {
 }
 
 dependencies {
-
     implementation libs.lifecycle.livedata.ktx
 
     implementation libs.lifecycle.viewmodel.ktx
@@ -50,6 +51,5 @@ dependencies {
     implementation libs.navigation.fragment.ktx
 
     implementation(project(":common"))
-
 
 }

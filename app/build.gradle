@@ -3,7 +3,6 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs.kotlin'
-
 }
 
 android {
@@ -25,6 +24,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    packagingOptions {
+        exclude 'META-INF/gradle/incremental.annotation.processors'
+    }
 
     buildFeatures {
         viewBinding true
@@ -39,35 +41,36 @@ android {
     }
     namespace 'com.space.quiz_app'
 }
-
+configurations {
+    cleanedAnnotations
+    implementation.exclude group: 'org.jetbrains' , module:'annotations'
+}
 dependencies {
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.1'
     implementation 'androidx.core:core-ktx:1.10.1'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.1'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
     //viewModel
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
+    implementation libs.lifecycle.viewmodel.ktx
+    implementation libs.lifecycle.runtime.ktx
 
     // Koin
-    implementation "io.insert-koin:koin-android:3.4.0"
+    implementation libs.koin.android
 
     // Fragment + Jetpack Nav
-    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
+    implementation libs.navigation.ui.ktx
+    implementation libs.navigation.fragment.ktx
 
-
+    // Glide
     implementation libs.glide
     implementation libs.glide.compiler
-
-    implementation libs.room.runtime
-    implementation libs.room.compiler
 
     implementation(project(":common"))
     implementation(project(":login"))

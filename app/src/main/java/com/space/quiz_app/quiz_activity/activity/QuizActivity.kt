@@ -26,6 +26,7 @@ class QuizActivity : AppCompatActivity() {
             .path("/login")
             .build()
 
+
         val navController = findNavController(R.id.nav_host_fragment)
         navController.navigate(deepLinkUri)
     }

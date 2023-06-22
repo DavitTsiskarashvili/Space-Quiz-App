@@ -15,7 +15,7 @@ abstract class BaseAdapter<MODEL : Any> :
 
     abstract class BaseViewHolder<MODEL : Any>(binding: ViewBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        abstract fun onBind(item: MODEL, onClickCallback: ((MODEL) -> Unit)?)
+        abstract fun onBind(model: MODEL, itemCallback: ((MODEL) -> Unit)?)
     }
 
     override fun onBindViewHolder(holder: BaseViewHolder<MODEL>, position: Int) {

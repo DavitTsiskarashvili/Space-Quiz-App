@@ -15,7 +15,6 @@ class QuizApp : Application() {
             androidLogger()
             androidContext(this@QuizApp)
             modules(
-                com.data.remote.module.mapperModule,
                 repositoryModule,
                 viewModelModule
             )

@@ -5,11 +5,10 @@ import com.data.remote.service.result_handler.resource.Resource
 import com.domain.repository.QuizSubjectsRepository
 import com.domain.repository.QuizUserRepository
 import com.extensions.viewModelScope
+import com.presentation.mapper.QuizUserDomainToUIMapper
+import com.presentation.mapper.QuizUserUIToDomainMapper
 import com.presentation.mapper.question.QuizQuestionDomainMapper
-import com.presentation.mapper.user.QuizUserDomainToUIMapper
-import com.presentation.mapper.user.QuizUserUIToDomainMapper
 import com.presentation.model.questions.QuizQuestionsUIModel
-import com.presentation.model.user.QuizUserUIModel
 import com.presentation.quiz_home_screen.ui.QuizHomeFragmentDirections
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -70,7 +69,7 @@ class QuizHomeViewModel(
         }
     }
 
-    private suspend fun replaceUsername(username: QuizUserUIModel) {
+    private suspend fun replaceUsername(username: com.presentation.model.QuizUserUIModel) {
         quizUserRepository.insertUsername(quizUserUIToDomainMapper((username)))
     }
 
