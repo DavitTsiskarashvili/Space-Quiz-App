@@ -12,7 +12,7 @@ import com.space.quiz_app.presentation.utils.observeNonNull
 import org.koin.androidx.viewmodel.ext.android.viewModelForClass
 import kotlin.reflect.KClass
 
-abstract class QuizBaseFragment<VM : QuizBaseViewModel>() : Fragment() {
+abstract class QuizBaseFragment<VM : QuizBaseViewModel> : Fragment() {
 
     abstract val viewModelClass: KClass<VM>
     protected val viewModel: VM by viewModelForClass(clazz = viewModelClass)

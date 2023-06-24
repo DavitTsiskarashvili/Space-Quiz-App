@@ -12,7 +12,7 @@ interface QuizUserDao {
     suspend fun isUsernameRegistered(username: String): Boolean
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertUser(username: QuizUserEntity)
+    suspend fun insertUser(userEntity: QuizUserEntity)
 
     @Query("SELECT * FROM User_table WHERE isLoggedIn = true")
     suspend fun getUsernameIfLoggedIn(): QuizUserEntity?

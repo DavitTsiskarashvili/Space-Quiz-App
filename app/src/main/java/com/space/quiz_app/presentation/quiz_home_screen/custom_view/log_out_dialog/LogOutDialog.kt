@@ -1,4 +1,4 @@
-package com.space.quiz_app.presentation.quiz_home_screen.log_out_dialog
+package com.space.quiz_app.presentation.quiz_home_screen.custom_view.log_out_dialog
 
 import com.space.quiz_app.databinding.QuizCloseDialogBinding
 import android.app.AlertDialog
@@ -25,9 +25,7 @@ class LogOutDialog @JvmOverloads constructor(
     }
 
     private fun setupDialog() {
-        val alertDialogBuilder = AlertDialog.Builder(context)
-        alertDialogBuilder.setView(this)
-        alertDialog = alertDialogBuilder.create()
+        alertDialog = AlertDialog.Builder(context).setView(this).create()
         alertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
 

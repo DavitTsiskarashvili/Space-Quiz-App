@@ -5,6 +5,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.space.quiz_app.presentation.utils.QuizLiveDataDelegate
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
@@ -31,4 +32,26 @@ fun <T : Any?> Fragment.collectFlow(
             block(it)
         }
     }
+}
+
+fun <T> Fragment.observeLiveData(
+    liveData: QuizLiveDataDelegate<T>,
+    block: (T) -> Unit
+): QuizLiveDataDelegate<T> {
+    liveData.observe(viewLifecycleOwner) {
+        block(it)
+    }
+    return liveData
+}
+
+fun <T> Fragment.observeLiveDataNonNull(
+    liveData: QuizLiveDataDelegate<T?>,
+    block: (T) -> Unit
+): QuizLiveDataDelegate<T?> {
+    liveData.observe(viewLifecycleOwner) {
+        it?.let {
+            block(it)
+        }
+    }
+    return liveData
 }
