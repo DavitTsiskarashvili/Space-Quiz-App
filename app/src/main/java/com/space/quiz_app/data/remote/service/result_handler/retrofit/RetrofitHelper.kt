@@ -3,14 +3,13 @@ package com.space.quiz_app.data.remote.service.result_handler.retrofit
 import com.space.quiz_app.data.remote.service.result_handler.resource.Resource
 import retrofit2.Response
 
-inline fun <DTO : Any, DOMAIN: Any> apiDataFetcher(
-    mapper: (DTO) -> DOMAIN,
+inline fun <DTO : Any> apiDataFetcher(
     apiResponse: () -> Response<DTO>
-): Resource<DOMAIN> {
+): Resource<DTO> {
     return try {
         val response = apiResponse.invoke()
         if (response.isSuccessful) {
-            Resource.Success(mapper(response.body()!!))
+            Resource.Success(response.body()!!)
         } else {
             Resource.Error(Throwable(response.message()))
         }

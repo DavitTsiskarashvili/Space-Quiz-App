@@ -35,7 +35,7 @@ class QuizHomeViewModel(
 
     fun getSubjects() {
         viewModelScope {
-            val result = quizSubjectsRepository.getSubjects()
+            val result = quizSubjectsRepository.getSubjectsFromNetwork()
             when (result) {
                 is Resource.Success -> {
                     subjectsState.addValue(result.data.map {

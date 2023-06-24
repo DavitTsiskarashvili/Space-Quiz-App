@@ -1,8 +1,9 @@
 package com.space.quiz_app.domain.repository
 
-import com.space.quiz_app.data.remote.service.result_handler.resource.Resource
-import com.space.quiz_app.domain.model.questions.QuizQuestionDomainModel
+import com.space.quiz_app.domain.model.subject.QuizSubjectDomainModel
 
 interface QuizSubjectsRepository {
-    suspend fun getSubjects(): Resource<List<QuizQuestionDomainModel>>
+    suspend fun getSubjectsFromNetwork(): List<QuizSubjectDomainModel>
+
+    suspend fun getSubjectsFromDatabase() : List<QuizSubjectDomainModel>
 }
