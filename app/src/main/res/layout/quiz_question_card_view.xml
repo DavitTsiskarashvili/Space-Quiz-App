@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/dimen_26_dp"
+    android:backgroundTint="@color/blue_secondary_lightest" >
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/question"
+            style="@style/normalMyriadGeo_Regular"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textAlignment="center"
+            android:paddingVertical="@dimen/dimen_35_dp"
+            android:paddingHorizontal="@dimen/dimen_42_dp"
+            tools:text="@tools:sample/lorem"/>
+
+</com.google.android.material.card.MaterialCardView>

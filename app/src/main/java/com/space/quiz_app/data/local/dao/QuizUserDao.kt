@@ -1,10 +1,10 @@
-package com.space.quiz_app.data.local
+package com.space.quiz_app.data.local.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import kotlinx.coroutines.flow.Flow
+import com.space.quiz_app.data.local.entity.QuizUserEntity
 
 @Dao
 interface QuizUserDao {

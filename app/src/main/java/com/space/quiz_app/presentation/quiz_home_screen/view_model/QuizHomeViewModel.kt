@@ -8,12 +8,10 @@ import com.space.quiz_app.presentation.base.view_model.QuizBaseViewModel
 import com.space.quiz_app.presentation.mapper.question.QuizQuestionDomainMapper
 import com.space.quiz_app.presentation.mapper.user.QuizUserDomainToUIMapper
 import com.space.quiz_app.presentation.mapper.user.QuizUserUIToDomainMapper
-import com.space.quiz_app.presentation.model.questions.QuizQuestionsUIModel
+import com.space.quiz_app.presentation.model.questions.QuizQuestionUIModel
 import com.space.quiz_app.presentation.model.user.QuizUserUIModel
 import com.space.quiz_app.presentation.quiz_home_screen.ui.QuizHomeFragmentDirections
 import com.space.quiz_app.presentation.utils.QuizLiveDataDelegate
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
 
 class QuizHomeViewModel(
     private val quizUserRepository: QuizUserRepository,
@@ -24,7 +22,7 @@ class QuizHomeViewModel(
 ) : QuizBaseViewModel() {
 
     val usernameState by QuizLiveDataDelegate("")
-    val subjectsState by QuizLiveDataDelegate<List<QuizQuestionsUIModel>?>(null)
+    val subjectsState by QuizLiveDataDelegate<List<QuizQuestionUIModel>?>(null)
     val loadingState by QuizLiveDataDelegate(true)
     val errorState by QuizLiveDataDelegate<Throwable?>(null)
 
