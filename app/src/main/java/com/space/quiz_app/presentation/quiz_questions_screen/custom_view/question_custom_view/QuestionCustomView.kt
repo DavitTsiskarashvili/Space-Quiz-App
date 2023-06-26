@@ -1,4 +1,4 @@
-package com.space.quiz_app.presentation.quiz_questions_screen
+package com.space.quiz_app.presentation.quiz_questions_screen.custom_view.question_custom_view
 
 import android.content.Context
 import android.util.AttributeSet

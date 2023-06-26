@@ -23,7 +23,11 @@
         android:id="@+id/questionsFragment"
         android:name="com.space.quiz_app.presentation.quiz_questions_screen.ui.QuizQuestionsFragment"
         android:label="fragment_questions"
-        tools:layout="@layout/quiz_questions_fragment" />
+        tools:layout="@layout/quiz_questions_fragment" >
+        <argument
+            android:name="subjectId"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/gpaFragment"
         android:name="com.space.quiz_app.presentation.quiz_gpa_screen.ui.QuizGPAFragment"

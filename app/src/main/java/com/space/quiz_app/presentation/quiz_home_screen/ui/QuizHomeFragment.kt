@@ -3,15 +3,13 @@ package com.space.quiz_app.presentation.quiz_home_screen.ui
 import android.widget.Toast
 import androidx.core.view.isVisible
 import com.space.quiz_app.R
-import com.space.quiz_app.common.extensions.collectFlow
 import com.space.quiz_app.common.extensions.observeLiveData
 import com.space.quiz_app.common.extensions.observeLiveDataNonNull
 import com.space.quiz_app.common.extensions.viewBinding
 import com.space.quiz_app.databinding.QuizHomeFragmentBinding
 import com.space.quiz_app.presentation.base.fragment.QuizBaseFragment
 import com.space.quiz_app.presentation.quiz_home_screen.adapter.QuizSubjectsAdapter
-import com.space.quiz_app.presentation.quiz_home_screen.custom_view.gpa_custom_view.GpaCustomView
-import com.space.quiz_app.presentation.quiz_home_screen.custom_view.log_out_dialog.LogOutDialog
+import com.space.quiz_app.presentation.quiz_questions_screen.custom_view.cancel_quiz_dialog.CancelQuizDialog
 import com.space.quiz_app.presentation.quiz_home_screen.view_model.QuizHomeViewModel
 import kotlin.reflect.KClass
 
@@ -70,7 +68,7 @@ class QuizHomeFragment : QuizBaseFragment<QuizHomeViewModel>() {
     }
 
     private fun showDialog() {
-        LogOutDialog(requireContext()).apply {
+        CancelQuizDialog(requireContext()).apply {
             setPositiveButtonClickListener {
                 viewModel.logOutUser { viewModel.navigateToHome() }
             }
@@ -83,8 +81,9 @@ class QuizHomeFragment : QuizBaseFragment<QuizHomeViewModel>() {
         binding.gpaButton.setOnClickListener {
             viewModel.navigateToGPA()
         }
-        subjectsAdapter.onItemClickListener {
-            viewModel.navigateToQuiz()
+        subjectsAdapter.onItemClickListener { subject ->
+            viewModel.onSubjectItemClick(subject.id)
+            viewModel.navigateToQuiz(subject.id)
         }
     }
 

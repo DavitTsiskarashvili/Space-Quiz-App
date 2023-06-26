@@ -4,7 +4,7 @@ import com.space.quiz_app.presentation.utils.QuizAnswerState
 
 data class QuizQuestionDomainModel(
     val questionTitle: String,
-    val answers: MutableList<AnswerDomain>,
+    val answers: List<AnswerDomain>,
     val correctAnswer: AnswerDomain,
     val subjectId: Int,
     val questionIndex: Int,

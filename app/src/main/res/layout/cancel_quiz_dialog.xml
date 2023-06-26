@@ -13,14 +13,14 @@
         android:layout_height="match_parent">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/closeTextView"
+            android:id="@+id/cancelTextView"
             style="@style/bigMyriadGeo_Regular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/dimen_24_dp"
             android:layout_marginTop="@dimen/dimen_39_dp"
             android:gravity="center_horizontal|top"
-            android:text="@string/do_you_want_to_log_out"
+            android:text="@string/do_you_want_to_cancel_quiz"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -42,7 +42,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/noButton"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/closeTextView" />
+            app:layout_constraintTop_toBottomOf="@id/cancelTextView" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/noButton"
@@ -61,7 +61,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/yesButton"
-            app:layout_constraintTop_toBottomOf="@id/closeTextView" />
+            app:layout_constraintTop_toBottomOf="@id/cancelTextView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,6 +1,7 @@
 package com.space.quiz_app.data.mapper.question
 
 import com.space.quiz_app.common.mapper.Mapper
+import com.space.quiz_app.data.local.entity.ListStringConverter
 import com.space.quiz_app.data.local.entity.QuizQuestionEntity
 import com.space.quiz_app.domain.model.questions.QuizQuestionDomainModel
 
@@ -15,11 +16,9 @@ class QuizQuestionEntityToDomainMapper : Mapper<QuizQuestionEntity, QuizQuestion
                 isAnswered = isAnswered,
                 isLastQuestion = isLastQuestion,
                 correctAnswer = QuizQuestionDomainModel.AnswerDomain(correctAnswer, true),
-                answers = answers.map {
-                    QuizQuestionDomainModel.AnswerDomain(
-                        it, correctAnswer == it
-                    )
-                }.toMutableList()
+                answers = ListStringConverter().fromString(answers).map {
+                    QuizQuestionDomainModel.AnswerDomain(it,false)
+                }
             )
         }
 }
