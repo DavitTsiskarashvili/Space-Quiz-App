@@ -6,6 +6,8 @@ import com.space.quiz_app.data.mapper.subject.QuizSubjectDomainToEntityMapper
 import com.space.quiz_app.data.mapper.subject.QuizSubjectEntityToDomainMapper
 import com.space.quiz_app.data.mapper.user.QuizUserDomainToEntityMapper
 import com.space.quiz_app.data.mapper.user.QuizUserEntityToDomainMapper
+import com.space.quiz_app.data.remote.mapper.QuizSubjectDTOMapper
+import com.space.quiz_app.presentation.mapper.subject.QuizSubjectDomainMapper
 import org.koin.dsl.module
 
 val databaseMapperModule =  module {
@@ -15,4 +17,7 @@ val databaseMapperModule =  module {
     single { QuizSubjectEntityToDomainMapper() }
     single { QuizQuestionDomainToEntityMapper() }
     single { QuizQuestionEntityToDomainMapper() }
+    single { QuizSubjectDTOMapper() }
+    single { QuizSubjectDomainMapper() }
+
 }

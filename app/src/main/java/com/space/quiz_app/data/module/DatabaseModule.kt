@@ -10,9 +10,14 @@ private fun provideUserDatabase(context: Context): QuizDatabase {
         .fallbackToDestructiveMigration().build()
 }
 
-private fun provideDao(db: QuizDatabase) = db.userDao()
+private fun provideUserDao(db: QuizDatabase) = db.userDao()
+private fun provideSubjectDao(db: QuizDatabase) = db.subjectsDao()
+
+private fun provideQuestionsDao(db: QuizDatabase) = db.questionsDao()
 
 val dataBaseModule = module {
     single { provideUserDatabase(get()) }
-    single { provideDao(get()) }
+    single { provideUserDao(get()) }
+    single { provideSubjectDao(get()) }
+    single { provideQuestionsDao(get()) }
 }

@@ -6,9 +6,11 @@ import com.space.quiz_app.domain.repository.QuizSubjectsRepository
 import com.space.quiz_app.domain.repository.QuizUserRepository
 import com.space.quiz_app.presentation.base.view_model.QuizBaseViewModel
 import com.space.quiz_app.presentation.mapper.question.QuizQuestionDomainMapper
+import com.space.quiz_app.presentation.mapper.subject.QuizSubjectDomainMapper
 import com.space.quiz_app.presentation.mapper.user.QuizUserDomainToUIMapper
 import com.space.quiz_app.presentation.mapper.user.QuizUserUIToDomainMapper
 import com.space.quiz_app.presentation.model.questions.QuizQuestionUIModel
+import com.space.quiz_app.presentation.model.subject.QuizSubjectUIModel
 import com.space.quiz_app.presentation.model.user.QuizUserUIModel
 import com.space.quiz_app.presentation.quiz_home_screen.ui.QuizHomeFragmentDirections
 import com.space.quiz_app.presentation.utils.QuizLiveDataDelegate
@@ -16,13 +18,13 @@ import com.space.quiz_app.presentation.utils.QuizLiveDataDelegate
 class QuizHomeViewModel(
     private val quizUserRepository: QuizUserRepository,
     private val quizSubjectsRepository: QuizSubjectsRepository,
-    private val quizQuestionsUIMapper: QuizQuestionDomainMapper,
+    private val quizSubjectDomainMapper: QuizSubjectDomainMapper,
     private val quizUserUIToDomainMapper: QuizUserUIToDomainMapper,
     private val quizUserDomainToUIMapper: QuizUserDomainToUIMapper
 ) : QuizBaseViewModel() {
 
     val usernameState by QuizLiveDataDelegate("")
-    val subjectsState by QuizLiveDataDelegate<List<QuizQuestionUIModel>?>(null)
+    val subjectsState by QuizLiveDataDelegate<List<QuizSubjectUIModel>?>(null)
     val loadingState by QuizLiveDataDelegate(true)
     val errorState by QuizLiveDataDelegate<Throwable?>(null)
 
@@ -36,18 +38,10 @@ class QuizHomeViewModel(
     fun getSubjects() {
         viewModelScope {
             val result = quizSubjectsRepository.getSubjectsFromNetwork()
-            when (result) {
-                is Resource.Success -> {
-                    subjectsState.addValue(result.data.map {
-                        quizQuestionsUIMapper(it)
-                    })
-                }
-                is Resource.Error -> {
-                    errorState.addValue(result.errorMessage)
-                }
-                else -> {}
-            }
-            loadingState.addValue(result.loader)
+            subjectsState.addValue(result.map {
+                quizSubjectDomainMapper(it)
+            })
+            loadingState.addValue(false)
         }
     }
 
@@ -67,11 +61,11 @@ class QuizHomeViewModel(
         navigate(QuizHomeFragmentDirections.actionGlobalLoginFragment())
     }
 
-    fun navigateToGPA(){
+    fun navigateToGPA() {
         navigate(QuizHomeFragmentDirections.actionGlobalGpaFragment())
     }
 
-    fun navigateToQuiz(){
+    fun navigateToQuiz() {
         navigate(QuizHomeFragmentDirections.actionGlobalQuestionsFragment())
     }
 }

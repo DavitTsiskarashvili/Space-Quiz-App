@@ -8,5 +8,5 @@ import org.koin.dsl.module
 
 val repositoryModule = module {
     single<QuizUserRepository> { QuizUserRepositoryImpl(get(), get(), get()) }
-    single<QuizSubjectsRepository> { QuizSubjectsRepositoryImpl(get(), get()) }
+    single<QuizSubjectsRepository> { QuizSubjectsRepositoryImpl(get(), get(), get(), get()) }
 }
