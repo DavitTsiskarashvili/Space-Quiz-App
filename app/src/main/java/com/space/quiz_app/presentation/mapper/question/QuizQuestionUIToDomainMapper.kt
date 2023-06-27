@@ -2,9 +2,12 @@ package com.space.quiz_app.presentation.mapper.question
 
 import com.space.quiz_app.common.mapper.Mapper
 import com.space.quiz_app.domain.model.questions.QuizQuestionDomainModel
+import com.space.quiz_app.presentation.mapper.answer.QuizAnswerUIToDomainMapper
 import com.space.quiz_app.presentation.model.questions.QuizQuestionUIModel
 
-class QuizQuestionUIToDomainMapper : Mapper<QuizQuestionUIModel, QuizQuestionDomainModel> {
+class QuizQuestionUIToDomainMapper (
+    private val answerUIToDomainMapper: QuizAnswerUIToDomainMapper
+        ) : Mapper<QuizQuestionUIModel, QuizQuestionDomainModel> {
     override fun invoke(model: QuizQuestionUIModel): QuizQuestionDomainModel =
         with(model) {
             QuizQuestionDomainModel(
@@ -14,8 +17,8 @@ class QuizQuestionUIToDomainMapper : Mapper<QuizQuestionUIModel, QuizQuestionDom
                 isLastQuestion = isLastQuestion,
                 isAnswered = isAnswered,
                 questionIndex = questionIndex,
-                correctAnswer = correctAnswer,
-                answers = answers
+                correctAnswer = answerUIToDomainMapper(correctAnswer),
+                answers = answers.map { answerUIToDomainMapper (it) }
             )
         }
 }

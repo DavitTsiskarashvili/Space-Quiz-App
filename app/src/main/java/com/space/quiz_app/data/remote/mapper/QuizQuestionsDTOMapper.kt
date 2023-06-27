@@ -7,7 +7,7 @@ import com.space.quiz_app.data.remote.model.QuizSubjectDTO
 import com.space.quiz_app.domain.model.questions.QuizQuestionDomainModel
 
 class QuizQuestionsDTOMapper(
-    var subjectTitle: ((QuizSubjectDTO.QuizQuestionDTO) -> String)? = null
+    var subjectTitle: (() -> String)? = null
 ) : Mapper<QuizSubjectDTO.QuizQuestionDTO, QuizQuestionEntity> {
     override fun invoke(model: QuizSubjectDTO.QuizQuestionDTO): QuizQuestionEntity =
         with(model) {
@@ -17,9 +17,9 @@ class QuizQuestionsDTOMapper(
                 subjectId = subjectId,
                 isAnswered = false,
                 isLastQuestion = false,
-                subjectTitle = subjectTitle?.invoke(this) ?: "",
+                subjectTitle = subjectTitle?.invoke() ?: "",
                 correctAnswer = correctAnswer,
-                answers = ListStringConverter().fromList(answers)
+                answers = answers
             )
         }
 }

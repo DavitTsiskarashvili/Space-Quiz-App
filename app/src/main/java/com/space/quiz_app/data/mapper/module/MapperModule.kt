@@ -1,4 +1,4 @@
-package com.space.quiz_app.data.local.module
+package com.space.quiz_app.data.mapper.module
 
 import com.space.quiz_app.data.local.entity.QuizQuestionEntity
 import com.space.quiz_app.data.mapper.question.QuizQuestionEntityToDomainMapper

@@ -25,8 +25,8 @@
         android:label="fragment_questions"
         tools:layout="@layout/quiz_questions_fragment" >
         <argument
-            android:name="subjectId"
-            app:argType="integer" />
+            android:name="subjectTitle"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/gpaFragment"

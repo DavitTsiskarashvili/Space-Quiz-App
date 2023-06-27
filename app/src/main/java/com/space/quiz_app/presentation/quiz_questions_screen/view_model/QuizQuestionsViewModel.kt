@@ -1,9 +1,9 @@
 package com.space.quiz_app.presentation.quiz_questions_screen.view_model
 
+import android.util.Log
 import com.space.quiz_app.common.extensions.viewModelScope
 import com.space.quiz_app.domain.repository.QuizQuestionsRepository
 import com.space.quiz_app.presentation.base.view_model.QuizBaseViewModel
-import com.space.quiz_app.presentation.mapper.answer.QuizAnswerDomainMapper
 import com.space.quiz_app.presentation.mapper.question.QuizQuestionDomainMapper
 import com.space.quiz_app.presentation.model.questions.QuizQuestionUIModel
 import com.space.quiz_app.presentation.quiz_home_screen.ui.QuizHomeFragmentDirections
@@ -11,34 +11,34 @@ import com.space.quiz_app.presentation.utils.QuizLiveDataDelegate
 
 class QuizQuestionsViewModel(
     private val quizQuestionsRepository: QuizQuestionsRepository,
-    private val answerDomainMapper: QuizAnswerDomainMapper
+    private val questionsDomainMapper: QuizQuestionDomainMapper
 ) : QuizBaseViewModel() {
 
     val questionState by QuizLiveDataDelegate<QuizQuestionUIModel?>(null)
     val answerState by QuizLiveDataDelegate<List<QuizQuestionUIModel.Answer>?>(emptyList())
-    val loadingState by QuizLiveDataDelegate(true)
 
 
-//
-//    init {
-//        getQuestions()
-//    }
-//
-//    private fun getQuestions(subjectId: Int) {
-//        viewModelScope {
-//            val result = quizQuestionsRepository.getQuestionsFromDatabase(subjectId)
-//            questionState.addValue(questionDomainMapper(result))
-//        }
-//    }
+    private val allQuestions = mutableListOf<QuizQuestionUIModel>()
+    private var questionIndex = 0
 
-    fun getAnswers(subjectId: Int) {
+    fun getQuestions(subjectTitle: String) {
         viewModelScope {
-            val result = quizQuestionsRepository.getAnswersFromDatabase(subjectId)
-            answerState.addValue(result.map {
-                answerDomainMapper(it.correctAnswer)
-            })
-            loadingState.addValue(false)
+            val result = quizQuestionsRepository.getQuestionsFromDatabase((subjectTitle))
+            allQuestions.addAll(result.map { questionsDomainMapper(it) })
+            nextQuestion()
         }
+    }
+
+    fun nextQuestion() {
+        if (allQuestions.isNotEmpty()) {
+            val currentQuestion = allQuestions[questionIndex]
+            questionState.addValue(currentQuestion)
+            answerState.addValue(currentQuestion.answers)
+            if (questionIndex < allQuestions.size - 1){
+                questionIndex += 1
+            }
+        }
+
     }
 
     fun navigateToHome() {

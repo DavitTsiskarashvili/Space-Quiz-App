@@ -39,6 +39,7 @@ class QuizSubjectsRepositoryImpl(
 
         val quizQuestions = remoteData.map {
             it.questions.map { question ->
+                questionDTOMapper.subjectTitle = {it.quizTitle}
                 questionDTOMapper(question)
             }
         }

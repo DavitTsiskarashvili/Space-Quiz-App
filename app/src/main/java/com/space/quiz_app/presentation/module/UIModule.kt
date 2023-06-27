@@ -12,8 +12,8 @@ import org.koin.dsl.module
 val UIModule = module {
     single { QuizUserDomainToUIMapper() }
     single { QuizUserUIToDomainMapper() }
-    single { QuizQuestionDomainMapper() }
-    single { QuizQuestionUIToDomainMapper() }
+    single { QuizQuestionDomainMapper( get()) }
+    single { QuizQuestionUIToDomainMapper( get()) }
     single { QuizAnswerDomainMapper() }
     single { QuizAnswerUIToDomainMapper() }
     single { QuizSubjectDomainMapper() }

@@ -7,7 +7,7 @@ import com.space.quiz_app.data.mapper.question.QuizQuestionEntityToDomainMapper
 import com.space.quiz_app.domain.model.subject.QuizSubjectDomainModel
 
 class QuizSubjectEntityToDomainMapper (
-    val questions:List<QuizQuestionEntity>
+    private val questions:List<QuizQuestionEntity>
     ): Mapper<QuizSubjectEntity, QuizSubjectDomainModel> {
     override fun invoke(model: QuizSubjectEntity): QuizSubjectDomainModel =
         with(model) {

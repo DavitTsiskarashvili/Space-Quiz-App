@@ -27,7 +27,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/yesButton"
+            android:id="@+id/noButton"
             style="@style/bigMyriadGeo_Bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -40,12 +40,12 @@
             app:backgroundTint="@color/neutral_white"
             app:cornerRadius="@dimen/dimen_30_dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/noButton"
+            app:layout_constraintEnd_toStartOf="@id/yesButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/closeTextView" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/noButton"
+            android:id="@+id/yesButton"
             style="@style/bigMyriadGeo_Bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -60,7 +60,7 @@
             app:cornerRadius="@dimen/dimen_30_dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/yesButton"
+            app:layout_constraintStart_toEndOf="@id/noButton"
             app:layout_constraintTop_toBottomOf="@id/closeTextView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

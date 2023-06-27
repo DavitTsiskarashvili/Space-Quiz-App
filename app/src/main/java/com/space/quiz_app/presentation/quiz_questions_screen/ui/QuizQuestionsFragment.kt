@@ -1,9 +1,7 @@
 package com.space.quiz_app.presentation.quiz_questions_screen.ui
 
-import android.os.Bundle
-import androidx.core.view.isVisible
+import android.util.Log
 import com.space.quiz_app.R
-import com.space.quiz_app.common.extensions.observeLiveData
 import com.space.quiz_app.common.extensions.observeLiveDataNonNull
 import com.space.quiz_app.common.extensions.viewBinding
 import com.space.quiz_app.databinding.QuizQuestionsFragmentBinding
@@ -11,7 +9,7 @@ import com.space.quiz_app.presentation.base.fragment.QuizBaseFragment
 import com.space.quiz_app.presentation.quiz_questions_screen.custom_view.cancel_quiz_dialog.CancelQuizDialog
 import com.space.quiz_app.presentation.quiz_questions_screen.adapter.QuizAnswersAdapter
 import com.space.quiz_app.presentation.quiz_questions_screen.view_model.QuizQuestionsViewModel
-import com.space.quiz_app.presentation.utils.SubjectId
+import com.space.quiz_app.presentation.utils.SubjectTitle
 import kotlin.reflect.KClass
 
 class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
@@ -29,16 +27,15 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
     }
 
     override fun onCreateFragment() {
+        val subjectTitle = arguments?.getString(SubjectTitle.ARG_SUBJECT_ID)?: ""
+        viewModel.getQuestions(subjectTitle)
     }
 
     override fun onBind() {
         initRecycler()
         observe()
         cancelQuiz()
-
-        val subjectId = arguments?.getInt(SubjectId.ARG_SUBJECT_ID, -1)?: -1
-        viewModel.getAnswers(subjectId)
-
+        nextQuestion()
     }
 
     private fun initRecycler() {
@@ -46,18 +43,23 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
     }
 
     private fun observe() {
-        observeLiveData(viewModel.loadingState) {
-            binding.progressBar.isVisible = it
-        }
+
         observeLiveDataNonNull(viewModel.questionState){
             with(binding) {
-                quizTitleTextView.text = it.questionTitle
+                quizTitleTextView.text = it.subjectTitle
+                questionBackground.setQuestion(it.questionTitle)
             }
         }
         observeLiveDataNonNull(viewModel.answerState) { answers ->
             answers.let {
-                answersAdapter.submitList(it)
+                answersAdapter.submitList(it.toList())
             }
+        }
+    }
+
+    private fun nextQuestion() {
+        binding.nextButton.setOnClickListener{
+            viewModel.nextQuestion()
         }
     }
 
