@@ -11,7 +11,6 @@ class QuizAnswerUIToDomainMapper :
             QuizQuestionDomainModel.AnswerDomain(
                 answerOption = answerOption,
                 isCorrect = isCorrect,
-                answerSelectedState = answerSelectedState
             )
         }
 }

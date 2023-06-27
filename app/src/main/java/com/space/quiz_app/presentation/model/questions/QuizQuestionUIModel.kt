@@ -15,6 +15,5 @@ data class QuizQuestionUIModel(
     data class Answer(
         val answerOption: String,
         val isCorrect: Boolean,
-        val answerSelectedState: QuizAnswerState
     )
 }

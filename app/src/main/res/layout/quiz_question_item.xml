@@ -20,6 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dimen_30_dp"
             android:layout_marginVertical="@dimen/dimen_22_dp"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -30,24 +31,16 @@
             style="@style/normalMyriadGeo_Bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/neutral_white"
             android:layout_marginVertical="@dimen/dimen_22_dp"
-            android:layout_marginEnd="@dimen/dimen_2_dp"
-            android:gravity="center_vertical|end"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/starImageView"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="@tools:sample/lorem" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/starImageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_star"
-            android:gravity="center_vertical|end"
             android:layout_marginEnd="@dimen/dimen_30_dp"
+            android:gravity="center_vertical|end"
+            android:drawablePadding="@dimen/dimen_10_dp"
+            app:drawableEndCompat="@drawable/ic_star"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@tools:sample/lorem" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
