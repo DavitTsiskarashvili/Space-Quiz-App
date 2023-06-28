@@ -4,16 +4,11 @@ import com.space.quiz_app.presentation.utils.QuizAnswerState
 
 data class QuizQuestionUIModel(
     val questionTitle: String,
-    val answers: List<Answer>,
-    val correctAnswer: Answer,
+    val answers: List<String>,
+    val correctAnswer: String,
     val subjectId: Int,
     val questionIndex: Int,
     val isAnswered: Boolean,
     val isLastQuestion: Boolean,
     val subjectTitle: String
-) {
-    data class Answer(
-        val answerOption: String,
-        val isCorrect: Boolean,
-    )
-}
+)

@@ -15,10 +15,8 @@ class QuizQuestionEntityToDomainMapper : Mapper<QuizQuestionEntity, QuizQuestion
                 subjectTitle = subjectTitle,
                 isAnswered = isAnswered,
                 isLastQuestion = isLastQuestion,
-                correctAnswer = QuizQuestionDomainModel.AnswerDomain(correctAnswer, true),
-                answers = answers.map {
-                    QuizQuestionDomainModel.AnswerDomain(it,false)
-                }
+                correctAnswer = correctAnswer,
+                answers = answers,
             )
         }
 }

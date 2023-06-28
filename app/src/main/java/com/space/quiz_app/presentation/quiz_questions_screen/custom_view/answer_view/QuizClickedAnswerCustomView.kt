@@ -2,47 +2,31 @@ package com.space.quiz_app.presentation.quiz_questions_screen.custom_view.answer
 
 import android.content.Context
 import android.content.res.ColorStateList
-import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
 import com.space.quiz_app.R
-import com.space.quiz_app.databinding.QuizQuestionItemBinding
-import com.space.quiz_app.presentation.model.questions.QuizQuestionUIModel
+import com.space.quiz_app.databinding.QuizAnswerItemBinding
 
 class QuizClickedAnswerCustomView(
     context: Context,
-    attributeSet: AttributeSet
-    ): FrameLayout(context, attributeSet) {
-        private val binding = QuizQuestionItemBinding.inflate(LayoutInflater.from(context), this, true)
+) : FrameLayout(context) {
+
+    private val binding = QuizAnswerItemBinding.inflate(LayoutInflater.from(context), this, true)
     private var correctAnswerPosition: Int? = null
 
-
-    fun setCorrectAnswerPosition(position: Int) {
-        correctAnswerPosition = position
+    fun setAnswers(item: String) {
+        binding.answerTextView.text = item
     }
 
-    fun setAnswers(item: QuizQuestionUIModel.Answer) {
-        binding.answerTextView.text = item.answerOption
+    fun wrongAnswer(userAnswer: String, correctAnswer: String) {
+        updateBackgroundColor(R.color.red_wrong)
+        setScore(false)
     }
 
-    fun setAnswerStatus(answerView: Int, correctAnswerView: Int, positionView: Int){
-        changeTextColor(R.color.neutral_white)
-        when(positionView) {
-            answerView -> {
-                if (answerView == correctAnswerView) {
-                    updateBackgroundColor(R.color.green_success)
-                    setScore(true)
-                } else {
-                    updateBackgroundColor(R.color.red_wrong)
-                    setScore(false)
-                }
-            }
-            correctAnswerView -> {
-                updateBackgroundColor(R.color.green_success)
-                setScore(false)
-            }
-        }
+    fun correctAnswer(userAnswer: String, correctAnswer: String) {
+        updateBackgroundColor(R.color.green_success)
+        setScore(true)
     }
 
     fun setStandardBackgroundColor() {

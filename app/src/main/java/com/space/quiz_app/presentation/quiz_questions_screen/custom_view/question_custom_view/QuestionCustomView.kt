@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.widget.FrameLayout
 import com.space.quiz_app.databinding.QuizQuestionCardViewBinding
 
-class QuestionCustomView (
+class QuestionCustomView(
     context: Context,
     attributeSet: AttributeSet
 ) : FrameLayout(context, attributeSet) {
@@ -14,6 +14,6 @@ class QuestionCustomView (
         QuizQuestionCardViewBinding.inflate(LayoutInflater.from(context), this, true)
 
     fun setQuestion(question: String) {
-        binding.question.text = question.toString()
+        binding.question.text = question
     }
 }

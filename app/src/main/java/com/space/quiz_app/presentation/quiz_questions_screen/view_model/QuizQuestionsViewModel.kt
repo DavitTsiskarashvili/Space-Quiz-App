@@ -15,8 +15,7 @@ class QuizQuestionsViewModel(
 ) : QuizBaseViewModel() {
 
     val questionState by QuizLiveDataDelegate<QuizQuestionUIModel?>(null)
-    val answerState by QuizLiveDataDelegate<List<QuizQuestionUIModel.Answer>?>(emptyList())
-
+    val answerState by QuizLiveDataDelegate<QuizQuestionUIModel?>(null)
 
     private val allQuestions = mutableListOf<QuizQuestionUIModel>()
     private var questionIndex = 0
@@ -30,15 +29,12 @@ class QuizQuestionsViewModel(
     }
 
     fun nextQuestion() {
-        if (allQuestions.isNotEmpty()) {
             val currentQuestion = allQuestions[questionIndex]
             questionState.addValue(currentQuestion)
-            answerState.addValue(currentQuestion.answers)
+            answerState.addValue(currentQuestion)
             if (questionIndex < allQuestions.size - 1){
                 questionIndex += 1
             }
-        }
-
     }
 
     fun navigateToHome() {

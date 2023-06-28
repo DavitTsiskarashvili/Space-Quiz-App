@@ -89,6 +89,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dimen_16_dp"
         android:layout_marginTop="@dimen/dimen_60_dp"
+        android:paddingVertical="@dimen/dimen_18_dp"
         android:backgroundTint="@color/yellow_primary"
         android:text="@string/next_button"
         android:textColor="@color/white"

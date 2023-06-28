@@ -1,84 +1,75 @@
 package com.space.quiz_app.presentation.quiz_questions_screen.adapter
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.children
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.space.quiz_app.databinding.QuizQuestionItemCustomViewBinding
 import com.space.quiz_app.presentation.base.adapter.DiffUtilCallback
 import com.space.quiz_app.presentation.model.questions.QuizQuestionUIModel
+import com.space.quiz_app.presentation.quiz_questions_screen.custom_view.answer_view.QuizClickedAnswerCustomView
 
-class QuizAnswersAdapter(private val answerClickListener: (Int) -> Unit) :
-    ListAdapter<QuizQuestionUIModel.Answer, QuizAnswersAdapter.AnswersViewHolder>(DiffUtilCallback()) {
-
-    //    var onClickCallback: ((answerIndex: Int) -> Unit)
-    var correctAnswer: Int? = null
-    private var userAnswer: Int? = null
+class QuizAnswersAdapter :
+    ListAdapter<QuizQuestionUIModel, QuizAnswersAdapter.AnswersViewHolder>(DiffUtilCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnswersViewHolder {
-        val viewHolder = AnswersViewHolder(
+        return AnswersViewHolder(
             QuizQuestionItemCustomViewBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
             )
         )
-        viewHolder.itemView.setOnClickListener {
-            val position = viewHolder.adapterPosition
-            if (position != RecyclerView.NO_POSITION) {
-                answerClickListener.invoke(position)
-                userAnswer = position
-                notifyDataSetChanged()
-//            onAnswerClick(it)
-            }
-        }
-        return viewHolder
     }
 
     override fun onBindViewHolder(holder: AnswersViewHolder, position: Int) {
-        holder.onBind(
-            getItem(position),
-            correctAnswer!!,
-            userAnswer,
-        )
+        val currentItem = getItem(position)
+        holder.binding.root.removeAllViews()
+        currentItem.answers.forEach {
+            holder.onBind(
+                it,
+                currentItem.correctAnswer,
+                currentItem.answers.indexOf(currentItem.correctAnswer)
+            )
+        }
     }
 
     class AnswersViewHolder(
-        private val binding: QuizQuestionItemCustomViewBinding,
-//        var onClickCallback: ((answerIndex: Int) -> Unit)
-    ) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun onBind(answer: QuizQuestionUIModel.Answer, correctAnswer: Int, userAnswer: Int?
+        val binding: QuizQuestionItemCustomViewBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
+        fun onBind(
+            userAnswer: String,
+            correctAnswer: String,
+            position: Int,
         ) {
             with(binding) {
-                root.setAnswers(answer)
+                val item = QuizClickedAnswerCustomView(root.context)
+                root.addView(item)
+                item.setAnswers(userAnswer)
+//                item.setStandardBackgroundColor()
 
-                if (userAnswer != null && (userAnswer == adapterPosition || correctAnswer == adapterPosition)) {
-                    root.setAnswerStatus(userAnswer, correctAnswer, adapterPosition)
-                } else {
-                    root.setStandardBackgroundColor()
+                item.setOnClickListener {
+                    root.children.forEach {
+                        it.isClickable = false
+                    }
+                    if (userAnswer != correctAnswer) {
+                        getItemView(position).correctAnswer(userAnswer, correctAnswer)
+                    } else {
+                        getItemView(position).wrongAnswer(userAnswer, correctAnswer)
+                    }
                 }
-//                binding.root.setOnClickListener {
-//                    if (userAnswer == null) {
-//                        onClickCallback(adapterPosition)
-//                    }
             }
         }
+
+        private fun getItemView(position: Int) =
+            binding.root.getChildAt(position) as QuizClickedAnswerCustomView
     }
+
 }
 
-//    @SuppressLint("NotifyDataSetChanged")
-//    fun onAnswerClick(userAnswer: Int) {
-//        onClickCallback(userAnswer)
-//        this.userAnswer = userAnswer
-//
-//        notifyItemChanged(userAnswer)
-//
-//        if (userAnswer != correctAnswer) {
-//            notifyItemChanged(correctAnswer!!)
-//        }
-//    }
+
+
 
 
 

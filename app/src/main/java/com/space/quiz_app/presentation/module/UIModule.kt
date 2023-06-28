@@ -1,7 +1,6 @@
 package com.space.quiz_app.presentation.module
 
-import com.space.quiz_app.presentation.mapper.answer.QuizAnswerDomainMapper
-import com.space.quiz_app.presentation.mapper.answer.QuizAnswerUIToDomainMapper
+
 import com.space.quiz_app.presentation.mapper.question.QuizQuestionDomainMapper
 import com.space.quiz_app.presentation.mapper.question.QuizQuestionUIToDomainMapper
 import com.space.quiz_app.presentation.mapper.subject.QuizSubjectDomainMapper
@@ -12,9 +11,7 @@ import org.koin.dsl.module
 val UIModule = module {
     single { QuizUserDomainToUIMapper() }
     single { QuizUserUIToDomainMapper() }
-    single { QuizQuestionDomainMapper( get()) }
-    single { QuizQuestionUIToDomainMapper( get()) }
-    single { QuizAnswerDomainMapper() }
-    single { QuizAnswerUIToDomainMapper() }
+    single { QuizQuestionDomainMapper() }
+    single { QuizQuestionUIToDomainMapper() }
     single { QuizSubjectDomainMapper() }
 }

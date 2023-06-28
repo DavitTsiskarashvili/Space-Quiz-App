@@ -1,13 +1,12 @@
 package com.space.quiz_app.presentation.quiz_questions_screen.ui
 
-import android.util.Log
 import com.space.quiz_app.R
 import com.space.quiz_app.common.extensions.observeLiveDataNonNull
 import com.space.quiz_app.common.extensions.viewBinding
 import com.space.quiz_app.databinding.QuizQuestionsFragmentBinding
 import com.space.quiz_app.presentation.base.fragment.QuizBaseFragment
-import com.space.quiz_app.presentation.quiz_questions_screen.custom_view.cancel_quiz_dialog.CancelQuizDialog
 import com.space.quiz_app.presentation.quiz_questions_screen.adapter.QuizAnswersAdapter
+import com.space.quiz_app.presentation.quiz_questions_screen.custom_view.cancel_quiz_dialog.CancelQuizDialog
 import com.space.quiz_app.presentation.quiz_questions_screen.view_model.QuizQuestionsViewModel
 import com.space.quiz_app.presentation.utils.SubjectTitle
 import kotlin.reflect.KClass
@@ -52,7 +51,7 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
         }
         observeLiveDataNonNull(viewModel.answerState) { answers ->
             answers.let {
-                answersAdapter.submitList(it.toList())
+                answersAdapter.submitList(listOf(it))
             }
         }
     }

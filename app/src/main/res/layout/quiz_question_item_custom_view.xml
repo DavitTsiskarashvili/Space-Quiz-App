@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.space.quiz_app.presentation.quiz_questions_screen.custom_view.answer_view.QuizClickedAnswerCustomView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" />
+    android:layout_height="match_parent"
+    style="@style/normalMyriadGeo_Bold"
+    android:orientation="vertical"/>
 
