@@ -47,16 +47,15 @@ class QuizAnswersAdapter :
                 val item = QuizClickedAnswerCustomView(root.context)
                 root.addView(item)
                 item.setAnswers(userAnswer)
-//                item.setStandardBackgroundColor()
 
                 item.setOnClickListener {
                     root.children.forEach {
                         it.isClickable = false
                     }
                     if (userAnswer != correctAnswer) {
-                        getItemView(position).correctAnswer(userAnswer, correctAnswer)
-                    } else {
                         getItemView(position).wrongAnswer(userAnswer, correctAnswer)
+                    } else {
+                        getItemView(position).correctAnswer(userAnswer, correctAnswer)
                     }
                 }
             }

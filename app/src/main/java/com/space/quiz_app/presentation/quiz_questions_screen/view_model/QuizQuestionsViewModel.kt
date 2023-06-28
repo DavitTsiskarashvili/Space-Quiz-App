@@ -1,6 +1,5 @@
 package com.space.quiz_app.presentation.quiz_questions_screen.view_model
 
-import android.util.Log
 import com.space.quiz_app.common.extensions.viewModelScope
 import com.space.quiz_app.domain.repository.QuizQuestionsRepository
 import com.space.quiz_app.presentation.base.view_model.QuizBaseViewModel
@@ -13,10 +12,12 @@ class QuizQuestionsViewModel(
     private val quizQuestionsRepository: QuizQuestionsRepository,
     private val questionsDomainMapper: QuizQuestionDomainMapper
 ) : QuizBaseViewModel() {
-
+    //use cases
+    // default values
     val questionState by QuizLiveDataDelegate<QuizQuestionUIModel?>(null)
     val answerState by QuizLiveDataDelegate<QuizQuestionUIModel?>(null)
 
+    // ერთი კითხვა უნდა იყოს მარტო და არა ლისტი
     private val allQuestions = mutableListOf<QuizQuestionUIModel>()
     private var questionIndex = 0
 

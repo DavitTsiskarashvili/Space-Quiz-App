@@ -42,7 +42,7 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
     }
 
     private fun observe() {
-
+        // question and answer states
         observeLiveDataNonNull(viewModel.questionState){
             with(binding) {
                 quizTitleTextView.text = it.subjectTitle
