@@ -1,5 +1,6 @@
 package com.space.quiz_app.presentation.quiz_questions_screen.ui
 
+import androidx.activity.addCallback
 import com.space.quiz_app.R
 import com.space.quiz_app.common.extensions.observeLiveDataNonNull
 import com.space.quiz_app.common.extensions.viewBinding
@@ -40,6 +41,7 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
         observe()
         cancelQuiz()
         nextQuestion()
+        handleBackPress()
     }
 
     private fun initRecycler() {
@@ -74,6 +76,12 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
 
     private fun cancelQuiz() {
         binding.cancelButton.setOnClickListener {
+            showDialog()
+        }
+    }
+
+    private fun handleBackPress(){
+        requireActivity().onBackPressedDispatcher.addCallback {
             showDialog()
         }
     }
