@@ -16,6 +16,8 @@ class QuizQuestionsViewModel(
     // default values
     val questionState by QuizLiveDataDelegate<QuizQuestionUIModel?>(null)
     val answerState by QuizLiveDataDelegate<QuizQuestionUIModel?>(null)
+    val finishQuiz by QuizLiveDataDelegate(false)
+
 
     // ერთი კითხვა უნდა იყოს მარტო და არა ლისტი
     private val allQuestions = mutableListOf<QuizQuestionUIModel>()
@@ -36,6 +38,13 @@ class QuizQuestionsViewModel(
         answerState.addValue(currentQuestion)
         if (questionIndex < allQuestions.size - 1) {
             questionIndex += 1
+        }
+    }
+
+    fun finishQuiz(){
+        val question = nextQuestion()
+        if (question == null) {
+            finishQuiz.addValue(true)
         }
     }
 

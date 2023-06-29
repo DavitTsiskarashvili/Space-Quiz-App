@@ -1,4 +1,4 @@
-package com.space.quiz_app.presentation.quiz_questions_screen.custom_view.cancel_quiz_dialog
+package com.space.quiz_app.presentation.quiz_questions_screen.custom_view.congrats_dialog
 
 import android.app.AlertDialog
 import android.content.Context
@@ -7,16 +7,16 @@ import android.graphics.drawable.ColorDrawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
-import com.space.quiz_app.databinding.CancelQuizDialogBinding
+import com.space.quiz_app.databinding.QuizCongratsDialogBinding
 
-class CancelQuizDialog @JvmOverloads constructor(
+class QuizCongratsDialog @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0,
     defStyleRes: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr, defStyleRes) {
-    private val binding: CancelQuizDialogBinding =
-        CancelQuizDialogBinding.inflate(LayoutInflater.from(context), this, true)
+    private val binding: QuizCongratsDialogBinding =
+        QuizCongratsDialogBinding.inflate(LayoutInflater.from(context), this, true)
 
     private lateinit var alertDialog: AlertDialog
 
@@ -29,19 +29,16 @@ class CancelQuizDialog @JvmOverloads constructor(
         alertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
 
+    fun setScore(score: String) {
+        binding.scoreTextView.text = score
+    }
+
     fun showDialog() {
         alertDialog.show()
     }
 
     fun setPositiveButtonClickListener(onClickListener: () -> Unit) {
-        binding.yesButton.setOnClickListener {
-            onClickListener.invoke()
-            alertDialog.dismiss()
-        }
-    }
-
-    fun setNegativeButtonClickListener(onClickListener: () -> Unit) {
-        binding.noButton.setOnClickListener {
+        binding.closeTextView.setOnClickListener {
             onClickListener.invoke()
             alertDialog.dismiss()
         }

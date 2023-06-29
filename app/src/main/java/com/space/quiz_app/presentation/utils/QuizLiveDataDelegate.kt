@@ -17,25 +17,3 @@ class QuizLiveDataDelegate<T>(initialValue: T) : LiveData<T>(initialValue) {
         postValue(value)
     }
 }
-
-fun <T> ViewModel.postValue(
-    livedata: QuizLiveDataDelegate<T?>,
-    value: () -> T?
-) {
-
-    livedata.addValue(value())
-}
-
-suspend fun <T> ViewModel.postValueAsync(
-    livedata: QuizLiveDataDelegate<T?>,
-    value: suspend () -> T?
-) {
-    livedata.addValue(value())
-}
-
-fun <T> ViewModel.postValueNonNull(
-    livedata: QuizLiveDataDelegate<T>,
-    value: () -> T
-) {
-    livedata.addValue(value())
-}
