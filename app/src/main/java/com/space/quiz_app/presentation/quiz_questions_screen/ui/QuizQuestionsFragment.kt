@@ -25,14 +25,14 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
 
 
     private val answersAdapter by lazy {
-        QuizAnswersAdapter {answer ->
+        QuizAnswersAdapter { answer ->
             selectedAnswer = answer
             binding.nextButton.isEnabled = selectedAnswer != null
         }
     }
 
     override fun onCreateFragment() {
-        val subjectTitle = arguments?.getString(SubjectTitle.ARG_SUBJECT_TITLE)?: ""
+        val subjectTitle = arguments?.getString(SubjectTitle.ARG_SUBJECT_TITLE) ?: ""
         viewModel.getAllQuestions(subjectTitle)
     }
 
@@ -51,7 +51,7 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
 
     private fun observe() {
         // question and answer states
-        observeLiveDataNonNull(viewModel.questionState){
+        observeLiveDataNonNull(viewModel.questionState) {
             with(binding) {
                 quizTitleTextView.text = it.subjectTitle
                 questionBackground.setQuestion(it.questionTitle)
@@ -66,8 +66,8 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
     }
 
     private fun nextQuestion() {
-        with(binding){
-            nextButton.setOnClickListener{
+        with(binding) {
+            nextButton.setOnClickListener {
                 viewModel.nextQuestion()
                 selectedAnswer = null
                 nextButton.isEnabled = false
@@ -81,7 +81,7 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
         }
     }
 
-    private fun handleBackPress(){
+    private fun handleBackPress() {
         requireActivity().onBackPressedDispatcher.addCallback {
             showDialog()
         }

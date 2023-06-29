@@ -67,6 +67,7 @@ class QuizAnswersAdapter(
                 }
             }
         }
+
         private fun getItemView(position: Int) =
             binding.root.getChildAt(position) as QuizClickedAnswerCustomView
     }

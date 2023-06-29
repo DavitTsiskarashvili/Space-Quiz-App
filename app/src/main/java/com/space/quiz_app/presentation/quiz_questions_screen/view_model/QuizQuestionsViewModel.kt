@@ -30,18 +30,13 @@ class QuizQuestionsViewModel(
         }
     }
 
-//    private fun setFirstQuestion() {
-//        val currentQuestion = allQuestions[questionIndex]
-//        questionState.addValue(currentQuestion)
-//        answerState.addValue(currentQuestion)
-//    }
     fun nextQuestion() {
-            val currentQuestion = allQuestions[questionIndex]
-            questionState.addValue(currentQuestion)
-            answerState.addValue(currentQuestion)
-            if (questionIndex < allQuestions.size - 1){
-                questionIndex += 1
-            }
+        val currentQuestion = allQuestions[questionIndex]
+        questionState.addValue(currentQuestion)
+        answerState.addValue(currentQuestion)
+        if (questionIndex < allQuestions.size - 1) {
+            questionIndex += 1
+        }
     }
 
     fun navigateToHome() {
