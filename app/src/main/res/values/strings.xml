@@ -21,6 +21,7 @@
     <string name="yes">კი</string>
     <string name="no">არა</string>
     <string name="default_gpa">0.0</string>
+    <string name="current_score">მიმდინარე ქულა: %d</string>
     <string name="username_invalid_length_long">სახელის ზომა უნდა არ უნდა აღემატებოდეს 20 სიმბოლოს</string>
     <string name="username_invalid_length_short">სახელის ზომა უნდა არ უნდა იყოს 8 სიმბოლოზე ნაკლები</string>
     <string name="username_invalid_characters">სახელი უნდა შედგებოდეს 1 დიდი, 1 პატარა და 1 სპეციალური სიმბოლოსგან</string>

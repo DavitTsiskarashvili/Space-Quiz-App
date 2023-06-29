@@ -55,6 +55,7 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
             with(binding) {
                 quizTitleTextView.text = it.subjectTitle
                 questionBackground.setQuestion(it.questionTitle)
+                progressBar.updateProgressBar(it.questionIndex)
             }
         }
         observeLiveDataNonNull(viewModel.answerState) { answers ->
