@@ -21,7 +21,8 @@ class QuizQuestionsViewModel(
     private val allQuestions = mutableListOf<QuizQuestionUIModel>()
     private var questionIndex = 0
 
-    fun getQuestions(subjectTitle: String) {
+    // ViewModel shouldn't store all questions in advance. Retrieve one question per time from a database.
+    fun getAllQuestions(subjectTitle: String) {
         viewModelScope {
             val result = quizQuestionsRepository.getQuestionsFromDatabase((subjectTitle))
             allQuestions.addAll(result.map { questionsDomainMapper(it) })
@@ -29,6 +30,11 @@ class QuizQuestionsViewModel(
         }
     }
 
+//    private fun setFirstQuestion() {
+//        val currentQuestion = allQuestions[questionIndex]
+//        questionState.addValue(currentQuestion)
+//        answerState.addValue(currentQuestion)
+//    }
     fun nextQuestion() {
             val currentQuestion = allQuestions[questionIndex]
             questionState.addValue(currentQuestion)

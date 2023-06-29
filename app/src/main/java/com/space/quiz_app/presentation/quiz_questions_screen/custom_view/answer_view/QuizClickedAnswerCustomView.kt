@@ -1,10 +1,10 @@
 package com.space.quiz_app.presentation.quiz_questions_screen.custom_view.answer_view
 
 import android.content.Context
-import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
+import androidx.core.content.ContextCompat
 import com.space.quiz_app.R
 import com.space.quiz_app.databinding.QuizAnswerItemBinding
 
@@ -13,38 +13,33 @@ class QuizClickedAnswerCustomView(
 ) : FrameLayout(context) {
 
     private val binding = QuizAnswerItemBinding.inflate(LayoutInflater.from(context), this, true)
-    private var correctAnswerPosition: Int? = null
 
     fun setAnswers(item: String) {
         binding.answerTextView.text = item
     }
 
-    fun wrongAnswer(userAnswer: String, correctAnswer: String) {
-        updateBackgroundColor(R.color.red_wrong)
-        setScore(false)
-    }
-
-    fun correctAnswer(userAnswer: String, correctAnswer: String) {
+    fun correctAnswer() {
         updateBackgroundColor(R.color.green_success)
+        changeTextColor(R.color.white)
         setScore(true)
     }
 
-    fun setStandardBackgroundColor() {
-        updateBackgroundColor(R.color.neutral_04_lighter_grey)
-        changeTextColor(R.color.neutral_01_dark_grey)
-        binding.scoreTextView.visibility = View.GONE
-    }
-
-    private fun changeTextColor(colorRes: Int) {
-        binding.answerTextView.setTextColor(colorRes)
+    fun wrongAnswer() {
+        updateBackgroundColor(R.color.red_wrong)
+        changeTextColor(R.color.white)
+        setScore(false)
     }
 
     private fun updateBackgroundColor(colorRes: Int) {
-        binding.root.backgroundTintList =
-            ColorStateList.valueOf(colorRes)
+        binding.root.backgroundTintList = ContextCompat.getColorStateList(context, colorRes)
+    }
+
+    private fun changeTextColor(colorRes: Int) {
+        binding.answerTextView.setTextColor(ContextCompat.getColor(context, colorRes))
     }
 
     private fun setScore(isVisible: Boolean) {
         binding.scoreTextView.visibility = if (isVisible) View.VISIBLE else GONE
     }
+
 }

@@ -14,6 +14,7 @@ import kotlin.reflect.KClass
 class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
 
     private val binding by viewBinding(QuizQuestionsFragmentBinding::bind)
+    private var selectedAnswer: String? = null
 
     override val layout: Int
         get() = R.layout.quiz_questions_fragment
@@ -21,13 +22,17 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
     override val viewModelClass: KClass<QuizQuestionsViewModel>
         get() = QuizQuestionsViewModel::class
 
+
     private val answersAdapter by lazy {
-        QuizAnswersAdapter()
+        QuizAnswersAdapter {answer ->
+            selectedAnswer = answer
+            binding.nextButton.isEnabled = selectedAnswer != null
+        }
     }
 
     override fun onCreateFragment() {
-        val subjectTitle = arguments?.getString(SubjectTitle.ARG_SUBJECT_ID)?: ""
-        viewModel.getQuestions(subjectTitle)
+        val subjectTitle = arguments?.getString(SubjectTitle.ARG_SUBJECT_TITLE)?: ""
+        viewModel.getAllQuestions(subjectTitle)
     }
 
     override fun onBind() {
@@ -39,6 +44,7 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
 
     private fun initRecycler() {
         binding.answersRecyclerView.adapter = answersAdapter
+        binding.nextButton.isEnabled = selectedAnswer != null
     }
 
     private fun observe() {
@@ -57,8 +63,12 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
     }
 
     private fun nextQuestion() {
-        binding.nextButton.setOnClickListener{
-            viewModel.nextQuestion()
+        with(binding){
+            nextButton.setOnClickListener{
+                viewModel.nextQuestion()
+                selectedAnswer = null
+                nextButton.isEnabled = false
+            }
         }
     }
 

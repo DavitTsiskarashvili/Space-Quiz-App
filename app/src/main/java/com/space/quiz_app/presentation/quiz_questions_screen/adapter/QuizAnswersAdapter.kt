@@ -10,7 +10,9 @@ import com.space.quiz_app.presentation.base.adapter.DiffUtilCallback
 import com.space.quiz_app.presentation.model.questions.QuizQuestionUIModel
 import com.space.quiz_app.presentation.quiz_questions_screen.custom_view.answer_view.QuizClickedAnswerCustomView
 
-class QuizAnswersAdapter :
+class QuizAnswersAdapter(
+    private val answerSelected: (String?) -> Unit
+) :
     ListAdapter<QuizQuestionUIModel, QuizAnswersAdapter.AnswersViewHolder>(DiffUtilCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnswersViewHolder {
@@ -30,7 +32,8 @@ class QuizAnswersAdapter :
             holder.onBind(
                 it,
                 currentItem.correctAnswer,
-                currentItem.answers.indexOf(currentItem.correctAnswer)
+                currentItem.answers.indexOf(currentItem.correctAnswer),
+                answerSelected
             )
         }
     }
@@ -42,6 +45,7 @@ class QuizAnswersAdapter :
             userAnswer: String,
             correctAnswer: String,
             position: Int,
+            answerSelected: (String?) -> Unit
         ) {
             with(binding) {
                 val item = QuizClickedAnswerCustomView(root.context)
@@ -52,23 +56,19 @@ class QuizAnswersAdapter :
                     root.children.forEach {
                         it.isClickable = false
                     }
-                    if (userAnswer != correctAnswer) {
-                        getItemView(position).wrongAnswer(userAnswer, correctAnswer)
+
+                    if (userAnswer == correctAnswer) {
+                        item.correctAnswer()
                     } else {
-                        getItemView(position).correctAnswer(userAnswer, correctAnswer)
+                        item.wrongAnswer()
+                        getItemView(position).correctAnswer()
                     }
+                    answerSelected(userAnswer)
                 }
             }
         }
-
         private fun getItemView(position: Int) =
             binding.root.getChildAt(position) as QuizClickedAnswerCustomView
     }
 
 }
-
-
-
-
-
-
