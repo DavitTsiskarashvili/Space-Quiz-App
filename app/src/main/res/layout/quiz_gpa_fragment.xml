@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.quiz_gpa_screen.ui.QuizGPAFragment">
+    tools:context=".presentation.ui.gpa.ui.QuizGPAFragment">
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/backButton"

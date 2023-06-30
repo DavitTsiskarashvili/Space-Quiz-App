@@ -1,7 +1,5 @@
 package com.space.quiz_app.domain.model.questions
 
-import com.space.quiz_app.presentation.utils.QuizAnswerState
-
 data class QuizQuestionDomainModel(
     val questionTitle: String,
     val answers: List<String>,

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.quiz_home_screen.ui.QuizHomeFragment">
+    tools:context=".presentation.ui.home.ui.QuizHomeFragment">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/greetingTextView"
@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.space.quiz_app.presentation.quiz_home_screen.custom_view.gpa_custom_view.GpaCustomView
+    <com.space.quiz_app.presentation.ui.home.custom_view.gpa_custom_view.GpaCustomView
         android:id="@+id/gpaButton"
         layout="@layout/quiz_gpa_card_view"
         android:layout_width="match_parent"

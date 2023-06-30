@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.quiz_questions_screen.ui.QuizQuestionsFragment">
+    tools:context=".presentation.ui.questions.ui.QuizQuestionsFragment">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/quizTitleTextView"
@@ -27,7 +27,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.space.quiz_app.presentation.quiz_questions_screen.custom_view.progress_bar.QuizProgressBar
+    <com.space.quiz_app.presentation.ui.questions.custom_view.progress_bar.QuizProgressBar
         android:id="@+id/progressBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/quizTitleTextView" />
 
-    <com.space.quiz_app.presentation.quiz_questions_screen.custom_view.question_custom_view.QuestionCustomView
+    <com.space.quiz_app.presentation.ui.questions.custom_view.question_custom_view.QuestionCustomView
         android:id="@+id/questionBackground"
         style="@style/normalMyriadGeo_Bold"
         android:layout_width="match_parent"
@@ -69,6 +69,8 @@
         android:layout_marginHorizontal="@dimen/dimen_16_dp"
         android:layout_marginTop="@dimen/dimen_60_dp"
         android:backgroundTint="@color/yellow_primary"
+        android:clickable="false"
+        android:enabled="false"
         android:paddingVertical="@dimen/dimen_18_dp"
         android:text="@string/next_button"
         android:textColor="@color/white"

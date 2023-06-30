@@ -7,12 +7,12 @@
     
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.space.quiz_app.presentation.quiz_login_screen.ui.QuizLoginFragment"
+        android:name="com.space.quiz_app.presentation.ui.login.ui.QuizLoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/quiz_login_fragment" />
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.space.quiz_app.presentation.quiz_home_screen.ui.QuizHomeFragment"
+        android:name="com.space.quiz_app.presentation.ui.home.ui.QuizHomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/quiz_home_fragment" >
         <action
@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/questionsFragment"
-        android:name="com.space.quiz_app.presentation.quiz_questions_screen.ui.QuizQuestionsFragment"
+        android:name="com.space.quiz_app.presentation.ui.questions.ui.QuizQuestionsFragment"
         android:label="fragment_questions"
         tools:layout="@layout/quiz_questions_fragment" >
         <argument
@@ -30,7 +30,7 @@
     </fragment>
     <fragment
         android:id="@+id/gpaFragment"
-        android:name="com.space.quiz_app.presentation.quiz_gpa_screen.ui.QuizGPAFragment"
+        android:name="com.space.quiz_app.presentation.ui.gpa.ui.QuizGPAFragment"
         android:label="fragment_gpa"
         tools:layout="@layout/quiz_gpa_fragment" />
     <action
