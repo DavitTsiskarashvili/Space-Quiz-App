@@ -15,6 +15,8 @@ class QuizAnswersAdapter(
 ) :
     ListAdapter<QuizQuestionUIModel, QuizAnswersAdapter.AnswersViewHolder>(DiffUtilCallback()) {
 
+    var correctAnswerListener: ((Boolean) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnswersViewHolder {
         return AnswersViewHolder(
             QuizQuestionItemCustomViewBinding.inflate(
@@ -33,7 +35,8 @@ class QuizAnswersAdapter(
                 it,
                 currentItem.correctAnswer,
                 currentItem.answers.indexOf(currentItem.correctAnswer),
-                answerSelected
+                answerSelected,
+                correctAnswerListener
             )
         }
     }
@@ -45,7 +48,8 @@ class QuizAnswersAdapter(
             userAnswer: String,
             correctAnswer: String,
             position: Int,
-            answerSelected: () -> Unit
+            answerSelected: () -> Unit,
+            correctAnswerListener: ((Boolean) -> Unit)?
         ) {
             with(binding) {
                 val item = QuizClickedAnswerCustomView(root.context)
@@ -64,6 +68,7 @@ class QuizAnswersAdapter(
                         getItemView(position).correctAnswer()
                     }
                     answerSelected()
+                    correctAnswerListener?.invoke(userAnswer == correctAnswer)
                 }
             }
         }

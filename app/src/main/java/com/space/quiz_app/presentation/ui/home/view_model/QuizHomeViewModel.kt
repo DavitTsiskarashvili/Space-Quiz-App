@@ -24,7 +24,7 @@ class QuizHomeViewModel(
     val subjectsState by QuizLiveDataDelegate<List<QuizSubjectUIModel>?>(null)
     val loadingState by QuizLiveDataDelegate(true)
     val errorState by QuizLiveDataDelegate<Throwable?>(null)
-    val selectedSubjectIdState by QuizLiveDataDelegate<String>("")
+    private val selectedSubjectTitleState by QuizLiveDataDelegate<QuizSubjectUIModel?>(null)
 
     fun getUsername() {
         viewModelScope {
@@ -55,8 +55,8 @@ class QuizHomeViewModel(
         quizUserRepository.insertUsername(quizUserUIToDomainMapper((username)))
     }
 
-    fun onSubjectItemClick(subjectTitle: String) {
-        selectedSubjectIdState.addValue(subjectTitle)
+    fun onSubjectItemClick(subjectTitle: QuizSubjectUIModel) {
+        selectedSubjectTitleState.addValue(subjectTitle)
     }
 
     fun navigateToHome() {
@@ -67,7 +67,7 @@ class QuizHomeViewModel(
         navigate(QuizHomeFragmentDirections.actionGlobalGpaFragment())
     }
 
-    fun navigateToQuiz(subjectTitle: String) {
+    fun navigateToQuiz(subjectTitle: QuizSubjectUIModel) {
         navigate(QuizHomeFragmentDirections.actionGlobalQuestionsFragment(subjectTitle))
     }
 }

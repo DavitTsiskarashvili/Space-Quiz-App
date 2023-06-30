@@ -7,11 +7,12 @@ import com.space.quiz_app.common.extensions.observeLiveDataNonNull
 import com.space.quiz_app.common.extensions.showCancelDialog
 import com.space.quiz_app.common.extensions.showCongratsDialog
 import com.space.quiz_app.common.extensions.viewBinding
-import com.space.quiz_app.databinding.QuizQuestionsFragmentBinding
 import com.space.quiz_app.presentation.feature.base.fragment.QuizBaseFragment
 import com.space.quiz_app.presentation.ui.questions.adapter.QuizAnswersAdapter
 import com.space.quiz_app.presentation.ui.questions.view_model.QuizQuestionsViewModel
-import com.space.quiz_app.common.utils.SubjectTitle
+import com.space.quiz_app.common.utils.Subject
+import com.space.quiz_app.databinding.QuizQuestionsFragmentBinding
+import com.space.quiz_app.presentation.feature.model.subject.QuizSubjectUIModel
 import kotlin.reflect.KClass
 
 class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
@@ -33,8 +34,8 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
     }
 
     override fun onCreateFragment() {
-        val subjectTitle = arguments?.getString(SubjectTitle.ARG_SUBJECT_TITLE) ?: ""
-        viewModel.getAllQuestions(subjectTitle)
+        val subjectTitle = arguments?.getParcelable(Subject.ARG_SUBJECT, QuizSubjectUIModel::class.java)
+        viewModel.getAllQuestions(subjectTitle!!.quizTitle)
     }
 
     override fun onBind() {
@@ -66,6 +67,17 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
             observeLiveData(viewModel.answerSelectedState) {
                 nextButton.isEnabled = it
                 nextButton.isClickable = it
+            }
+            observeLiveData(viewModel.userScoreState){
+                progressBar.setCurrentScore(it)
+            }
+        }
+    }
+
+    private fun setListeners() {
+        answersAdapter.correctAnswerListener = {
+            if (it){
+                viewModel.submitQuizScore()
             }
         }
     }

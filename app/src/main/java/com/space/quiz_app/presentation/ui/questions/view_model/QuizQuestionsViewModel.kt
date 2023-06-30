@@ -18,6 +18,7 @@ class QuizQuestionsViewModel(
     val answerState by QuizLiveDataDelegate<QuizQuestionUIModel?>(null)
     val finishQuizState by QuizLiveDataDelegate(false)
     val answerSelectedState by QuizLiveDataDelegate(false)
+    val userScoreState by QuizLiveDataDelegate(0)
 
     // ერთი კითხვა უნდა იყოს მარტო და არა ლისტი
     private val allQuestions = mutableListOf<QuizQuestionUIModel>()
@@ -49,8 +50,16 @@ class QuizQuestionsViewModel(
         }
     }
 
+    fun saveUserScore() {
+
+    }
+
     private fun finishQuiz(){
             finishQuizState.addValue(true)
+    }
+
+    fun submitQuizScore() {
+        userScoreState.addValue(userScoreState.value?.plus(1) ?: 0)
     }
 
     fun navigateToHome() {
