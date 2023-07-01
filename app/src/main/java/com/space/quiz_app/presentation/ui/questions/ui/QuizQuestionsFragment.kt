@@ -75,9 +75,6 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
             observeLiveData(viewModel.quizMaxScoreState){
                 progressBar.setMaxScore(it)
             }
-//            observeLiveData(){
-//                progressBar.
-//            }
         }
     }
 
