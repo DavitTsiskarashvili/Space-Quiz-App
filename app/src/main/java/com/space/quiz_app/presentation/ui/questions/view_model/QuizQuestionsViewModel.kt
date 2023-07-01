@@ -36,7 +36,6 @@ class QuizQuestionsViewModel(
         }
     }
 
-
     fun answerSelected() {
         answerSelectedState.addValue(true)
     }

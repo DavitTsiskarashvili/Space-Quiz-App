@@ -4,16 +4,13 @@ import android.app.AlertDialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
-import com.space.quiz_app.R
 import com.space.quiz_app.databinding.QuizCongratsDialogBinding
-import com.space.quiz_app.presentation.ui.questions.custom_view.cancel_quiz_dialog.Dialog
 
 class QuizCongratsDialog (
     context: Context
-) : FrameLayout(context), Dialog {
+) : FrameLayout(context) {
     private val binding: QuizCongratsDialogBinding =
         QuizCongratsDialogBinding.inflate(LayoutInflater.from(context), this, true)
 
