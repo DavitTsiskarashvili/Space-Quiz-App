@@ -13,7 +13,7 @@ import com.space.quiz_app.data.local.entity.QuizUserSubjectEntity
 
 @Database(
     entities = [QuizUserEntity::class, QuizSubjectEntity::class, QuizQuestionEntity::class, QuizUserSubjectEntity::class],
-    version = 4
+    version = 1
 )
 abstract class QuizDatabase : RoomDatabase() {
     abstract fun userDao(): QuizUserDao

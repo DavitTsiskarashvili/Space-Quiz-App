@@ -24,6 +24,10 @@ class QuizUserRepositoryImpl(
         val userEntity = userDao.getUsernameIfLoggedIn()
         return userEntity?.let { quizUserEntityToDomainMapper(it) }
     }
+
+    override suspend fun saveGPA(username: String, gpa: Float) {
+        userDao.insertUser(userDao.getUser(username).copy(gpa = gpa))
+    }
 }
 
 

@@ -16,4 +16,7 @@ interface QuizUserDao {
 
     @Query("SELECT * FROM User_table WHERE isLoggedIn = true")
     suspend fun getUsernameIfLoggedIn(): QuizUserEntity?
+
+    @Query("SELECT * FROM User_table WHERE username=:username")
+    suspend fun getUser(username: String): QuizUserEntity
 }

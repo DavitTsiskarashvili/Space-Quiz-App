@@ -11,5 +11,6 @@ data class QuizUserSubjectEntity(
     val quizIcon: String,
     val quizTitle: String,
     val quizDescription: String,
-    val score: Int
+    val score: Int,
+    val questionsCount: Int = 0
 )

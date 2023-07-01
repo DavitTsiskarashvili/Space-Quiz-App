@@ -1,4 +1,4 @@
-package com.space.quiz_app.presentation.ui.questions.custom_view.progress_bar
+package com.space.quiz_app.presentation.ui.questions.custom_view.congrats_dialog.progress_bar
 
 import android.content.Context
 import android.util.AttributeSet
@@ -14,13 +14,13 @@ class QuizProgressBar(
     private val binding =
         QuizProgressIndicatorCustomViewBinding.inflate(LayoutInflater.from(context), this, true)
 
-    private var maxScore = 0
-    private var currentScore = 0
+    private var maxQuestion = 0
+    private var currentQuestion = 0
     private var totalCorrectAnswers = 0
 
-    fun setMaxScore(quizMaxScore: Int) {
-        maxScore = quizMaxScore
-        binding.progressBar.max = quizMaxScore
+    fun setMaxQuestion(quizMaxQuestion: Int) {
+        maxQuestion = quizMaxQuestion
+        binding.progressBar.max = quizMaxQuestion
         setContent()
     }
 
@@ -30,23 +30,23 @@ class QuizProgressBar(
     }
 
     fun updateProgressBar(progressIndicator: Int) {
-        currentScore = progressIndicator
+        currentQuestion = progressIndicator
         setContent()
     }
 
     private fun setContent() {
         with(binding) {
-            val progress = "$currentScore/$maxScore"
+            val progress = "$currentQuestion/$maxQuestion"
             questionCounterTextView.text = progress
             scoreCounterTextView.text =
                 context.getString(R.string.current_score, totalCorrectAnswers)
-            progressBar.setProgress(currentScore, true)
+            progressBar.setProgress(currentQuestion, true)
         }
     }
 
     fun clearProgressBarValues() {
-        maxScore = 0
-        currentScore = 0
+        maxQuestion = 0
+        currentQuestion = 0
         totalCorrectAnswers = 0
         setContent()
     }

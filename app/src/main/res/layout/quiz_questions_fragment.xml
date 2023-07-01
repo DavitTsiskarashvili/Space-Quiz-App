@@ -27,7 +27,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.space.quiz_app.presentation.ui.questions.custom_view.progress_bar.QuizProgressBar
+    <com.space.quiz_app.presentation.ui.questions.custom_view.congrats_dialog.progress_bar.QuizProgressBar
         android:id="@+id/progressBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

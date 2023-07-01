@@ -9,8 +9,8 @@ import com.space.quiz_app.common.extensions.viewBinding
 import com.space.quiz_app.databinding.QuizHomeFragmentBinding
 import com.space.quiz_app.presentation.feature.base.fragment.QuizBaseFragment
 import com.space.quiz_app.presentation.ui.home.adapter.QuizSubjectsAdapter
-import com.space.quiz_app.presentation.ui.questions.custom_view.cancel_quiz_dialog.CancelQuizDialog
 import com.space.quiz_app.presentation.ui.home.view_model.QuizHomeViewModel
+import com.space.quiz_app.presentation.ui.questions.custom_view.cancel_quiz_dialog.CancelQuizDialog
 import kotlin.reflect.KClass
 
 class QuizHomeFragment : QuizBaseFragment<QuizHomeViewModel>() {
@@ -39,9 +39,12 @@ class QuizHomeFragment : QuizBaseFragment<QuizHomeViewModel>() {
     }
 
     private fun observe() {
-        observeLiveData(viewModel.usernameState) {
-            binding.greetingTextView.text =
-                getString(R.string.hello_user, it)
+        observeLiveData(viewModel.userState) {
+            it?.let {
+                binding.greetingTextView.text =
+                    getString(R.string.hello_user, it.username)
+                binding.gpaButton.setScore(it.gpa)
+            }
         }
         observeLiveData(viewModel.loadingState) {
             binding.progressBar.isVisible = it
@@ -51,7 +54,11 @@ class QuizHomeFragment : QuizBaseFragment<QuizHomeViewModel>() {
                 subjectsAdapter.submitList(it)
             }
             observeLiveDataNonNull(viewModel.errorState) {
-                Toast.makeText(requireContext(), getString(R.string.username_invalid_characters), Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    getString(R.string.username_invalid_characters),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
