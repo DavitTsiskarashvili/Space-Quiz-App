@@ -19,19 +19,23 @@ class QuizQuestionsViewModel(
     val finishQuizState by QuizLiveDataDelegate(false)
     val answerSelectedState by QuizLiveDataDelegate(false)
     val userScoreState by QuizLiveDataDelegate(0)
+    val quizMaxScoreState by QuizLiveDataDelegate(0)
 
-    // ერთი კითხვა უნდა იყოს მარტო და არა ლისტი
+    // viewModel shouldn't store all questions but one question per request
     private val allQuestions = mutableListOf<QuizQuestionUIModel>()
-     var questionIndex = 0
+    var questionIndex = 0
+
 
     // ViewModel shouldn't store all questions in advance. Retrieve one question per time from a database.
     fun getAllQuestions(subjectTitle: String) {
         viewModelScope {
             val result = quizQuestionsRepository.getQuestionsFromDatabase((subjectTitle))
             allQuestions.addAll(result.map { questionsDomainMapper(it) })
+            setQuizMaxScore()
             nextQuestion()
         }
     }
+
 
     fun answerSelected() {
         answerSelectedState.addValue(true)
@@ -45,7 +49,7 @@ class QuizQuestionsViewModel(
             questionIndex += 1
             return
         }
-        if (questionIndex == allQuestions.lastIndex){
+        if (questionIndex == allQuestions.lastIndex) {
             finishQuiz()
         }
     }
@@ -54,8 +58,13 @@ class QuizQuestionsViewModel(
 
     }
 
-    private fun finishQuiz(){
-            finishQuizState.addValue(true)
+    fun setQuizMaxScore() {
+        val maxScore = allQuestions.size
+        quizMaxScoreState.addValue(maxScore)
+    }
+
+    private fun finishQuiz() {
+        finishQuizState.addValue(true)
     }
 
     fun submitQuizScore() {

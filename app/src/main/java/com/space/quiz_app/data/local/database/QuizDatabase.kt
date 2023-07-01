@@ -9,9 +9,13 @@ import com.space.quiz_app.data.local.dao.QuizUserSubjectsDao
 import com.space.quiz_app.data.local.entity.QuizQuestionEntity
 import com.space.quiz_app.data.local.entity.QuizSubjectEntity
 import com.space.quiz_app.data.local.entity.QuizUserEntity
+import com.space.quiz_app.data.local.entity.QuizUserSubjectEntity
 
-@Database(entities = [QuizUserEntity::class, QuizSubjectEntity::class, QuizQuestionEntity::class], version = 4)
-abstract class QuizDatabase: RoomDatabase() {
+@Database(
+    entities = [QuizUserEntity::class, QuizSubjectEntity::class, QuizQuestionEntity::class, QuizUserSubjectEntity::class],
+    version = 4
+)
+abstract class QuizDatabase : RoomDatabase() {
     abstract fun userDao(): QuizUserDao
     abstract fun subjectsDao(): QuizSubjectsDao
     abstract fun questionsDao(): QuizQuestionsDao

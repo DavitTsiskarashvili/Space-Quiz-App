@@ -11,12 +11,9 @@ import com.space.quiz_app.R
 import com.space.quiz_app.databinding.QuizCongratsDialogBinding
 import com.space.quiz_app.presentation.ui.questions.custom_view.cancel_quiz_dialog.Dialog
 
-class QuizCongratsDialog @JvmOverloads constructor(
-    context: Context,
-    attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0,
-    defStyleRes: Int = 0
-) : FrameLayout(context, attrs, defStyleAttr, defStyleRes), Dialog {
+class QuizCongratsDialog (
+    context: Context
+) : FrameLayout(context), Dialog {
     private val binding: QuizCongratsDialogBinding =
         QuizCongratsDialogBinding.inflate(LayoutInflater.from(context), this, true)
 

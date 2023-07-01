@@ -1,31 +1,30 @@
 package com.space.quiz_app.presentation.ui.questions.ui
 
 import androidx.activity.addCallback
+import androidx.navigation.fragment.navArgs
 import com.space.quiz_app.R
 import com.space.quiz_app.common.extensions.observeLiveData
 import com.space.quiz_app.common.extensions.observeLiveDataNonNull
 import com.space.quiz_app.common.extensions.showCancelDialog
 import com.space.quiz_app.common.extensions.showCongratsDialog
 import com.space.quiz_app.common.extensions.viewBinding
+import com.space.quiz_app.databinding.QuizQuestionsFragmentBinding
 import com.space.quiz_app.presentation.feature.base.fragment.QuizBaseFragment
 import com.space.quiz_app.presentation.ui.questions.adapter.QuizAnswersAdapter
 import com.space.quiz_app.presentation.ui.questions.view_model.QuizQuestionsViewModel
-import com.space.quiz_app.common.utils.Subject
-import com.space.quiz_app.databinding.QuizQuestionsFragmentBinding
-import com.space.quiz_app.presentation.feature.model.subject.QuizSubjectUIModel
 import kotlin.reflect.KClass
 
 class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
 
     private val binding by viewBinding(QuizQuestionsFragmentBinding::bind)
-    private var score = 0
+    private val args: QuizQuestionsFragmentArgs by navArgs()
+    private var userScore = 0
 
     override val layout: Int
         get() = R.layout.quiz_questions_fragment
 
     override val viewModelClass: KClass<QuizQuestionsViewModel>
         get() = QuizQuestionsViewModel::class
-
 
     private val answersAdapter by lazy {
         QuizAnswersAdapter {
@@ -34,8 +33,8 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
     }
 
     override fun onCreateFragment() {
-        val subjectTitle = arguments?.getParcelable(Subject.ARG_SUBJECT, QuizSubjectUIModel::class.java)
-        viewModel.getAllQuestions(subjectTitle!!.quizTitle)
+        val subjectTitle = args.subjectUIModel.quizTitle
+        viewModel.getAllQuestions(subjectTitle)
     }
 
     override fun onBind() {
@@ -45,6 +44,7 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
         nextQuestion()
         handleBackPress()
         updateButtonText()
+        setListeners()
     }
 
     private fun initRecycler() {
@@ -69,8 +69,15 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
                 nextButton.isClickable = it
             }
             observeLiveData(viewModel.userScoreState){
-                progressBar.setCurrentScore(it)
+                userScore = it
+                progressBar.setCurrentScore(userScore)
             }
+            observeLiveData(viewModel.quizMaxScoreState){
+                progressBar.setMaxScore(it)
+            }
+//            observeLiveData(){
+//                progressBar.
+//            }
         }
     }
 
@@ -94,8 +101,7 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
         observeLiveData(viewModel.finishQuizState) { isLastQuestion ->
             if (isLastQuestion) {
                 binding.nextButton.text = getString(R.string.finish_button)
-                // hard score just to test the dialog
-                showFinishDialog(5)
+                showFinishDialog()
             } else {
                 binding.nextButton.text = getString(R.string.next_button)
             }
@@ -126,12 +132,12 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
         }
     }
 
-    private fun showFinishDialog(score: Int) {
+    private fun showFinishDialog() {
         binding.nextButton.setOnClickListener {
             showCongratsDialog {
                 setIcon(getString(R.string.congrats_icon))
                 setMessage(getString(R.string.congratulations))
-                setScore(String.format(getString(R.string.your_score_is), score))
+                setScore(String.format(getString(R.string.your_score_is), userScore))
                 setPositiveButtonClickListener {
                     viewModel.navigateToHome()
                     binding.progressBar.clearProgressBarValues()
