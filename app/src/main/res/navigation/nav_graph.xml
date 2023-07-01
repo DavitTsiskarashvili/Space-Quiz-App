@@ -30,9 +30,9 @@
     </fragment>
     <fragment
         android:id="@+id/gpaFragment"
-        android:name="com.space.quiz_app.presentation.ui.gpa.ui.QuizGPAFragment"
+        android:name="com.space.quiz_app.presentation.ui.details.ui.QuizDetailsFragment"
         android:label="fragment_gpa"
-        tools:layout="@layout/quiz_gpa_fragment" />
+        tools:layout="@layout/quiz_details_fragment" />
     <action
         android:id="@+id/action_global_homeFragment"
         app:destination="@id/homeFragment" />

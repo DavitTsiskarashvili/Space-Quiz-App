@@ -9,8 +9,8 @@ import com.space.quiz_app.common.extensions.viewBinding
 import com.space.quiz_app.databinding.QuizHomeFragmentBinding
 import com.space.quiz_app.presentation.feature.base.fragment.QuizBaseFragment
 import com.space.quiz_app.presentation.ui.home.adapter.QuizSubjectsAdapter
+import com.space.quiz_app.presentation.ui.home.custom_view.log_out_dialog.LogOutDialog
 import com.space.quiz_app.presentation.ui.home.view_model.QuizHomeViewModel
-import com.space.quiz_app.presentation.ui.questions.custom_view.cancel_quiz_dialog.CancelQuizDialog
 import kotlin.reflect.KClass
 
 class QuizHomeFragment : QuizBaseFragment<QuizHomeViewModel>() {
@@ -65,7 +65,7 @@ class QuizHomeFragment : QuizBaseFragment<QuizHomeViewModel>() {
 
     private fun initRecycler() {
         viewModel.getSubjects()
-        binding.subjectRecyclerView.adapter = subjectsAdapter
+        binding.subjectsRecyclerView.adapter = subjectsAdapter
     }
 
     private fun logOut() {
@@ -75,9 +75,9 @@ class QuizHomeFragment : QuizBaseFragment<QuizHomeViewModel>() {
     }
 
     private fun showDialog() {
-        CancelQuizDialog(requireContext()).apply {
+        LogOutDialog(requireContext()).apply {
             setPositiveButtonClickListener {
-                viewModel.logOutUser { viewModel.navigateToHome() }
+                viewModel.logOutUser { viewModel.navigateToLogin() }
             }
             setNegativeButtonClickListener {
                 dismissDialog()

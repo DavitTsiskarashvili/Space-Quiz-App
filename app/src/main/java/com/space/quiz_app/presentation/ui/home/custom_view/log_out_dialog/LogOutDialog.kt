@@ -1,13 +1,12 @@
 package com.space.quiz_app.presentation.ui.home.custom_view.log_out_dialog
 
-import com.space.quiz_app.databinding.QuizCloseDialogBinding
 import android.app.AlertDialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
+import com.space.quiz_app.databinding.QuizCloseDialogBinding
 
 class LogOutDialog (
     context: Context,
@@ -30,6 +29,10 @@ class LogOutDialog (
         alertDialog.show()
     }
 
+    fun dismissDialog(){
+        alertDialog.dismiss()
+    }
+
     fun setPositiveButtonClickListener(onClickListener: () -> Unit) {
         binding.yesButton.setOnClickListener {
             onClickListener.invoke()
@@ -40,7 +43,6 @@ class LogOutDialog (
     fun setNegativeButtonClickListener(onClickListener: () -> Unit) {
         binding.noButton.setOnClickListener {
             onClickListener.invoke()
-            alertDialog.dismiss()
         }
     }
 

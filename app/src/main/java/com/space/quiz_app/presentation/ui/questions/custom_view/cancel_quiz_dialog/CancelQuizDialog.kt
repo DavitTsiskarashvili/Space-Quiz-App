@@ -10,7 +10,6 @@ import com.space.quiz_app.databinding.CancelQuizDialogBinding
 
 class CancelQuizDialog(
     context: Context
-
 ) : FrameLayout(context) {
     private val binding: CancelQuizDialogBinding =
         CancelQuizDialogBinding.inflate(LayoutInflater.from(context), this, true)

@@ -59,7 +59,7 @@ class QuizHomeViewModel(
         selectedSubjectTitleState.addValue(subjectTitle)
     }
 
-    fun navigateToHome() {
+    fun navigateToLogin() {
         navigate(QuizHomeFragmentDirections.actionGlobalLoginFragment())
     }
 

@@ -1,5 +1,6 @@
 package com.space.quiz_app.presentation.ui.questions.view_model
 
+import com.space.quiz_app.common.extensions.roundToSingleDecimal
 import com.space.quiz_app.common.extensions.viewModelScope
 import com.space.quiz_app.common.utils.QuizLiveDataDelegate
 import com.space.quiz_app.domain.repository.QuizQuestionsRepository
@@ -100,10 +101,9 @@ class QuizQuestionsViewModel(
                 userSubjectPercentages.add(it.score.toFloat() / it.questionsCount)
             }
             val gpa = userSubjectPercentages.average() * 4
-            quizUserRepository.saveGPA(username, gpa.toFloat())
+            quizUserRepository.saveGPA(username, gpa.toFloat().roundToSingleDecimal())
         }
     }
-
 
     fun navigateToHome() {
         navigate(QuizHomeFragmentDirections.actionGlobalLoginFragment())

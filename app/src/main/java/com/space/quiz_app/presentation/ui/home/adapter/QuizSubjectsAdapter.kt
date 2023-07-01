@@ -30,10 +30,12 @@ class QuizSubjectsAdapter :
     class SubjectsViewHolder(val binding: QuizSubjectItemBinding) :
         BaseViewHolder<QuizSubjectUIModel>(binding) {
         override fun onBind(item: QuizSubjectUIModel) {
-            with(binding) {
-                titleTextView.text = item.quizTitle
-                descriptionTextView.text = item.quizDescription
-                subjectImageView.loadImage(item.quizIcon)
+            with(item) {
+                with(binding) {
+                    titleTextView.text = quizTitle
+                    descriptionTextView.text = quizDescription
+                    subjectImageView.loadImage(quizIcon)
+                }
             }
         }
     }
