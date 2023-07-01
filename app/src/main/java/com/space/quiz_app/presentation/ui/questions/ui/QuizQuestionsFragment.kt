@@ -1,6 +1,7 @@
 package com.space.quiz_app.presentation.ui.questions.ui
 
 import androidx.activity.addCallback
+import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.navArgs
 import com.space.quiz_app.R
 import com.space.quiz_app.common.extensions.observeLiveData
@@ -68,11 +69,11 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
                 nextButton.isEnabled = it
                 nextButton.isClickable = it
             }
-            observeLiveData(viewModel.userScoreState){
+            observeLiveData(viewModel.userScoreState) {
                 userScore = it
                 progressBar.setCurrentScore(userScore)
             }
-            observeLiveData(viewModel.quizMaxScoreState){
+            observeLiveData(viewModel.quizMaxScoreState) {
                 progressBar.setMaxScore(it)
             }
         }
@@ -80,7 +81,7 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
 
     private fun setListeners() {
         answersAdapter.correctAnswerListener = {
-            if (it){
+            if (it) {
                 viewModel.submitQuizScore()
             }
         }

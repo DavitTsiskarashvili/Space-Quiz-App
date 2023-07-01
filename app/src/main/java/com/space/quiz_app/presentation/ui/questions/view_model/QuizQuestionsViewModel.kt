@@ -54,11 +54,7 @@ class QuizQuestionsViewModel(
         }
     }
 
-    fun saveUserScore() {
-
-    }
-
-    fun setQuizMaxScore() {
+    private fun setQuizMaxScore() {
         val maxScore = allQuestions.size
         quizMaxScoreState.addValue(maxScore)
     }

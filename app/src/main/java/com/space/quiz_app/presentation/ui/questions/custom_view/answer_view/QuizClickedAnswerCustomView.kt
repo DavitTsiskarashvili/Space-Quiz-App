@@ -18,8 +18,6 @@ class QuizClickedAnswerCustomView(
         binding.answerTextView.text = item
     }
 
-
-
     fun correctAnswer() {
         updateBackgroundColor(R.color.green_success)
         changeTextColor(R.color.white)
