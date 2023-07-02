@@ -1,4 +1,4 @@
-package com.space.quiz_app.presentation.ui.questions.custom_view.congrats_dialog.progress_bar
+package com.space.quiz_app.presentation.ui.questions.custom_view.progress_bar
 
 import android.content.Context
 import android.util.AttributeSet

@@ -7,7 +7,7 @@ import com.space.quiz_app.databinding.QuizSubjectItemBinding
 import com.space.quiz_app.presentation.feature.base.adapter.BaseAdapter
 import com.space.quiz_app.presentation.feature.model.user.QuizUserSubjectUIModel
 
-class QuizDetailsAdapter: BaseAdapter<QuizUserSubjectUIModel>() {
+class QuizDetailsAdapter : BaseAdapter<QuizUserSubjectUIModel>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DetailsViewHolder {
         return DetailsViewHolder(
@@ -22,7 +22,7 @@ class QuizDetailsAdapter: BaseAdapter<QuizUserSubjectUIModel>() {
     class DetailsViewHolder(val binding: QuizSubjectItemBinding) :
         BaseViewHolder<QuizUserSubjectUIModel>(binding) {
         override fun onBind(item: QuizUserSubjectUIModel) {
-            with (item) {
+            with(item) {
                 with(binding) {
                     titleTextView.text = quizTitle
                     descriptionTextView.text = quizDescription

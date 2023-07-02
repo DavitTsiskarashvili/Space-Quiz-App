@@ -29,9 +29,10 @@ class CancelQuizDialog(
         alertDialog.show()
     }
 
-    fun dismissDialog(){
+    fun dismissDialog() {
         alertDialog.dismiss()
     }
+
     fun setPositiveButtonClickListener(onClickListener: () -> Unit) {
         binding.yesButton.setOnClickListener {
             onClickListener.invoke()

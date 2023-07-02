@@ -1,6 +1,5 @@
 package com.space.quiz_app.data.repository
 
-import android.util.Log
 import com.space.quiz_app.data.local.dao.QuizQuestionsDao
 import com.space.quiz_app.data.mapper.question.QuizQuestionEntityToDomainMapper
 import com.space.quiz_app.domain.model.questions.QuizQuestionDomainModel
@@ -13,5 +12,4 @@ class QuizQuestionsRepositoryImpl(
     override suspend fun getQuestionsFromDatabase(subjectTitle: String): List<QuizQuestionDomainModel> {
         return questionsDao.getQuestions(subjectTitle).map { questionsEntityMapper(it) }
     }
-
 }

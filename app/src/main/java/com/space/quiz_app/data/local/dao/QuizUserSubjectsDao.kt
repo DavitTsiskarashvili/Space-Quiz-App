@@ -6,9 +6,9 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.space.quiz_app.data.local.entity.QuizUserSubjectEntity
+
 @Dao
 interface QuizUserSubjectsDao {
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertUserSubject(userSubject: QuizUserSubjectEntity)
 
@@ -20,5 +20,4 @@ interface QuizUserSubjectsDao {
 
     @Query("SELECT * FROM user_subject WHERE username=:username and quizTitle=:quizTitle")
     suspend fun getUserSpecificSubject(username: String, quizTitle: String): QuizUserSubjectEntity?
-
 }

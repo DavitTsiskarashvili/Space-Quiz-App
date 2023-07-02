@@ -18,5 +18,4 @@ val UIModule = module {
     single { QuizSubjectDomainMapper() }
     single { QuizSubjectUIToDomainMapper() }
     single { QuizUserSubjectDomainToUIMapper() }
-
 }

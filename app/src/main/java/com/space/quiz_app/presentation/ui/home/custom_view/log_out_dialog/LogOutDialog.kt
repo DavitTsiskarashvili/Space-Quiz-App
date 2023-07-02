@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.widget.FrameLayout
 import com.space.quiz_app.databinding.QuizCloseDialogBinding
 
-class LogOutDialog (
+class LogOutDialog(
     context: Context,
 ) : FrameLayout(context) {
     private val binding: QuizCloseDialogBinding =
@@ -29,7 +29,7 @@ class LogOutDialog (
         alertDialog.show()
     }
 
-    fun dismissDialog(){
+    fun dismissDialog() {
         alertDialog.dismiss()
     }
 

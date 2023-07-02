@@ -14,7 +14,7 @@ class GpaCustomView(
         QuizGpaCardViewBinding.inflate(LayoutInflater.from(context), this, true)
 
     fun setScore(gpa: Float) {
-            binding.gpaScoreTextView.text = gpa.toString()
+        binding.gpaScoreTextView.text = gpa.toString()
     }
 
     fun setOnClickListener(block: () -> Unit) {

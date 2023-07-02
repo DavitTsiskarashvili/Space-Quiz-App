@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.widget.FrameLayout
 import com.space.quiz_app.databinding.QuizCongratsDialogBinding
 
-class QuizCongratsDialog (
+class QuizCongratsDialog(
     context: Context
 ) : FrameLayout(context) {
     private val binding: QuizCongratsDialogBinding =
@@ -25,13 +25,14 @@ class QuizCongratsDialog (
         alertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
 
-    fun setIcon(icon: String){
+    fun setIcon(icon: String) {
         binding.iconTextView.text = icon
     }
 
-    fun setMessage(message: String){
+    fun setMessage(message: String) {
         binding.congratsTextView.text = message
     }
+
     fun setScore(score: String) {
         binding.scoreTextView.text = score
     }

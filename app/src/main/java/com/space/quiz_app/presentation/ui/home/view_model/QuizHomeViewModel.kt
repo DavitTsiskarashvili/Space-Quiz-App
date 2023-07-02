@@ -70,4 +70,5 @@ class QuizHomeViewModel(
     fun navigateToQuiz(subjectTitle: QuizSubjectUIModel) {
         navigate(QuizHomeFragmentDirections.actionGlobalQuestionsFragment(subjectTitle))
     }
+
 }

@@ -23,8 +23,9 @@ class QuizUserSubjectRepositoryImpl(
         return userSubjectsDao.getUserSpecificSubject(username, quizTitle)
     }
 
-    override suspend fun getUserSubjects(username: String): List<QuizUserSubjectsDomainModel>{
-        return userSubjectsDao.getUserSubjects(username).map { userSubjectsEntityToDomainMapper (it) }
+    override suspend fun getUserSubjects(username: String): List<QuizUserSubjectsDomainModel> {
+        return userSubjectsDao.getUserSubjects(username)
+            .map { userSubjectsEntityToDomainMapper(it) }
     }
 
     override suspend fun updateUserSubject(userSubject: QuizUserSubjectEntity) {

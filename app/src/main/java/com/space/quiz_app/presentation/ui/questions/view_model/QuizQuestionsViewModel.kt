@@ -62,21 +62,12 @@ class QuizQuestionsViewModel(
         }
     }
 
-    private fun setQuizMaxQuestionsNumber() {
-        val maxQuestion = allQuestions.size
-        quizMaxQuestionState.addValue(maxQuestion)
-    }
-
-    private fun finishQuiz() {
-        finishQuizState.addValue(true)
+    init {
+        getUsername()
     }
 
     fun submitQuizScore() {
         userScoreState.addValue(userScoreState.value?.plus(1) ?: 0)
-    }
-
-    init {
-        getUsername()
     }
 
     fun saveUserScore(username: String, subject: QuizSubjectUIModel, score: Int) {
@@ -85,6 +76,15 @@ class QuizQuestionsViewModel(
             quizUserSubjectsRepository.saveUserScore(username, score, subjectTitle)
             calculateAndSaveGPA()
         }
+    }
+
+    private fun setQuizMaxQuestionsNumber() {
+        val maxQuestion = allQuestions.size
+        quizMaxQuestionState.addValue(maxQuestion)
+    }
+
+    private fun finishQuiz() {
+        finishQuizState.addValue(true)
     }
 
     private fun getUsername() {

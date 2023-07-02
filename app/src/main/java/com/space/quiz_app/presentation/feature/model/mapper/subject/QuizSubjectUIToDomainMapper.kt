@@ -13,6 +13,6 @@ class QuizSubjectUIToDomainMapper : Mapper<QuizSubjectUIModel, QuizSubjectDomain
                 quizDescription = quizDescription,
                 quizIcon = quizIcon,
                 questionsCount = questionsCount,
-                )
+            )
         }
 }

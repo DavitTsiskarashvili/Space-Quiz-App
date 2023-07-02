@@ -59,7 +59,7 @@ class QuizDetailsFragment : QuizBaseFragment<QuizDetailsViewModel>() {
                     }
                     Log.d("list", "$it")
                 } else {
-                    with(binding){
+                    with(binding) {
                         userSubjectsRecyclerView.visibility = View.GONE
                         noPointsTextView.visibility = View.VISIBLE
                     }

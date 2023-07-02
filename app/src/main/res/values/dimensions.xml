@@ -53,6 +53,7 @@
     <dimen name="dimen_100_dp">100dp</dimen>
     <dimen name="dimen_110_dp">110dp</dimen>
     <dimen name="dimen_114_dp">114dp</dimen>
+    <dimen name="dimen_120_dp">120dp</dimen>
     <dimen name="dimen_136_dp">136dp</dimen>
     <dimen name="dimen_180_dp">180dp</dimen>
     <dimen name="dimen_230_dp">230dp</dimen>

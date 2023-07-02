@@ -3,7 +3,7 @@ package com.space.quiz_app.common.utils
 import androidx.annotation.StringRes
 import com.space.quiz_app.R
 
-//TODO New way to validate username
+//This way of validation has to be changed
 enum class QuizUsernameValidation(@StringRes val errorText: Int)  {
     USERNAME_INVALID_LENGTH_LONG(R.string.username_invalid_length_long),
     USERNAME_INVALID_LENGTH_SHORT(R.string.username_invalid_length_short),

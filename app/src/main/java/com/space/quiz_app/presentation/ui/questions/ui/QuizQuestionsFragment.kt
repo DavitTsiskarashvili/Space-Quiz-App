@@ -56,7 +56,7 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
         with(binding) {
             observeLiveDataNonNull(viewModel.questionState) {
                 quizTitleTextView.text = it.subjectTitle
-                progressBar.updateProgressBar(it.questionIndex +1)
+                progressBar.updateProgressBar(it.questionIndex + 1)
                 questionBackground.setQuestion(it.questionTitle)
             }
             observeLiveDataNonNull(viewModel.answerState) { answers ->
@@ -117,6 +117,7 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
         showFinishDialog()
 
     }
+
     private fun cancelQuiz() {
         binding.cancelButton.setOnClickListener {
             showCancelDialog()

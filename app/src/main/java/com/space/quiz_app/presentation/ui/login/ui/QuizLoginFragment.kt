@@ -28,7 +28,7 @@ class QuizLoginFragment : QuizBaseFragment<QuizLoginViewModel>() {
     }
 
     private fun logIn() {
-        with(binding){
+        with(binding) {
             startButton.setOnClickListener {
                 viewModel.checkUsernameValidity(usernameEditText.text.toString())
             }

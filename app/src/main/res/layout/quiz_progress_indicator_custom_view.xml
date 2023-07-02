@@ -40,7 +40,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:trackColor="@color/neutral_04_lighter_grey"
-        app:trackCornerRadius="@dimen/dimen_3_dp"
+        app:trackCornerRadius="@dimen/dimen_10_dp"
         app:trackThickness="@dimen/dimen_10_dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
