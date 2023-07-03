@@ -64,7 +64,7 @@ class QuizAnswersAdapter(
                         item.correctAnswer()
                     } else {
                         item.wrongAnswer()
-                        getItemView(position).correctAnswer()
+                        getItemView(position).actualAnswer()
                     }
                     answerSelected()
                     correctAnswerListener?.invoke(userAnswer == correctAnswer)

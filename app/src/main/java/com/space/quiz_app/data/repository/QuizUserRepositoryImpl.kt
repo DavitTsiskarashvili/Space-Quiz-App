@@ -28,6 +28,15 @@ class QuizUserRepositoryImpl(
     override suspend fun saveGPA(username: String, gpa: Float) {
         userDao.insertUser(userDao.getUser(username).copy(gpa = gpa))
     }
+
+    override suspend fun loginUser(username: String) {
+        if (isUsernameRegistered(username)) {
+           userDao.updateUserStatus(username, true)
+        } else {
+            insertUsername(QuizUserDomainModel(username, gpa = 0f, isLoggedIn = true))
+        }
+    }
+
 }
 
 

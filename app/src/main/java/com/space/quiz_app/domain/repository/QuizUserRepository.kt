@@ -10,4 +10,6 @@ interface QuizUserRepository {
     suspend fun getUsernameIfLoggedIn(): QuizUserDomainModel?
 
     suspend fun saveGPA(username: String, gpa: Float)
+
+    suspend fun loginUser(username: String)
 }

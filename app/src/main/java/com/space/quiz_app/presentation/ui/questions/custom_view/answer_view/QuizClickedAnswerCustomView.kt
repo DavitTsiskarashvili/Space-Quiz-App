@@ -30,6 +30,12 @@ class QuizClickedAnswerCustomView(
         setScore(false)
     }
 
+    fun actualAnswer() {
+        updateBackgroundColor(R.color.green_success)
+        changeTextColor(R.color.white)
+        setScore(false)
+    }
+
     private fun updateBackgroundColor(colorRes: Int) {
         binding.root.backgroundTintList = ContextCompat.getColorStateList(context, colorRes)
     }
@@ -38,7 +44,7 @@ class QuizClickedAnswerCustomView(
         binding.answerTextView.setTextColor(ContextCompat.getColor(context, colorRes))
     }
 
-    private fun setScore(isVisible: Boolean) {
+     private fun setScore(isVisible: Boolean) {
         binding.scoreTextView.visibility = if (isVisible) View.VISIBLE else GONE
     }
 

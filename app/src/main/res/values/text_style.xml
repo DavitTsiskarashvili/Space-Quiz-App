@@ -33,6 +33,13 @@
         <item name="android:textColor">@color/neutral_02_grey</item>
     </style>
 
+    <style name="smallMyriadGeo_Bold">
+        <item name="android:font">@font/myriad_geo</item>
+        <item name="android:textSize">@dimen/dimen_12_sp</item>
+        <item name="android:textColor">@color/neutral_02_grey</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="smallMyriadGeo_Error">
         <item name="android:font">@font/myriad_geo</item>
         <item name="android:textSize">@dimen/dimen_12_sp</item>

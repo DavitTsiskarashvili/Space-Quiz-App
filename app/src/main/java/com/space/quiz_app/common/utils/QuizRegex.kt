@@ -4,12 +4,10 @@ package com.space.quiz_app.common.utils
 /**
 Regular expression pattern for validating usernames.
 The pattern requires the username to meet the following criteria:
-At least one lowercase letter
-At least one uppercase letter
-At least one digit
-Minimum length of 8 characters
+Minimum length of 2 characters
+ Username should be in Georgian
  */
 
 object QuizRegex {
-    val usernamePattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}$".toRegex()
+    val usernamePattern = "^[ა-ჰ]{3,}\$".toRegex()
 }

@@ -13,7 +13,7 @@ enum class QuizUsernameValidation(@StringRes val errorText: Int)  {
     companion object {
         fun validate(input: String): QuizUsernameValidation {
             return when {
-                input.length <= 8 -> USERNAME_INVALID_LENGTH_SHORT
+                input.length <= 2 -> USERNAME_INVALID_LENGTH_SHORT
                 input.length > 20 -> USERNAME_INVALID_LENGTH_LONG
                 !input.contains(QuizRegex.usernamePattern) -> USERNAME_INVALID_CHARACTERS
                 else -> LOGIN_SUCCESS
