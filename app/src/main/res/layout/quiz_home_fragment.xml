@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.quiz_home_screen.QuizHomeFragment">
+    tools:context=".presentation.quiz_home_screen.ui.QuizHomeFragment">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/greetingTextView"
@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <include
+    <com.space.quiz_app.presentation.quiz_home_screen.custom_view.gpa_custom_view.GpaCustomView
         android:id="@+id/gpaButton"
         layout="@layout/quiz_gpa_card_view"
         android:layout_width="match_parent"
@@ -52,6 +52,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/subjectTextView"
         tools:listitem="@layout/quiz_subject_item"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:indeterminateTint="@color/blue_secondary_default"
+        app:layout_constraintBottom_toBottomOf="@id/divider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/subjectRecyclerView" />
 
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/divider"

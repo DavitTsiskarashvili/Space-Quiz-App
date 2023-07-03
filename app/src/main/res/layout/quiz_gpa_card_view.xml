@@ -43,7 +43,7 @@
             android:layout_marginStart="@dimen/dimen_4_dp"
             android:layout_marginEnd="@dimen/dimen_10_dp"
             android:textColor="@color/yellow_primary"
-            tools:text="4.0"
+            android:text="@string/default_gpa"
             app:layout_constraintBottom_toBottomOf="@id/gpaBackgroundView"
             app:layout_constraintEnd_toEndOf="@id/gpaBackgroundView"
             app:layout_constraintStart_toEndOf="@id/gpaTextView"
@@ -58,7 +58,7 @@
             android:textColor="@color/white"
             app:drawableEndCompat="@drawable/ic_details_arrow"
             android:drawablePadding="@dimen/dimen_4_dp"
-            android:layout_marginEnd="@dimen/dimen_30_dp"
+            android:layout_marginEnd="@dimen/dimen_10_dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

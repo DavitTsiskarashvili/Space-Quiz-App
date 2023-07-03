@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
@@ -17,11 +16,14 @@
         <entry key="..\:/Users/Davit/Desktop/Quiz_App/app/src/main/res/drawable/ic_man_background.xml" value="0.1085" />
         <entry key="..\:/Users/Davit/Desktop/Quiz_App/app/src/main/res/drawable/ic_star.xml" value="0.1085" />
         <entry key="..\:/Users/Davit/Desktop/Quiz_App/app/src/main/res/drawable/ic_star_yellow.xml" value="0.1" />
+        <entry key="..\:/Users/Davit/Desktop/Quiz_App/app/src/main/res/drawable/ic_yellow_button.xml" value="0.1" />
         <entry key="..\:/Users/Davit/Desktop/Quiz_App/app/src/main/res/drawable/shape_circle.xml" value="0.1085" />
         <entry key="..\:/Users/Davit/Desktop/Quiz_App/app/src/main/res/drawable/shape_gpa_button.xml" value="0.1" />
         <entry key="..\:/Users/Davit/Desktop/Quiz_App/app/src/main/res/drawable/shape_gpa_rectange.xml" value="0.1085" />
         <entry key="..\:/Users/Davit/Desktop/Quiz_App/app/src/main/res/drawable/shape_gpa_rectangle.xml" value="0.1085" />
+        <entry key="..\:/Users/Davit/Desktop/Quiz_App/app/src/main/res/drawable/shape_message_edittext.xml" value="0.1" />
         <entry key="..\:/Users/Davit/Desktop/Quiz_App/app/src/main/res/drawable/shape_next_button.xml" value="0.1" />
+        <entry key="..\:/Users/Davit/Desktop/Quiz_App/app/src/main/res/drawable/shape_start_button.xml" value="0.1" />
         <entry key="..\:/Users/Davit/Desktop/Quiz_App/app/src/main/res/drawable/shp_button.xml" value="0.1085" />
         <entry key="..\:/Users/Davit/Desktop/Quiz_App/app/src/main/res/drawable/shp_message_edittext.xml" value="0.1" />
         <entry key="..\:/Users/Davit/Desktop/Quiz_App/app/src/main/res/layout/activity_main.xml" value="0.17552083333333332" />
@@ -38,9 +40,15 @@
         <entry key="..\:/Users/Davit/Desktop/Quiz_App/app/src/main/res/layout/home_screen.xml" value="0.17447916666666666" />
         <entry key="..\:/Users/Davit/Desktop/Quiz_App/app/src/main/res/layout/question_item.xml" value="0.22" />
         <entry key="..\:/Users/Davit/Desktop/Quiz_App/app/src/main/res/layout/questions_screen.xml" value="0.131640625" />
+        <entry key="..\:/Users/Davit/Desktop/Quiz_App/app/src/main/res/layout/quiz_close_dialog.xml" value="0.15601851851851853" />
         <entry key="..\:/Users/Davit/Desktop/Quiz_App/app/src/main/res/layout/quiz_congrats_dialog.xml" value="0.4466666666666667" />
-        <entry key="..\:/Users/Davit/Desktop/Quiz_App/app/src/main/res/layout/quiz_login_fragment.xml" value="0.22" />
+        <entry key="..\:/Users/Davit/Desktop/Quiz_App/app/src/main/res/layout/quiz_gpa_card_view.xml" value="0.15601851851851853" />
+        <entry key="..\:/Users/Davit/Desktop/Quiz_App/app/src/main/res/layout/quiz_gpa_fragment.xml" value="0.15601851851851853" />
+        <entry key="..\:/Users/Davit/Desktop/Quiz_App/app/src/main/res/layout/quiz_home_fragment.xml" value="0.15601851851851853" />
+        <entry key="..\:/Users/Davit/Desktop/Quiz_App/app/src/main/res/layout/quiz_login_fragment.xml" value="0.13333333333333333" />
+        <entry key="..\:/Users/Davit/Desktop/Quiz_App/app/src/main/res/layout/quiz_question_item.xml" value="0.15601851851851853" />
         <entry key="..\:/Users/Davit/Desktop/Quiz_App/app/src/main/res/layout/quiz_questions_fragment.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/Davit/Desktop/Quiz_App/app/src/main/res/layout/quiz_subject_item.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/Davit/Desktop/Quiz_App/app/src/main/res/layout/start_screen.xml" value="0.17447916666666666" />
         <entry key="..\:/Users/Davit/Desktop/Quiz_App/app/src/main/res/layout/subject_item.xml" value="0.22" />
         <entry key="..\:/Users/Davit/Desktop/Quiz_App/app/src/main/res/mipmap-anydpi-v26/ic_man.xml" value="0.1085" />
@@ -48,7 +56,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

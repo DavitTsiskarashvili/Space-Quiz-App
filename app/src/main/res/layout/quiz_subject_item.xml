@@ -15,8 +15,8 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/subjectImageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/dimen_50_dp"
+            android:layout_height="@dimen/dimen_60_dp"
             android:layout_marginStart="@dimen/dimen_26_dp"
             android:layout_marginEnd="@dimen/dimen_22_dp"
             android:gravity="center_vertical"
@@ -42,32 +42,31 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/descriptionTextView"
             style="@style/smallMyriadGeo_Regular"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dimen_18_dp"
-            android:layout_marginEnd="@dimen/dimen_27_dp"
+            android:layout_marginEnd="@dimen/dimen_30_dp"
             android:layout_marginBottom="@dimen/dimen_34_dp"
             android:gravity="center_vertical"
             app:layout_constraintBottom_toBottomOf="@id/subjectImageView"
+            app:layout_constraintEnd_toStartOf="@+id/startButton"
             app:layout_constraintStart_toEndOf="@id/subjectImageView"
             app:layout_constraintTop_toBottomOf="@id/titleTextView"
             tools:text="@tools:sample/lorem" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/startButton"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/dimen_48_dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_30_dp"
-            android:layout_marginEnd="@dimen/dimen_30_dp"
+            android:layout_marginEnd="@dimen/dimen_25_dp"
             android:background="@drawable/shape_circle"
+            android:drawableEnd="@drawable/ic_next_arrow"
             android:gravity="center_vertical"
-            android:paddingStart="@dimen/dimen_18_dp"
-            android:paddingEnd="@dimen/dimen_18_dp"
+            android:paddingHorizontal="@dimen/dimen_18_dp"
             app:backgroundTint="@color/yellow_primary"
-            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:drawableEnd="@drawable/ic_next_arrow" />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
