@@ -114,7 +114,11 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
             val userScore = viewModel.userScoreState.value ?: 0
             viewModel.saveUserScore(username, subjectTitle, userScore)
         }
-        showFinishDialog()
+        if (userScore == 0) {
+            showFinishDialog(noScore = true)
+        } else {
+            showFinishDialog(noScore = false)
+        }
 
     }
 
@@ -142,10 +146,15 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
         }
     }
 
-    private fun showFinishDialog() {
+    private fun showFinishDialog(noScore: Boolean) {
         showCongratsDialog {
-            setIcon(getString(R.string.congrats_icon))
-            setMessage(getString(R.string.congratulations))
+            if (noScore) {
+                setIcon("\uD83D\uDE2D")
+                setScore(String.format(getString(R.string.your_score_is), userScore))
+            } else {
+                setIcon("\uD83E\uDD73")
+                setMessage(getString(R.string.congratulations))
+            }
             setScore(String.format(getString(R.string.your_score_is), userScore))
             setPositiveButtonClickListener {
                 viewModel.navigateToHome()

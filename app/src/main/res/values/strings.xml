@@ -12,7 +12,7 @@
     <string name="next_button">შემდეგი</string>
     <string name="finish_button">დასრულება</string>
     <string name="close_button">დახურვა</string>
-    <string name="congratulations">გილოცავ</string>
+    <string name="congratulations">გილოცავ!</string>
     <string name="your_score_is">შენ დააგროვე %d ქულა</string>
     <string name="accumulated_score">დაგროვილი ქულები</string>
     <string name="there_is_no_scores">🧐\nსამწუხაროდ,\nქულები ჯერ არ გაქვს\nდაგროვილი</string>
