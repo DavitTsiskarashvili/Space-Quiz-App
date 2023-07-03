@@ -106,7 +106,7 @@ class QuizQuestionsViewModel(
     }
 
     fun navigateToHome() {
-        navigate(QuizHomeFragmentDirections.actionGlobalLoginFragment())
+        navigate(QuizHomeFragmentDirections.actionGlobalHomeFragment())
     }
 
 }
