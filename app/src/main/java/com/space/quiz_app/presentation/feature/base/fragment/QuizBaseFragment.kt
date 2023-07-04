@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.space.quiz_app.common.extensions.observeLiveDataNonNull
+import com.space.quiz_app.common.utils.observeNonNull
 import com.space.quiz_app.presentation.feature.base.view_model.QuizBaseViewModel
 import com.space.quiz_app.presentation.feature.navigation.NavigationCommand
-import com.space.quiz_app.common.utils.observeNonNull
 import org.koin.androidx.viewmodel.ext.android.viewModelForClass
 import kotlin.reflect.KClass
 
@@ -39,6 +42,7 @@ abstract class QuizBaseFragment<VM : QuizBaseViewModel> : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         onBind()
         observeNavigation()
+        observeErrorState()
         findNavController().popBackStack()
     }
 
@@ -56,4 +60,15 @@ abstract class QuizBaseFragment<VM : QuizBaseViewModel> : Fragment() {
             is NavigationCommand.Back -> findNavController().navigateUp()
         }
     }
+
+    private fun observeErrorState() {
+        observeLiveDataNonNull(viewModel.errorState) {
+            handleErrorState(it)
+        }
+    }
+
+    open fun handleErrorState(@StringRes error: Int) {
+        Toast.makeText(requireContext(), getString(error), Toast.LENGTH_LONG).show()
+    }
+
 }

@@ -1,6 +1,5 @@
 package com.space.quiz_app.presentation.ui.details.ui
 
-import android.util.Log
 import android.view.View
 import androidx.activity.addCallback
 import androidx.core.view.isVisible
@@ -52,12 +51,11 @@ class QuizDetailsFragment : QuizBaseFragment<QuizDetailsViewModel>() {
         observeLiveDataNonNull(viewModel.userSubjectsState) { userSubjects ->
             userSubjects.let {
                 if (it.isNotEmpty()) {
-                    detailsAdapter.submitList(it.toList())
+                    detailsAdapter.submitList(it)
                     with(binding) {
                         noPointsTextView.visibility = View.GONE
                         userSubjectsRecyclerView.visibility = View.VISIBLE
                     }
-                    Log.d("list", "$it")
                 } else {
                     with(binding) {
                         userSubjectsRecyclerView.visibility = View.GONE

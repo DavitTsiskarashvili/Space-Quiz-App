@@ -53,13 +53,13 @@ class QuizHomeFragment : QuizBaseFragment<QuizHomeViewModel>() {
             subjects.let {
                 subjectsAdapter.submitList(it)
             }
-            observeLiveDataNonNull(viewModel.errorState) {
-                Toast.makeText(
-                    requireContext(),
-                    getString(R.string.username_invalid_characters),
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
+        }
+        observeLiveDataNonNull(viewModel.errorState) {
+            Toast.makeText(
+                requireContext(),
+                getString(R.string.username_invalid_characters),
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 

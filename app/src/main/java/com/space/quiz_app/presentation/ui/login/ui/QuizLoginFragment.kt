@@ -1,7 +1,7 @@
 package com.space.quiz_app.presentation.ui.login.ui
 
+import androidx.annotation.StringRes
 import com.space.quiz_app.R
-import com.space.quiz_app.common.extensions.executeScope
 import com.space.quiz_app.common.extensions.viewBinding
 import com.space.quiz_app.databinding.QuizLoginFragmentBinding
 import com.space.quiz_app.presentation.feature.base.fragment.QuizBaseFragment
@@ -22,26 +22,18 @@ class QuizLoginFragment : QuizBaseFragment<QuizLoginViewModel>() {
         viewModel.checkUserLogState()
     }
 
+    override fun handleErrorState(@StringRes error: Int) {
+        binding.errorTextView.text = getString(error)
+    }
+
     override fun onBind() {
         logIn()
-        setErrorMessage()
     }
 
     private fun logIn() {
         with(binding) {
             startButton.setOnClickListener {
                 viewModel.checkUsernameValidity(usernameEditText.text.toString())
-            }
-        }
-    }
-
-    // errors in base fragment
-    private fun setErrorMessage() {
-        executeScope {
-            viewModel.validationError.collect() {
-                it?.let {
-                    binding.errorTextView.text = getString(it.errorText)
-                }
             }
         }
     }

@@ -5,22 +5,17 @@ import com.space.quiz_app.common.utils.QuizUsernameValidation
 import com.space.quiz_app.domain.repository.QuizUserRepository
 import com.space.quiz_app.presentation.feature.base.view_model.QuizBaseViewModel
 import com.space.quiz_app.presentation.ui.login.ui.QuizLoginFragmentDirections
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
 
 class QuizLoginViewModel(
     private val quizUserRepository: QuizUserRepository,
 ) : QuizBaseViewModel() {
-
-    private val _validationError = MutableStateFlow<QuizUsernameValidation?>(null)
-    val validationError = _validationError.asStateFlow()
 
     fun checkUserLogState() {
         viewModelScope {
             val getUsername = quizUserRepository.getUsernameIfLoggedIn()?.isLoggedIn
             getUsername?.let {
                 if (it) {
-                    navigate()
+                    navigateToHome()
                 }
             }
         }
@@ -31,9 +26,9 @@ class QuizLoginViewModel(
             val validity = QuizUsernameValidation.validate(username)
             if (validity == QuizUsernameValidation.LOGIN_SUCCESS) {
                 loginUser(username)
-                navigate()
+                navigateToHome()
             } else {
-                _validationError.emit(validity)
+                submitError(validity.errorText)
             }
         }
     }
@@ -46,7 +41,7 @@ class QuizLoginViewModel(
         }
     }
 
-    private fun navigate() {
+    private fun navigateToHome() {
         navigate(QuizLoginFragmentDirections.actionGlobalHomeFragment())
     }
 

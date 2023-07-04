@@ -23,7 +23,6 @@ class QuizHomeViewModel(
     val userState by QuizLiveDataDelegate<QuizUserUIModel?>(null)
     val subjectsState by QuizLiveDataDelegate<List<QuizSubjectUIModel>?>(null)
     val loadingState by QuizLiveDataDelegate(true)
-    val errorState by QuizLiveDataDelegate<Throwable?>(null)
     private val selectedSubjectTitleState by QuizLiveDataDelegate<QuizSubjectUIModel?>(null)
 
     fun getUsername() {
