@@ -21,8 +21,6 @@ class QuizQuestionsViewModel(
     private val quizSubjectUIToDomainMapper: QuizSubjectUIToDomainMapper,
 ) : QuizBaseViewModel() {
 
-    //use cases
-    // default values
     val questionState by QuizLiveDataDelegate<QuizQuestionUIModel?>(null)
     val answerState by QuizLiveDataDelegate<QuizQuestionUIModel?>(null)
     val finishQuizState by QuizLiveDataDelegate(false)
@@ -31,11 +29,9 @@ class QuizQuestionsViewModel(
     val quizMaxQuestionState by QuizLiveDataDelegate(0)
     val usernameState by QuizLiveDataDelegate("")
 
-    // viewModel shouldn't store all questions but one question per request
     private val allQuestions = mutableListOf<QuizQuestionUIModel>()
     var questionIndex = 0
 
-    // ViewModel shouldn't store all questions in advance. Retrieve one question per time from a database.
     fun getAllQuestions(subjectTitle: String) {
         viewModelScope {
             val result = quizQuestionsRepository.getQuestionsFromDatabase((subjectTitle))
