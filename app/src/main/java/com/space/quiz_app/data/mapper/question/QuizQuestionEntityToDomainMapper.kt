@@ -1,29 +1,25 @@
-package com.space.quiz_app.data.remote.mapper
+package com.space.quiz_app.data.mapper.question
 
 import com.space.quiz_app.common.mapper.Mapper
-import com.space.quiz_app.data.remote.model.QuizSubjectDTO
+import com.space.quiz_app.data.local.entity.QuizQuestionEntity
 import com.space.quiz_app.domain.model.questions.QuizQuestionDomainModel
 
-class QuizQuestionsDTOMapper(
-    var subjectTitle: ((QuizSubjectDTO.QuizQuestionDTO) -> String)? = null
-) : Mapper<QuizSubjectDTO.QuizQuestionDTO, QuizQuestionDomainModel> {
-    override fun invoke(model: QuizSubjectDTO.QuizQuestionDTO): QuizQuestionDomainModel =
+class QuizQuestionEntityToDomainMapper : Mapper<QuizQuestionEntity, QuizQuestionDomainModel> {
+    override fun invoke(model: QuizQuestionEntity): QuizQuestionDomainModel =
         with(model) {
             QuizQuestionDomainModel(
                 questionTitle = questionTitle,
                 questionIndex = questionIndex,
                 subjectId = subjectId,
-                isAnswered = false,
-                isLastQuestion = false,
-                subjectTitle = subjectTitle?.invoke(this) ?: "",
+                subjectTitle = subjectTitle,
+                isAnswered = isAnswered,
+                isLastQuestion = isLastQuestion,
                 correctAnswer = QuizQuestionDomainModel.AnswerDomain(correctAnswer, true),
                 answers = answers.map {
                     QuizQuestionDomainModel.AnswerDomain(
-                        it,
-                        correctAnswer == it
+                        it, correctAnswer == it
                     )
                 }.toMutableList()
             )
-
         }
 }

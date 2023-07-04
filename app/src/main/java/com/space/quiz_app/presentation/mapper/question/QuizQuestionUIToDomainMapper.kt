@@ -4,10 +4,10 @@ import com.space.quiz_app.common.mapper.Mapper
 import com.space.quiz_app.domain.model.questions.QuizQuestionDomainModel
 import com.space.quiz_app.presentation.model.questions.QuizQuestionUIModel
 
-class QuizQuestionDomainMapper() : Mapper<QuizQuestionDomainModel, QuizQuestionUIModel> {
-    override fun invoke(model: QuizQuestionDomainModel): QuizQuestionUIModel =
+class QuizQuestionUIToDomainMapper : Mapper<QuizQuestionUIModel, QuizQuestionDomainModel> {
+    override fun invoke(model: QuizQuestionUIModel): QuizQuestionDomainModel =
         with(model) {
-            QuizQuestionUIModel(
+            QuizQuestionDomainModel(
                 questionTitle = questionTitle,
                 subjectTitle = subjectTitle,
                 subjectId = subjectId,

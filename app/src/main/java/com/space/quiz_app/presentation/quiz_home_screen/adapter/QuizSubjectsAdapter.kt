@@ -5,10 +5,11 @@ import android.view.ViewGroup
 import com.space.quiz_app.common.extensions.loadImage
 import com.space.quiz_app.databinding.QuizSubjectItemBinding
 import com.space.quiz_app.presentation.base.adapter.BaseAdapter
-import com.space.quiz_app.presentation.model.questions.QuizQuestionsUIModel
+import com.space.quiz_app.presentation.model.questions.QuizQuestionUIModel
+import com.space.quiz_app.presentation.model.subject.QuizSubjectUIModel
 
 class QuizSubjectsAdapter :
-    BaseAdapter<QuizQuestionsUIModel>() {
+    BaseAdapter<QuizSubjectUIModel>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SubjectsViewHolder {
         val viewHolder = SubjectsViewHolder(
@@ -25,8 +26,8 @@ class QuizSubjectsAdapter :
     }
 
     class SubjectsViewHolder(private val binding: QuizSubjectItemBinding) :
-        BaseViewHolder<QuizQuestionsUIModel>(binding) {
-        override fun onBind(item: QuizQuestionsUIModel) {
+        BaseViewHolder<QuizSubjectUIModel>(binding) {
+        override fun onBind(item: QuizSubjectUIModel) {
             with(binding) {
                 titleTextView.text = item.quizTitle
                 descriptionTextView.text = item.quizDescription
