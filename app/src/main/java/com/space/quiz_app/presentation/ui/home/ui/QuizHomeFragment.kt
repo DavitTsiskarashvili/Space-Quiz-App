@@ -83,9 +83,9 @@ class QuizHomeFragment : QuizBaseFragment<QuizHomeViewModel>() {
         binding.gpaButton.setOnClickListener {
             viewModel.navigateToGPA()
         }
-        subjectsAdapter.onItemClickListener { subjectTitle ->
-            viewModel.onSubjectItemClick(subjectTitle.quizTitle)
-            viewModel.navigateToQuiz(subjectTitle.quizTitle)
+        subjectsAdapter.onItemClickListener { subject ->
+            viewModel.onSubjectItemClick(subject)
+            viewModel.navigateToQuiz(subject)
         }
     }
 

@@ -1,6 +1,7 @@
 package com.space.quiz_app.presentation.ui.questions.ui
 
 import androidx.activity.addCallback
+import androidx.navigation.fragment.navArgs
 import com.space.quiz_app.R
 import com.space.quiz_app.common.extensions.observeLiveData
 import com.space.quiz_app.common.extensions.observeLiveDataNonNull
@@ -11,20 +12,19 @@ import com.space.quiz_app.databinding.QuizQuestionsFragmentBinding
 import com.space.quiz_app.presentation.feature.base.fragment.QuizBaseFragment
 import com.space.quiz_app.presentation.ui.questions.adapter.QuizAnswersAdapter
 import com.space.quiz_app.presentation.ui.questions.view_model.QuizQuestionsViewModel
-import com.space.quiz_app.common.utils.SubjectTitle
 import kotlin.reflect.KClass
 
 class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
 
     private val binding by viewBinding(QuizQuestionsFragmentBinding::bind)
-    private var score = 0
+    private val args: QuizQuestionsFragmentArgs by navArgs()
+    private var userScore = 0
 
     override val layout: Int
         get() = R.layout.quiz_questions_fragment
 
     override val viewModelClass: KClass<QuizQuestionsViewModel>
         get() = QuizQuestionsViewModel::class
-
 
     private val answersAdapter by lazy {
         QuizAnswersAdapter {
@@ -33,7 +33,7 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
     }
 
     override fun onCreateFragment() {
-        val subjectTitle = arguments?.getString(SubjectTitle.ARG_SUBJECT_TITLE) ?: ""
+        val subjectTitle = args.subjectUIModel.quizTitle
         viewModel.getAllQuestions(subjectTitle)
     }
 
@@ -44,6 +44,7 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
         nextQuestion()
         handleBackPress()
         updateButtonText()
+        setListeners()
     }
 
     private fun initRecycler() {
@@ -67,6 +68,21 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
                 nextButton.isEnabled = it
                 nextButton.isClickable = it
             }
+            observeLiveData(viewModel.userScoreState){
+                userScore = it
+                progressBar.setCurrentScore(userScore)
+            }
+            observeLiveData(viewModel.quizMaxScoreState){
+                progressBar.setMaxScore(it)
+            }
+        }
+    }
+
+    private fun setListeners() {
+        answersAdapter.correctAnswerListener = {
+            if (it){
+                viewModel.submitQuizScore()
+            }
         }
     }
 
@@ -82,8 +98,7 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
         observeLiveData(viewModel.finishQuizState) { isLastQuestion ->
             if (isLastQuestion) {
                 binding.nextButton.text = getString(R.string.finish_button)
-                // hard score just to test the dialog
-                showFinishDialog(5)
+                showFinishDialog()
             } else {
                 binding.nextButton.text = getString(R.string.next_button)
             }
@@ -114,12 +129,12 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
         }
     }
 
-    private fun showFinishDialog(score: Int) {
+    private fun showFinishDialog() {
         binding.nextButton.setOnClickListener {
             showCongratsDialog {
                 setIcon(getString(R.string.congrats_icon))
                 setMessage(getString(R.string.congratulations))
-                setScore(String.format(getString(R.string.your_score_is), score))
+                setScore(String.format(getString(R.string.your_score_is), userScore))
                 setPositiveButtonClickListener {
                     viewModel.navigateToHome()
                     binding.progressBar.clearProgressBarValues()

@@ -9,12 +9,9 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 
-class LogOutDialog @JvmOverloads constructor(
+class LogOutDialog (
     context: Context,
-    attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0,
-    defStyleRes: Int = 0
-) : FrameLayout(context, attrs, defStyleAttr, defStyleRes) {
+) : FrameLayout(context) {
     private val binding: QuizCloseDialogBinding =
         QuizCloseDialogBinding.inflate(LayoutInflater.from(context), this, true)
 
