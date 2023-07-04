@@ -9,7 +9,7 @@ import androidx.room.TypeConverters
 data class QuizQuestionEntity(
     @PrimaryKey(autoGenerate = false)
     val questionTitle: String = "",
-    val answers: List<String> = emptyList(),
+    val answers: List<String>,
     val correctAnswer: String = "",
     val subjectId: Int,
     val subjectTitle: String,

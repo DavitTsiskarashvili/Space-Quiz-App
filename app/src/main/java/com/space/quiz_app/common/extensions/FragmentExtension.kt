@@ -5,7 +5,9 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.space.quiz_app.presentation.utils.QuizLiveDataDelegate
+import com.space.quiz_app.presentation.ui.questions.custom_view.cancel_quiz_dialog.CancelQuizDialog
+import com.space.quiz_app.presentation.ui.questions.custom_view.congrats_dialog.QuizCongratsDialog
+import com.space.quiz_app.common.utils.QuizLiveDataDelegate
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
@@ -54,4 +56,12 @@ fun <T> Fragment.observeLiveDataNonNull(
         }
     }
     return liveData
+}
+
+fun Fragment.showCongratsDialog(dialog: QuizCongratsDialog.() -> Unit): QuizCongratsDialog {
+    return QuizCongratsDialog(requireContext()).apply(dialog)
+}
+
+fun Fragment.showCancelDialog(dialog: CancelQuizDialog.() -> Unit): CancelQuizDialog {
+    return CancelQuizDialog(requireContext()).apply(dialog)
 }

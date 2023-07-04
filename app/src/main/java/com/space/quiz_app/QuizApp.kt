@@ -1,12 +1,12 @@
 package com.space.quiz_app
 
 import android.app.Application
-import com.space.quiz_app.data.module.dataBaseModule
-import com.space.quiz_app.common.mapper.uiMapperModule
-import com.space.quiz_app.data.local.module.databaseMapperModule
+import com.space.quiz_app.data.local.module.dataBaseModule
+import com.space.quiz_app.data.mapper.module.databaseMapperModule
 import com.space.quiz_app.data.remote.service.module.networkModule
 import com.space.quiz_app.domain.module.repositoryModule
-import com.space.quiz_app.presentation.module.viewModelModule
+import com.space.quiz_app.presentation.feature.module.UIModule
+import com.space.quiz_app.presentation.feature.module.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -22,7 +22,7 @@ class QuizApp : Application() {
                 dataBaseModule,
                 databaseMapperModule,
                 viewModelModule,
-                uiMapperModule,
+                UIModule,
                 repositoryModule,
                 networkModule
             )

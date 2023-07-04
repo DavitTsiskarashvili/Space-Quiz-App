@@ -5,6 +5,6 @@ import retrofit2.Response
 import retrofit2.http.GET
 
 interface QuizServiceApi {
-    @GET("/v3/9a2cbd2f-d77c-498a-a410-91351fe42577")
+    @GET("/v3/8ade4e0b-bee1-4eae-a98b-47edeea68324")
     suspend fun getSubjects(): Response<List<QuizSubjectDTO>>
 }
