@@ -33,7 +33,7 @@ class QuizLoginFragment : QuizBaseFragment<QuizLoginViewModel>() {
     private fun logIn() {
         with(binding) {
             startButton.setOnClickListener {
-                viewModel.checkUsernameValidity(usernameEditText.text.toString())
+                viewModel.login(usernameEditText.text.toString())
             }
         }
     }
