@@ -20,15 +20,15 @@ class QuizDetailsViewModel(
     private val userSubjectDomainToUIMapper: QuizUserSubjectDomainToUIMapper
 ) : QuizBaseViewModel() {
 
-    val userSubjectsState by QuizLiveDataDelegate<List<QuizUserSubjectUIModel>?>(null)
-    val loadingState by QuizLiveDataDelegate(true)
+    val userSubjectsLiveData by QuizLiveDataDelegate<List<QuizUserSubjectUIModel>?>(null)
+    val loadingLiveData by QuizLiveDataDelegate(true)
 
     fun getUserSubjects() {
         viewModelScope {
             val username = quizUserRepository.getUsernameIfLoggedIn()!!.username
             val result = userSubjectsRepository.getUserSubjects(username)
-            userSubjectsState.addValue(result.map { userSubjectDomainToUIMapper(it) })
-            loadingState.addValue(false)
+            userSubjectsLiveData.addValue(result.map { userSubjectDomainToUIMapper(it) })
+            loadingLiveData.addValue(false)
         }
     }
 

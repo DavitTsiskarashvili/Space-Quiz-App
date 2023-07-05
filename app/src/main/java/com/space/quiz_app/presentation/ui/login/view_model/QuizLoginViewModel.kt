@@ -10,7 +10,7 @@ class QuizLoginViewModel(
     private val quizUserRepository: QuizUserRepository,
 ) : QuizBaseViewModel() {
 
-    fun checkUserLogState() {
+    fun checkUserLoggedInStatus() {
         viewModelScope {
             val getUsername = quizUserRepository.getUsernameIfLoggedIn()?.isLoggedIn
             getUsername?.let {
@@ -24,11 +24,12 @@ class QuizLoginViewModel(
     fun checkUsernameValidity(username: String) {
         viewModelScope {
             val validity = QuizUsernameValidation.validate(username)
-            if (validity == QuizUsernameValidation.LOGIN_SUCCESS) {
-                loginUser(username)
-                navigateToHome()
-            } else {
-                submitError(validity.errorText)
+            when (validity) {
+                QuizUsernameValidation.USERNAME_VALID -> {
+                    loginUser(username)
+                    navigateToHome()
+                }
+                else -> showError(validity.errorRes)
             }
         }
     }

@@ -1,12 +1,12 @@
 package com.space.quiz_app.presentation.ui.details.ui
 
-import android.view.View
 import androidx.activity.addCallback
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.space.quiz_app.R
-import com.space.quiz_app.common.extensions.observeLiveData
-import com.space.quiz_app.common.extensions.observeLiveDataNonNull
+import com.space.quiz_app.common.extensions.observeNonNullValue
+import com.space.quiz_app.common.extensions.observeValue
+import com.space.quiz_app.common.extensions.setVisibility
 import com.space.quiz_app.common.extensions.viewBinding
 import com.space.quiz_app.databinding.QuizDetailsFragmentBinding
 import com.space.quiz_app.presentation.feature.base.fragment.QuizBaseFragment
@@ -45,21 +45,19 @@ class QuizDetailsFragment : QuizBaseFragment<QuizDetailsViewModel>() {
     }
 
     private fun observe() {
-        observeLiveData(viewModel.loadingState) {
+        observeValue(viewModel.loadingLiveData) {
             binding.progressBar.isVisible = it
         }
-        observeLiveDataNonNull(viewModel.userSubjectsState) { userSubjects ->
+        observeNonNullValue(viewModel.userSubjectsLiveData) { userSubjects ->
             userSubjects.let {
-                if (it.isNotEmpty()) {
-                    detailsAdapter.submitList(it)
-                    with(binding) {
-                        noPointsTextView.visibility = View.GONE
-                        userSubjectsRecyclerView.visibility = View.VISIBLE
-                    }
-                } else {
-                    with(binding) {
-                        userSubjectsRecyclerView.visibility = View.GONE
-                        noPointsTextView.visibility = View.VISIBLE
+                with(binding) {
+                    if (it.isNotEmpty()) {
+                        detailsAdapter.submitList(it)
+                        noPointsTextView.setVisibility(false)
+                        userSubjectsRecyclerView.setVisibility(true)
+                    } else {
+                        userSubjectsRecyclerView.setVisibility(false)
+                        noPointsTextView.setVisibility(true)
                     }
                 }
             }

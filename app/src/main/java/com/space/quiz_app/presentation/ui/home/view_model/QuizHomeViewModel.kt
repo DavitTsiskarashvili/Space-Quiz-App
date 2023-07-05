@@ -1,5 +1,6 @@
 package com.space.quiz_app.presentation.ui.home.view_model
 
+import androidx.lifecycle.MutableLiveData
 import com.space.quiz_app.common.extensions.viewModelScope
 import com.space.quiz_app.common.utils.QuizLiveDataDelegate
 import com.space.quiz_app.domain.repository.QuizSubjectsRepository
@@ -20,25 +21,25 @@ class QuizHomeViewModel(
     private val quizUserDomainToUIMapper: QuizUserDomainToUIMapper
 ) : QuizBaseViewModel() {
 
-    val userState by QuizLiveDataDelegate<QuizUserUIModel?>(null)
-    val subjectsState by QuizLiveDataDelegate<List<QuizSubjectUIModel>?>(null)
-    val loadingState by QuizLiveDataDelegate(true)
-    private val selectedSubjectTitleState by QuizLiveDataDelegate<QuizSubjectUIModel?>(null)
+    val userLiveData by QuizLiveDataDelegate<QuizUserUIModel?>(null)
+    val subjectsLiveData by QuizLiveDataDelegate<List<QuizSubjectUIModel>?>(null)
+    val loadingLiveData by QuizLiveDataDelegate(true)
+    private val selectedSubjectTitleLiveData = MutableLiveData<QuizSubjectUIModel>()
 
     fun getUsername() {
         viewModelScope {
             val username = quizUserRepository.getUsernameIfLoggedIn()
-            username?.let { userState.addValue(quizUserDomainToUIMapper(it)) }
+            username?.let { userLiveData.addValue(quizUserDomainToUIMapper(it)) }
         }
     }
 
     fun getSubjects() {
         viewModelScope {
             val result = quizSubjectsRepository.getSubjectsFromNetwork()
-            subjectsState.addValue(result.map {
+            subjectsLiveData.addValue(result.map {
                 quizSubjectDomainMapper(it)
             })
-            loadingState.addValue(false)
+            loadingLiveData.addValue(false)
         }
     }
 
@@ -55,7 +56,7 @@ class QuizHomeViewModel(
     }
 
     fun onSubjectItemClick(subjectTitle: QuizSubjectUIModel) {
-        selectedSubjectTitleState.addValue(subjectTitle)
+        selectedSubjectTitleLiveData.postValue(subjectTitle)
     }
 
     fun navigateToLogin() {

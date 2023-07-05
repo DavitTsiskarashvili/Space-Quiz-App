@@ -19,7 +19,7 @@ class QuizLoginFragment : QuizBaseFragment<QuizLoginViewModel>() {
         get() = QuizLoginViewModel::class
 
     override fun onCreateFragment() {
-        viewModel.checkUserLogState()
+        viewModel.checkUserLoggedInStatus()
     }
 
     override fun handleErrorState(@StringRes error: Int) {

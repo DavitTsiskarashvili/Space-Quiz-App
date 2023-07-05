@@ -11,17 +11,19 @@ import com.space.quiz_app.presentation.feature.navigation.NavigationCommand
 
 abstract class QuizBaseViewModel : ViewModel() {
 
-    val errorState by QuizLiveDataDelegate<@receiver:StringRes Int?>(null)
+    val errorLiveData by QuizLiveDataDelegate<@receiver:StringRes Int?>(null)
 
     private val _navigation = MutableLiveData<QuizEvent<NavigationCommand>>()
     val navigation: LiveData<QuizEvent<NavigationCommand>> get() = _navigation
+
+//    val navigationLiveData by QuizLiveDataDelegate<QuizEvent<NavigationCommand>> ()
 
     fun navigate(navDirections: NavDirections) {
         _navigation.value = QuizEvent(NavigationCommand.ToDirection(navDirections))
     }
 
-    fun submitError(@StringRes error: Int? = null){
-        errorState.addValue(error)
+    fun showError(@StringRes errorMessage: Int? = null){
+        errorLiveData.addValue(errorMessage)
     }
 
 }
