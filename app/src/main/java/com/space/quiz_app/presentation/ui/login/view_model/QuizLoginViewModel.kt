@@ -12,12 +12,9 @@ class QuizLoginViewModel(
 
     fun checkUserLoggedInStatus() {
         viewModelScope {
-            val getUsername = quizUserRepository.getUsernameIfLoggedIn()?.isLoggedIn
-            getUsername?.let {
-                if (it) {
-                    navigateToHome()
-                }
-            }
+           quizUserRepository.getUsernameIfLoggedIn()?.let {
+               navigateToHome()
+           }
         }
     }
 

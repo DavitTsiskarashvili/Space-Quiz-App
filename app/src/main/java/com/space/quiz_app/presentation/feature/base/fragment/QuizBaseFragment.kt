@@ -46,8 +46,8 @@ abstract class QuizBaseFragment<VM : QuizBaseViewModel> : Fragment() {
     }
 
     private fun observeNavigation() {
-        viewModel.navigation.observeNonNull(viewLifecycleOwner) {
-            it.getContentIfNotHandled()?.let { navigationCommand ->
+        viewModel.navigationLiveData.observeNonNull(viewLifecycleOwner) {
+            it?.getContentIfNotHandled()?.let { navigationCommand ->
                 handleNavigation(navigationCommand)
             }
         }
