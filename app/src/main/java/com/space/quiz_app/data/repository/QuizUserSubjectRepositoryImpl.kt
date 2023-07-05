@@ -16,11 +16,11 @@ class QuizUserSubjectRepositoryImpl(
         userSubjectsDao.insertUserSubject(userSubject)
     }
 
-    override suspend fun getUserSpecificSubject(
+    override suspend fun getUserSubjectByTitle(
         username: String,
         quizTitle: String
     ): QuizUserSubjectEntity? {
-        return userSubjectsDao.getUserSpecificSubject(username, quizTitle)
+        return userSubjectsDao.getUserSubjectByTitle(username, quizTitle)
     }
 
     override suspend fun getUserSubjects(username: String): List<QuizUserSubjectsDomainModel> {
@@ -37,7 +37,7 @@ class QuizUserSubjectRepositoryImpl(
         score: Int,
         subject: QuizSubjectDomainModel
     ) {
-        val userSubject = getUserSpecificSubject(username, subject.quizTitle)
+        val userSubject = getUserSubjectByTitle(username, subject.quizTitle)
         if (userSubject == null) {
             insertUserSubject(
                 QuizUserSubjectEntity(

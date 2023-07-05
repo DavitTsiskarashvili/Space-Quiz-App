@@ -10,6 +10,6 @@ class QuizQuestionsRepositoryImpl(
     private val questionsEntityMapper: QuizQuestionEntityToDomainMapper
 ) : QuizQuestionsRepository {
     override suspend fun getQuestionsFromDatabase(subjectTitle: String): List<QuizQuestionDomainModel> {
-        return questionsDao.getQuestions(subjectTitle).map { questionsEntityMapper(it) }
+        return questionsDao.getQuestionsBySubject(subjectTitle).map { questionsEntityMapper(it) }
     }
 }
