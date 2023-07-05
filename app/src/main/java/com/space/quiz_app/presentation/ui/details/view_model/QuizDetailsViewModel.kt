@@ -2,22 +2,17 @@ package com.space.quiz_app.presentation.ui.details.view_model
 
 import com.space.quiz_app.common.extensions.viewModelScope
 import com.space.quiz_app.common.utils.QuizLiveDataDelegate
-import com.space.quiz_app.domain.repository.QuizUserRepository
-import com.space.quiz_app.domain.repository.QuizUserSubjectsRepository
+import com.space.quiz_app.domain.usecase.quiz.GetUserSubjectsUseCase
+import com.space.quiz_app.domain.usecase.user.LogOutUseCase
 import com.space.quiz_app.presentation.feature.base.view_model.QuizBaseViewModel
-import com.space.quiz_app.presentation.feature.model.mapper.user.QuizUserDomainToUIMapper
 import com.space.quiz_app.presentation.feature.model.mapper.user.QuizUserSubjectDomainToUIMapper
-import com.space.quiz_app.presentation.feature.model.mapper.user.QuizUserUIToDomainMapper
 import com.space.quiz_app.presentation.feature.model.user.QuizUserSubjectUIModel
-import com.space.quiz_app.presentation.feature.model.user.QuizUserUIModel
 import com.space.quiz_app.presentation.ui.details.ui.QuizDetailsFragmentDirections
 
 class QuizDetailsViewModel(
-    private val quizUserRepository: QuizUserRepository,
-    private val userSubjectsRepository: QuizUserSubjectsRepository,
-    private val quizUserUIToDomainMapper: QuizUserUIToDomainMapper,
-    private val quizUserDomainToUIMapper: QuizUserDomainToUIMapper,
-    private val userSubjectDomainToUIMapper: QuizUserSubjectDomainToUIMapper
+    private val userSubjectDomainMapper: QuizUserSubjectDomainToUIMapper,
+    private val getSubjects: GetUserSubjectsUseCase,
+    private val logOut: LogOutUseCase
 ) : QuizBaseViewModel() {
 
     val userSubjectsLiveData by QuizLiveDataDelegate<List<QuizUserSubjectUIModel>?>(null)
@@ -25,23 +20,16 @@ class QuizDetailsViewModel(
 
     fun getUserSubjects() {
         viewModelScope {
-            val result = userSubjectsRepository.getUserSubjects(getUsername()!!.username)
-            userSubjectsLiveData.addValue(result.map { userSubjectDomainToUIMapper(it) })
+            userSubjectsLiveData.addValue(getSubjects().map { userSubjectDomainMapper(it) })
             loadingLiveData.addValue(false)
         }
     }
 
     fun logOutUser(navigate: () -> Unit) {
         viewModelScope {
-            replaceUsername(quizUserDomainToUIMapper(getUsername()!!.copy(isLoggedIn = false)))
+            logOut()
             navigate()
         }
-    }
-
-    private suspend fun getUsername() = quizUserRepository.getUsernameIfLoggedIn()
-
-    private suspend fun replaceUsername(username: QuizUserUIModel) {
-        quizUserRepository.insertUsername(quizUserUIToDomainMapper(username))
     }
 
     fun navigateToHome() {
