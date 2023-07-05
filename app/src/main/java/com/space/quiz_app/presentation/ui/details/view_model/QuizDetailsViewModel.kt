@@ -25,8 +25,7 @@ class QuizDetailsViewModel(
 
     fun getUserSubjects() {
         viewModelScope {
-            val username = quizUserRepository.getUsernameIfLoggedIn()!!.username
-            val result = userSubjectsRepository.getUserSubjects(username)
+            val result = userSubjectsRepository.getUserSubjects(getUsername()!!.username)
             userSubjectsLiveData.addValue(result.map { userSubjectDomainToUIMapper(it) })
             loadingLiveData.addValue(false)
         }
@@ -34,11 +33,12 @@ class QuizDetailsViewModel(
 
     fun logOutUser(navigate: () -> Unit) {
         viewModelScope {
-            val replaceUsername = quizUserRepository.getUsernameIfLoggedIn()
-            replaceUsername(quizUserDomainToUIMapper(replaceUsername!!.copy(isLoggedIn = false)))
+            replaceUsername(quizUserDomainToUIMapper(getUsername()!!.copy(isLoggedIn = false)))
             navigate()
         }
     }
+
+    private suspend fun getUsername() = quizUserRepository.getUsernameIfLoggedIn()
 
     private suspend fun replaceUsername(username: QuizUserUIModel) {
         quizUserRepository.insertUsername(quizUserUIToDomainMapper(username))
