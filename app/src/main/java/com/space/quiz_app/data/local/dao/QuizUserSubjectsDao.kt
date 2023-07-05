@@ -19,5 +19,5 @@ interface QuizUserSubjectsDao {
     suspend fun updateUserSubject(userSubject: QuizUserSubjectEntity)
 
     @Query("SELECT * FROM user_subject WHERE username=:username and quizTitle=:quizTitle")
-    suspend fun getUserSpecificSubject(username: String, quizTitle: String): QuizUserSubjectEntity?
+    suspend fun getUserSubjectByTitle(username: String, quizTitle: String): QuizUserSubjectEntity?
 }

@@ -7,7 +7,7 @@ import com.space.quiz_app.domain.model.user.QuizUserSubjectsDomainModel
 interface QuizUserSubjectsRepository {
     suspend fun insertUserSubject(userSubject: QuizUserSubjectEntity)
 
-    suspend fun getUserSpecificSubject(username: String, quizTitle: String): QuizUserSubjectEntity?
+    suspend fun getUserSubjectByTitle(username: String, quizTitle: String): QuizUserSubjectEntity?
 
     suspend fun updateUserSubject(userSubject: QuizUserSubjectEntity)
 

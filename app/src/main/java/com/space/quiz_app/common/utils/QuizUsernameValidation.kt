@@ -15,7 +15,7 @@ enum class QuizUsernameValidation(@StringRes val errorText: Int)  {
             return when {
                 input.length <= 2 -> USERNAME_INVALID_LENGTH_SHORT
                 input.length > 20 -> USERNAME_INVALID_LENGTH_LONG
-                !input.contains(QuizRegex.usernamePattern) -> USERNAME_INVALID_CHARACTERS
+                !input.contains(UsernameRegex.usernamePattern) -> USERNAME_INVALID_CHARACTERS
                 else -> LOGIN_SUCCESS
             }
         }
