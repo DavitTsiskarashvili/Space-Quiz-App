@@ -3,7 +3,7 @@ package com.space.quiz_app.presentation.ui.home.view_model
 import androidx.lifecycle.MutableLiveData
 import com.space.quiz_app.common.extensions.viewModelScope
 import com.space.quiz_app.common.utils.QuizLiveDataDelegate
-import com.space.quiz_app.domain.usecase.user.CurrentUseCase
+import com.space.quiz_app.domain.usecase.user.CurrentUserUseCase
 import com.space.quiz_app.domain.usecase.quiz.GetSubjectsUseCase
 import com.space.quiz_app.domain.usecase.user.LogOutUseCase
 import com.space.quiz_app.presentation.feature.base.view_model.QuizBaseViewModel
@@ -18,7 +18,7 @@ class QuizHomeViewModel(
     private val quizSubjectDomainMapper: QuizSubjectDomainMapper,
     private val quizUserDomainToUIMapper: QuizUserDomainToUIMapper,
     private val logOut: LogOutUseCase,
-    private val currentUser: CurrentUseCase
+    private val currentUser: CurrentUserUseCase
 ) : QuizBaseViewModel() {
 
     val userLiveData by QuizLiveDataDelegate<QuizUserUIModel?>(null)

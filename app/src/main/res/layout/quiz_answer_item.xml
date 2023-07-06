@@ -16,11 +16,12 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/answerTextView"
             style="@style/normalMyriadGeo_Regular"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/dimen_22_dp"
             android:paddingHorizontal="@dimen/dimen_30_dp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/scoreTextView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="@tools:sample/lorem" />
