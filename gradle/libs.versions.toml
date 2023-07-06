@@ -12,6 +12,7 @@ lifecycle-viewmodel-ktx = "2.6.1"
 lifecycle-runtime-ktx = "2.6.1"
 room-runtime = "2.5.1"
 room-compiler = "2.5.1"
+room-ktx = "2.5.2"
 koin-android = "3.4.0"
 datastore-preferences = "1.0.0"
 navigation-ui-ktx = "2.6.0"
@@ -36,6 +37,7 @@ lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx
 lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle-runtime-ktx" }
 room-runtime = { module = "androidx.room:room-runtime", version.ref = "room-runtime" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "room-compiler" }
+room-ktx = { module = "androidx.room:room-ktx", version.ref = "room-ktx" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin-android" }
 datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastore-preferences" }
 navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation-ui-ktx" }
