@@ -6,19 +6,19 @@ import com.space.quiz_app.domain.usecase.question.SaveUserScoreUseCase
 import com.space.quiz_app.domain.usecase.quiz.GetSubjectsUseCase
 import com.space.quiz_app.domain.usecase.quiz.GetUserSubjectsUseCase
 import com.space.quiz_app.domain.usecase.user.CheckUsernameValidityUseCase
-import com.space.quiz_app.domain.usecase.user.CurrentUseCase
+import com.space.quiz_app.domain.usecase.user.CurrentUserUseCase
 import com.space.quiz_app.domain.usecase.user.LogOutUseCase
 import com.space.quiz_app.domain.usecase.user.LoginUseCase
 import org.koin.dsl.module
 
 val useCaseModule = module {
-    single { LoginUseCase(get(), get()) }
-    single { LogOutUseCase(get(), get(), get(), get()) }
+    single { LoginUseCase(userRepository = get(), usernameValidity = get()) }
+    single { LogOutUseCase(userRepository = get(), userDomainMapper = get(), userUIMapper = get(), currentUser = get()) }
     single { CheckUsernameValidityUseCase() }
-    single { GetUserSubjectsUseCase(get(), get()) }
-    single { CurrentUseCase(get()) }
-    single { GetSubjectsUseCase(get()) }
-    single { GetQuestionsUseCase(get()) }
-    single { SaveUserScoreUseCase(get()) }
-    single { CalculateGPAUseCase(get(), get()) }
+    single { GetUserSubjectsUseCase(userSubjectsRepository = get(), currentUser = get()) }
+    single { CurrentUserUseCase(userRepository = get()) }
+    single { GetSubjectsUseCase(quizSubjectsRepository = get()) }
+    single { GetQuestionsUseCase(questionsRepository = get()) }
+    single { SaveUserScoreUseCase(userSubjectsRepository = get()) }
+    single { CalculateGPAUseCase(quizUserRepository = get(), quizUserSubjectsRepository = get()) }
 }

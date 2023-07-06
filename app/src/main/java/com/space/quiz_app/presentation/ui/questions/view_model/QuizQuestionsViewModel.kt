@@ -6,7 +6,7 @@ import com.space.quiz_app.domain.usecase.question.CalculateGPAUseCase
 import com.space.quiz_app.domain.usecase.question.GetQuestionsUseCase
 import com.space.quiz_app.domain.usecase.question.SaveUserScore
 import com.space.quiz_app.domain.usecase.question.SaveUserScoreUseCase
-import com.space.quiz_app.domain.usecase.user.CurrentUseCase
+import com.space.quiz_app.domain.usecase.user.CurrentUserUseCase
 import com.space.quiz_app.presentation.feature.base.view_model.QuizBaseViewModel
 import com.space.quiz_app.presentation.feature.model.mapper.question.QuizQuestionDomainMapper
 import com.space.quiz_app.presentation.feature.model.mapper.subject.QuizSubjectUIToDomainMapper
@@ -15,7 +15,7 @@ import com.space.quiz_app.presentation.feature.model.subject.QuizSubjectUIModel
 import com.space.quiz_app.presentation.ui.home.ui.QuizHomeFragmentDirections
 
 class QuizQuestionsViewModel(
-    private val currentUser: CurrentUseCase,
+    private val currentUser: CurrentUserUseCase,
     private val getQuestionsUseCase: GetQuestionsUseCase,
     private val saveUserScoreUseCase: SaveUserScoreUseCase,
     private val calculateGPA: CalculateGPAUseCase,
@@ -32,6 +32,10 @@ class QuizQuestionsViewModel(
 
     private val allQuestions = mutableListOf<QuizQuestionUIModel>()
     var questionIndex = 0
+
+    init {
+        getUsername()
+    }
 
     fun getAllQuestionsBySubject(subjectTitle: String) {
         viewModelScope {
@@ -55,10 +59,6 @@ class QuizQuestionsViewModel(
 
     fun answerSelected() {
         answerSelectedLiveData.addValue(true)
-    }
-
-    init {
-        getUsername()
     }
 
     fun submitQuizScore() {

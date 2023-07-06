@@ -25,10 +25,10 @@ class QuizDetailsViewModel(
         }
     }
 
-    fun logOutUser(navigate: () -> Unit) {
+    fun logOutUser() {
         viewModelScope {
             logOut()
-            navigate()
+            navigateToLogin()
         }
     }
 
@@ -36,7 +36,7 @@ class QuizDetailsViewModel(
         navigate(QuizDetailsFragmentDirections.actionGlobalHomeFragment())
     }
 
-    fun navigateToLogin() {
+    private fun navigateToLogin() {
         navigate(QuizDetailsFragmentDirections.actionGlobalLoginFragment())
     }
 

@@ -10,7 +10,7 @@ class LogOutUseCase(
     private val userRepository: QuizUserRepository,
     private val userDomainMapper: QuizUserDomainToUIMapper,
     private val userUIMapper: QuizUserUIToDomainMapper,
-    private val currentUser: CurrentUseCase
+    private val currentUser: CurrentUserUseCase
 ) : BaseUseCase<Unit, Unit>() {
 
     override suspend fun invoke(params: Unit?) {

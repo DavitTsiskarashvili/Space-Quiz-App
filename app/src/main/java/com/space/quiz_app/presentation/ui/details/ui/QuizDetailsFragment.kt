@@ -73,7 +73,7 @@ class QuizDetailsFragment : QuizBaseFragment<QuizDetailsViewModel>() {
     private fun showDialog() {
         LogOutDialog(requireContext()).apply {
             setPositiveButtonClickListener {
-                viewModel.logOutUser { viewModel.navigateToLogin() }
+                viewModel.logOutUser()
             }
             setNegativeButtonClickListener {
                 dismissDialog()
