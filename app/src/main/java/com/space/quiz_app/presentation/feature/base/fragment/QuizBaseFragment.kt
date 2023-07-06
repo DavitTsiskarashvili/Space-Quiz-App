@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.navigation_impl.navigation.NavigationCommand
 import com.space.quiz_app.common.extensions.observeNonNullValue
 import com.space.quiz_app.common.extensions.showToast
 import com.space.quiz_app.common.utils.observeNonNull
 import com.space.quiz_app.presentation.feature.base.view_model.QuizBaseViewModel
-import com.space.quiz_app.presentation.feature.navigation.NavigationCommand
 import org.koin.androidx.viewmodel.ext.android.viewModelForClass
 import kotlin.reflect.KClass
 

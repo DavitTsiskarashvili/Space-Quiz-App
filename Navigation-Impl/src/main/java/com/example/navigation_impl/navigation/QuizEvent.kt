@@ -1,4 +1,4 @@
-package com.space.quiz_app.common.utils.event
+package com.example.navigation_impl.navigation
 
 /**
  * Used as a wrapper for data that is exposed via a LiveData that represents an event.

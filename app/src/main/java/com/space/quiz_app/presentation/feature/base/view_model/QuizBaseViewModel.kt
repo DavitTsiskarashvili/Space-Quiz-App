@@ -3,9 +3,9 @@ package com.space.quiz_app.presentation.feature.base.view_model
 import androidx.annotation.StringRes
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavDirections
+import com.example.navigation_impl.navigation.NavigationCommand
+import com.example.navigation_impl.navigation.QuizEvent
 import com.space.quiz_app.common.utils.QuizLiveDataDelegate
-import com.space.quiz_app.common.utils.event.QuizEvent
-import com.space.quiz_app.presentation.feature.navigation.NavigationCommand
 
 abstract class QuizBaseViewModel : ViewModel() {
 
