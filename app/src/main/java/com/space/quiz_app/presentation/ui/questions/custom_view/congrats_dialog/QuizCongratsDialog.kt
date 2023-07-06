@@ -25,8 +25,8 @@ class QuizCongratsDialog(
         alertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
 
-    fun setIcon(icon: String) {
-        binding.iconTextView.text = icon
+    fun setIcon(icon: Int) {
+        binding.iconTextView.text = icon.toString()
     }
 
     fun setMessage(message: String) {
