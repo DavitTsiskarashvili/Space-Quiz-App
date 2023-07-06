@@ -1,10 +1,11 @@
 package com.space.quiz_app.domain.usecase.user
 
-import com.space.quiz_app.domain.repository.QuizUserRepository
-import com.space.quiz_app.domain.usecase.base.BaseUseCase
-import com.space.quiz_app.presentation.feature.model.mapper.user.QuizUserDomainToUIMapper
-import com.space.quiz_app.presentation.feature.model.mapper.user.QuizUserUIToDomainMapper
-import com.space.quiz_app.presentation.feature.model.user.QuizUserUIModel
+import com.example.corecommon.base.use_case.BaseUseCase
+import com.example.corecommon.domain.repository.QuizUserRepository
+import com.example.corecommon.model.mapper.user.QuizUserDomainToUIMapper
+import com.example.corecommon.model.mapper.user.QuizUserUIToDomainMapper
+import com.example.corecommon.model.user.QuizUserUIModel
+import com.example.quiz_impl.domain.usecase.user.CurrentUserUseCase
 
 class LogOutUseCase(
     private val userRepository: QuizUserRepository,

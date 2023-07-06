@@ -53,6 +53,6 @@ dependencies {
     implementation project(":Navigation-Api")
     implementation project(":Main-Impl")
     implementation project(":Quiz-Impl")
-    implementation project(":CoreCommon")
+    implementation project(':CoreCommon')
 
 }

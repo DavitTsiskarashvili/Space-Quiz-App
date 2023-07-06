@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -48,6 +49,9 @@ dependencies {
     implementation libs.core.ktx
 
     implementation libs.koin.android
+
+    implementation libs.navigation.fragment.ktx
+    implementation libs.navigation.ui.ktx
 
     implementation project(":Main-Api")
     implementation project(":Quiz-Api")

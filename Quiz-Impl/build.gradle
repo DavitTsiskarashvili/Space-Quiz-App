@@ -49,10 +49,12 @@ dependencies {
 
     implementation libs.koin.android
 
+    implementation libs.navigation.fragment.ktx
+    implementation libs.navigation.ui.ktx
 
     implementation project(":Quiz-Api")
     implementation project(":Main-Api")
     implementation project(":Navigation-Api")
-    implementation project(":CoreCommon")
+    implementation project(':CoreCommon')
 
 }

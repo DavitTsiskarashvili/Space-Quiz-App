@@ -46,4 +46,16 @@ dependencies {
 
     implementation libs.koin.android
 
+    implementation libs.room.ktx
+    implementation libs.room.compiler
+    implementation libs.room.runtime
+
+    implementation libs.glide
+
+    implementation libs.retrofit
+    implementation libs.converter.gson
+
+    implementation libs.navigation.fragment.ktx
+    implementation libs.navigation.ui.ktx
+
 }

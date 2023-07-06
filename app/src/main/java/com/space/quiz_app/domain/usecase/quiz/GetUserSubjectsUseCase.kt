@@ -1,9 +1,9 @@
 package com.space.quiz_app.domain.usecase.quiz
 
-import com.space.quiz_app.domain.model.user.QuizUserSubjectsDomainModel
-import com.space.quiz_app.domain.repository.QuizUserSubjectsRepository
-import com.space.quiz_app.domain.usecase.base.BaseUseCase
-import com.space.quiz_app.domain.usecase.user.CurrentUserUseCase
+import com.example.corecommon.base.use_case.BaseUseCase
+import com.example.corecommon.domain.model.user.QuizUserSubjectsDomainModel
+import com.example.corecommon.domain.repository.QuizUserSubjectsRepository
+import com.example.quiz_impl.domain.usecase.user.CurrentUserUseCase
 
 class GetUserSubjectsUseCase(
     private val userSubjectsRepository: QuizUserSubjectsRepository,

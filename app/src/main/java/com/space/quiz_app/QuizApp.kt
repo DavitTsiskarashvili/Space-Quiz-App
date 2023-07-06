@@ -1,11 +1,11 @@
 package com.space.quiz_app
 
 import android.app.Application
-import com.space.quiz_app.data.local.module.dataBaseModule
-import com.space.quiz_app.data.mapper.module.databaseMapperModule
-import com.space.quiz_app.data.remote.service.module.networkModule
+import com.example.corecommon.data.local.module.dataBaseModule
+import com.example.corecommon.data.mapper.module.databaseMapperModule
+import com.example.corecommon.data.remote.service.module.networkModule
+import com.example.main_impl.domain.usecase.useCaseModule
 import com.space.quiz_app.domain.module.repositoryModule
-import com.space.quiz_app.domain.module.useCaseModule
 import com.space.quiz_app.presentation.feature.module.UIModule
 import com.space.quiz_app.presentation.feature.module.viewModelModule
 import org.koin.android.ext.koin.androidContext
