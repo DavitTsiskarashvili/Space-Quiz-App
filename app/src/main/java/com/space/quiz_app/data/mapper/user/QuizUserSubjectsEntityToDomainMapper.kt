@@ -2,18 +2,19 @@ package com.space.quiz_app.data.mapper.user
 
 import com.space.quiz_app.common.mapper.Mapper
 import com.space.quiz_app.data.local.entity.QuizUserSubjectEntity
-import com.space.quiz_app.domain.model.user.QuizUserSubjectDomainModel
+import com.space.quiz_app.domain.model.user.QuizUserSubjectsDomainModel
 
 class QuizUserSubjectsEntityToDomainMapper :
-    Mapper<QuizUserSubjectEntity, QuizUserSubjectDomainModel> {
-    override fun invoke(model: QuizUserSubjectEntity): QuizUserSubjectDomainModel =
+    Mapper<QuizUserSubjectEntity, QuizUserSubjectsDomainModel> {
+    override fun invoke(model: QuizUserSubjectEntity): QuizUserSubjectsDomainModel =
         with(model) {
-            QuizUserSubjectDomainModel(
+            QuizUserSubjectsDomainModel(
                 username = username,
                 quizIcon = quizIcon,
                 quizDescription = quizDescription,
                 quizTitle = quizTitle,
-                score = score
+                score = score,
+                questionsCount = questionsCount
             )
         }
 }

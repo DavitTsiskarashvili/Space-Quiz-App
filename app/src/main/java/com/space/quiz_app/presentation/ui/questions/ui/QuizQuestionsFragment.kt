@@ -56,8 +56,8 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
         with(binding) {
             observeLiveDataNonNull(viewModel.questionState) {
                 quizTitleTextView.text = it.subjectTitle
+                progressBar.updateProgressBar(it.questionIndex + 1)
                 questionBackground.setQuestion(it.questionTitle)
-                progressBar.updateProgressBar(it.questionIndex)
             }
             observeLiveDataNonNull(viewModel.answerState) { answers ->
                 answers.let {
@@ -68,19 +68,19 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
                 nextButton.isEnabled = it
                 nextButton.isClickable = it
             }
-            observeLiveData(viewModel.userScoreState){
+            observeLiveData(viewModel.userScoreState) {
                 userScore = it
                 progressBar.setCurrentScore(userScore)
             }
-            observeLiveData(viewModel.quizMaxScoreState){
-                progressBar.setMaxScore(it)
+            observeLiveData(viewModel.quizMaxQuestionState) {
+                progressBar.setMaxQuestion(it)
             }
         }
     }
 
     private fun setListeners() {
         answersAdapter.correctAnswerListener = {
-            if (it){
+            if (it) {
                 viewModel.submitQuizScore()
             }
         }
@@ -89,7 +89,7 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
     private fun nextQuestion() {
         with(binding) {
             nextButton.setOnClickListener {
-                viewModel.nextQuestion()
+                viewModel.setQuestions()
             }
         }
     }
@@ -98,11 +98,28 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
         observeLiveData(viewModel.finishQuizState) { isLastQuestion ->
             if (isLastQuestion) {
                 binding.nextButton.text = getString(R.string.finish_button)
-                showFinishDialog()
+                binding.nextButton.setOnClickListener {
+                    finishQuiz()
+                }
             } else {
                 binding.nextButton.text = getString(R.string.next_button)
             }
         }
+    }
+
+    private fun finishQuiz() {
+        observeLiveData(viewModel.usernameState) {
+            val username = it
+            val subjectTitle = args.subjectUIModel
+            val userScore = viewModel.userScoreState.value ?: 0
+            viewModel.saveUserScore(username, subjectTitle, userScore)
+        }
+        if (userScore == 0) {
+            showFinishDialog(noScore = true)
+        } else {
+            showFinishDialog(noScore = false)
+        }
+
     }
 
     private fun cancelQuiz() {
@@ -129,18 +146,21 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
         }
     }
 
-    private fun showFinishDialog() {
-        binding.nextButton.setOnClickListener {
-            showCongratsDialog {
-                setIcon(getString(R.string.congrats_icon))
-                setMessage(getString(R.string.congratulations))
+    private fun showFinishDialog(noScore: Boolean) {
+        showCongratsDialog {
+            if (noScore) {
+                setIcon("\uD83D\uDE2D")
                 setScore(String.format(getString(R.string.your_score_is), userScore))
-                setPositiveButtonClickListener {
-                    viewModel.navigateToHome()
-                    binding.progressBar.clearProgressBarValues()
-                }
-                showDialog()
+            } else {
+                setIcon("\uD83E\uDD73")
+                setMessage(getString(R.string.congratulations))
             }
+            setScore(String.format(getString(R.string.your_score_is), userScore))
+            setPositiveButtonClickListener {
+                viewModel.navigateToHome()
+                binding.progressBar.clearProgressBarValues()
+            }
+            showDialog()
         }
     }
 

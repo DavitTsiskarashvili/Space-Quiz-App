@@ -13,5 +13,4 @@ interface QuizSubjectsDao {
 
     @Query("SELECT * FROM subjects")
     suspend fun getAllSubject(): List<QuizSubjectEntity>
-
 }

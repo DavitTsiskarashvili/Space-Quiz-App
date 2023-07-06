@@ -12,7 +12,7 @@
     <string name="next_button">შემდეგი</string>
     <string name="finish_button">დასრულება</string>
     <string name="close_button">დახურვა</string>
-    <string name="congratulations">გილოცავ</string>
+    <string name="congratulations">გილოცავ!</string>
     <string name="your_score_is">შენ დააგროვე %d ქულა</string>
     <string name="accumulated_score">დაგროვილი ქულები</string>
     <string name="there_is_no_scores">🧐\nსამწუხაროდ,\nქულები ჯერ არ გაქვს\nდაგროვილი</string>
@@ -24,7 +24,7 @@
     <string name="current_score">მიმდინარე ქულა: %d</string>
     <string name="congrats_icon"> 🎉 </string>
     <string name="username_invalid_length_long">სახელის ზომა უნდა არ უნდა აღემატებოდეს 20 სიმბოლოს</string>
-    <string name="username_invalid_length_short">სახელის ზომა უნდა არ უნდა იყოს 8 სიმბოლოზე ნაკლები</string>
-    <string name="username_invalid_characters">სახელი უნდა შედგებოდეს 1 დიდი, 1 პატარა და 1 სპეციალური სიმბოლოსგან</string>
+    <string name="username_invalid_length_short">სახელის ზომა უნდა არ უნდა იყოს 2 სიმბოლოზე ნაკლები</string>
+    <string name="username_invalid_characters">არავალიდური სახელი</string>
     <string name="login_success">მომხამრებელი წარმატებით შევიდა სისტემაში</string>
 </resources>

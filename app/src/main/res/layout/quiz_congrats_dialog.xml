@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="@dimen/dimen_35_dp"
+    android:layout_marginHorizontal="@dimen/dimen_52_dp"
     app:cardBackgroundColor="@color/yellow_primary"
     app:cardCornerRadius="@dimen/dimen_30_dp">
 
@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_39_dp"
             android:gravity="center"
-            android:textSize="@dimen/dimen_50_sp"
+            android:textSize="@dimen/dimen_40_sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

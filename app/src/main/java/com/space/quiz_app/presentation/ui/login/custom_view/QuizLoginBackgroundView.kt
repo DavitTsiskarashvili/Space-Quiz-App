@@ -27,7 +27,7 @@ class QuizLoginBackgroundView(
             reset()
             paint.color = context.getColor(R.color.blue_secondary_light)
             val topRectF = RectF(0f, 0f, radius, radius)
-            val bottomRectF = RectF (width-radius, height-radius, width, height)
+            val bottomRectF = RectF(width - radius, height - radius, width, height)
 
             // extra line to
             moveTo(width, 0f)
@@ -42,6 +42,7 @@ class QuizLoginBackgroundView(
             canvas.drawPath(path, paint)
         }
     }
+
     // Draws the triangle in upper left corner
     private fun drawTriangle(canvas: Canvas) {
         path.apply {
@@ -59,4 +60,5 @@ class QuizLoginBackgroundView(
         drawTriangle(canvas)
         drawBackground(canvas)
     }
+
 }

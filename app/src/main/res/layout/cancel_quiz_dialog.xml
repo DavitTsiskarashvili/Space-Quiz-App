@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="@dimen/dimen_35_dp"
+    android:layout_marginHorizontal="@dimen/dimen_25_dp"
     app:cardBackgroundColor="@color/yellow_primary"
     app:cardCornerRadius="@dimen/dimen_30_dp">
 
@@ -14,7 +14,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/cancelTextView"
-            style="@style/bigMyriadGeo_Regular"
+            style="@style/bigMyriadGeo_Bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/dimen_24_dp"
@@ -32,11 +32,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dimen_24_dp"
+            android:layout_marginEnd="@dimen/dimen_10_dp"
             android:layout_marginTop="@dimen/dimen_42_dp"
             android:layout_marginBottom="@dimen/dimen_39_dp"
             android:paddingHorizontal="@dimen/dimen_45_dp"
             android:paddingVertical="@dimen/dimen_6_dp"
             android:text="@string/no"
+            android:textSize="@dimen/dimen_14_sp"
             app:backgroundTint="@color/neutral_white"
             app:cornerRadius="@dimen/dimen_30_dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -56,6 +58,7 @@
             android:paddingHorizontal="@dimen/dimen_45_dp"
             android:paddingVertical="@dimen/dimen_6_dp"
             android:text="@string/yes"
+            android:textSize="@dimen/dimen_14_sp"
             app:backgroundTint="@color/neutral_white"
             app:cornerRadius="@dimen/dimen_30_dp"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -8,12 +8,9 @@ import android.view.LayoutInflater
 import android.widget.FrameLayout
 import com.space.quiz_app.databinding.CancelQuizDialogBinding
 
-interface Dialog
-
 class CancelQuizDialog(
     context: Context
-
-) : FrameLayout(context), Dialog {
+) : FrameLayout(context) {
     private val binding: CancelQuizDialogBinding =
         CancelQuizDialogBinding.inflate(LayoutInflater.from(context), this, true)
 
@@ -32,9 +29,10 @@ class CancelQuizDialog(
         alertDialog.show()
     }
 
-    fun dismissDialog(){
+    fun dismissDialog() {
         alertDialog.dismiss()
     }
+
     fun setPositiveButtonClickListener(onClickListener: () -> Unit) {
         binding.yesButton.setOnClickListener {
             onClickListener.invoke()

@@ -12,8 +12,7 @@ import com.space.quiz_app.presentation.ui.questions.custom_view.answer_view.Quiz
 
 class QuizAnswersAdapter(
     private val answerSelected: () -> Unit
-) :
-    ListAdapter<QuizQuestionUIModel, QuizAnswersAdapter.AnswersViewHolder>(DiffUtilCallback()) {
+) : ListAdapter<QuizQuestionUIModel, QuizAnswersAdapter.AnswersViewHolder>(DiffUtilCallback()) {
 
     var correctAnswerListener: ((Boolean) -> Unit)? = null
 
@@ -65,7 +64,7 @@ class QuizAnswersAdapter(
                         item.correctAnswer()
                     } else {
                         item.wrongAnswer()
-                        getItemView(position).correctAnswer()
+                        getItemView(position).actualAnswer()
                     }
                     answerSelected()
                     correctAnswerListener?.invoke(userAnswer == correctAnswer)
