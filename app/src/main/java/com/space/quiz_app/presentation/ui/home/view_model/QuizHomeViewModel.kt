@@ -1,6 +1,7 @@
 package com.space.quiz_app.presentation.ui.home.view_model
 
 import com.space.quiz_app.common.extensions.viewModelScope
+import com.space.quiz_app.common.utils.QuizLiveDataDelegate
 import com.space.quiz_app.domain.repository.QuizSubjectsRepository
 import com.space.quiz_app.domain.repository.QuizUserRepository
 import com.space.quiz_app.presentation.feature.base.view_model.QuizBaseViewModel
@@ -9,7 +10,6 @@ import com.space.quiz_app.presentation.feature.model.mapper.user.QuizUserDomainT
 import com.space.quiz_app.presentation.feature.model.mapper.user.QuizUserUIToDomainMapper
 import com.space.quiz_app.presentation.feature.model.subject.QuizSubjectUIModel
 import com.space.quiz_app.presentation.feature.model.user.QuizUserUIModel
-import com.space.quiz_app.common.utils.QuizLiveDataDelegate
 import com.space.quiz_app.presentation.ui.home.ui.QuizHomeFragmentDirections
 
 class QuizHomeViewModel(
@@ -20,7 +20,7 @@ class QuizHomeViewModel(
     private val quizUserDomainToUIMapper: QuizUserDomainToUIMapper
 ) : QuizBaseViewModel() {
 
-    val usernameState by QuizLiveDataDelegate("")
+    val userState by QuizLiveDataDelegate<QuizUserUIModel?>(null)
     val subjectsState by QuizLiveDataDelegate<List<QuizSubjectUIModel>?>(null)
     val loadingState by QuizLiveDataDelegate(true)
     val errorState by QuizLiveDataDelegate<Throwable?>(null)
@@ -29,7 +29,7 @@ class QuizHomeViewModel(
     fun getUsername() {
         viewModelScope {
             val username = quizUserRepository.getUsernameIfLoggedIn()
-            username?.let { usernameState.addValue(it.username) }
+            username?.let { userState.addValue(quizUserDomainToUIMapper(it)) }
         }
     }
 
@@ -52,7 +52,7 @@ class QuizHomeViewModel(
     }
 
     private suspend fun replaceUsername(username: QuizUserUIModel) {
-        quizUserRepository.insertUsername(quizUserUIToDomainMapper((username)))
+        quizUserRepository.insertUsername(quizUserUIToDomainMapper(username))
     }
 
     fun onSubjectItemClick(subjectTitle: QuizSubjectUIModel) {

@@ -2,7 +2,6 @@ package com.space.quiz_app.data.local.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.space.quiz_app.domain.model.questions.QuizQuestionDomainModel
 
 @Entity(tableName = "subjects")
 data class QuizSubjectEntity(

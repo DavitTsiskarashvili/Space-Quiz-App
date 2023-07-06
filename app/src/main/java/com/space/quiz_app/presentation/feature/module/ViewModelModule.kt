@@ -12,6 +12,6 @@ val viewModelModule = module {
     viewModel { QuizViewModel() }
     viewModel { QuizHomeViewModel(get(), get(), get(), get(), get()) }
     viewModel { QuizLoginViewModel(get(), get(), get()) }
-    viewModel { QuizQuestionsViewModel( get(), get()) }
+    viewModel { QuizQuestionsViewModel( get(), get(), get(), get(), get()) }
     viewModel { QuizGPAViewModel() }
 }

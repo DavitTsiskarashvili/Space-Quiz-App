@@ -18,13 +18,16 @@ class QuizSubjectsAdapter :
                 false
             )
         )
+        viewHolder.binding.startButton.setOnClickListener {
+            onClickCallback?.invoke(getItem(viewHolder.adapterPosition))
+        }
         viewHolder.itemView.setOnClickListener {
             onClickCallback?.invoke(getItem(viewHolder.adapterPosition))
         }
         return viewHolder
     }
 
-    class SubjectsViewHolder(private val binding: QuizSubjectItemBinding) :
+    class SubjectsViewHolder(val binding: QuizSubjectItemBinding) :
         BaseViewHolder<QuizSubjectUIModel>(binding) {
         override fun onBind(item: QuizSubjectUIModel) {
             with(binding) {
