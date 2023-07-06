@@ -27,4 +27,8 @@
     <string name="username_invalid_length_short">სახელის ზომა უნდა არ უნდა იყოს 2 სიმბოლოზე ნაკლები</string>
     <string name="username_invalid_characters">არავალიდური სახელი</string>
     <string name="login_success">მომხამრებელი წარმატებით შევიდა სისტემაში</string>
+    <string name="low_score_emoji">😭</string>
+    <string name="congrats_emoji">🥳</string>
+
+
 </resources>

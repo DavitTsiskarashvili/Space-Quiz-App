@@ -149,10 +149,10 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
     private fun showFinishDialog(noScore: Boolean) {
         showCongratsDialog {
             if (noScore) {
-                setIcon("\uD83D\uDE2D")
+                setIcon(R.string.low_score_emoji)
                 setScore(String.format(getString(R.string.your_score_is), userScore))
             } else {
-                setIcon("\uD83E\uDD73")
+                setIcon(R.string.congrats_emoji)
                 setMessage(getString(R.string.congratulations))
             }
             setScore(String.format(getString(R.string.your_score_is), userScore))
