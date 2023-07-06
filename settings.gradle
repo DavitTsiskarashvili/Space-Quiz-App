@@ -14,3 +14,10 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Quiz App"
 include ':app'
+include ':Quiz-Api'
+include ':Quiz-Impl'
+include ':CoreCommon'
+include ':Navigation-Api'
+include ':Main-Api'
+include ':Main-Impl'
+include ':Navigation-Impl'

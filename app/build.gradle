@@ -1,15 +1,17 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-}
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-parcelize'}
 
 android {
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.space.quizapp"
         minSdk 28
-        targetSdk 33
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
@@ -22,6 +24,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    buildFeatures {
+        viewBinding true
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -29,15 +36,56 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    namespace 'com.space.quiz_app'
 }
 
 dependencies {
+    implementation libs.core.ktx
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.constraintlayout
+    implementation libs.legacy.support.v4
+    implementation libs.lifecycle.livedata.ktx
+    implementation libs.core.ktx
+    implementation libs.junit
+    implementation libs.junit.ext
+    implementation libs.espresso.core
 
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.8.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    //viewModel
+    implementation libs.lifecycle.viewmodel.ktx
+    implementation libs.lifecycle.runtime.ktx
+
+    //Room Database
+    implementation libs.room.runtime
+    //To use Kotlin annotation processing tool (kapt)
+    implementation libs.room.compiler
+    //Kotlin Extensions and Coroutines support for Room
+    implementation libs.room.ktx
+
+    // Koin
+    implementation libs.koin.android
+
+    // Fragment + Jetpack Nav
+    implementation libs.navigation.ui.ktx
+    implementation libs.navigation.fragment.ktx
+
+    //Retrofit + Gson
+    implementation libs.retrofit
+    implementation libs.converter.gson
+
+    //Interceptor
+    implementation libs.logging.interceptor
+
+    //Glide
+    implementation libs.glide.compiler
+    implementation libs.glide
+
+    implementation project(":Main-Api")
+    implementation project(":Main-Impl")
+    implementation project(":Quiz-Api")
+    implementation project(":Quiz-Impl")
+    implementation project(':Navigation-Api')
+    implementation project(":Navigation-Impl")
+    implementation project(':CoreCommon')
+
 }
