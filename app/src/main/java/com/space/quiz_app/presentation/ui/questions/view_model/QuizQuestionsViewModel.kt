@@ -33,6 +33,10 @@ class QuizQuestionsViewModel(
     private val allQuestions = mutableListOf<QuizQuestionUIModel>()
     var questionIndex = 0
 
+    init {
+        getUsername()
+    }
+
     fun getAllQuestionsBySubject(subjectTitle: String) {
         viewModelScope {
             allQuestions.addAll(getQuestionsUseCase(subjectTitle).map { questionsDomainMapper(it) })
@@ -55,10 +59,6 @@ class QuizQuestionsViewModel(
 
     fun answerSelected() {
         answerSelectedLiveData.addValue(true)
-    }
-
-    init {
-        getUsername()
     }
 
     fun submitQuizScore() {
