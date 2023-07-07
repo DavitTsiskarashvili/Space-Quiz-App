@@ -18,27 +18,23 @@ class QuizQuestionsViewModel(
     private val quizUserSubjectsRepository: QuizUserSubjectsRepository,
     private val quizUserRepository: QuizUserRepository,
     private val questionsDomainMapper: QuizQuestionDomainMapper,
-    private val quizSubjectUIToDomainMapper: QuizSubjectUIToDomainMapper,
+    private val subjectUIMapper: QuizSubjectUIToDomainMapper,
 ) : QuizBaseViewModel() {
 
-    //use cases
-    // default values
-    val questionState by QuizLiveDataDelegate<QuizQuestionUIModel?>(null)
-    val answerState by QuizLiveDataDelegate<QuizQuestionUIModel?>(null)
-    val finishQuizState by QuizLiveDataDelegate(false)
-    val answerSelectedState by QuizLiveDataDelegate(false)
-    val userScoreState by QuizLiveDataDelegate(0)
-    val quizMaxQuestionState by QuizLiveDataDelegate(0)
-    val usernameState by QuizLiveDataDelegate("")
+    val questionLiveData by QuizLiveDataDelegate<QuizQuestionUIModel?>(null)
+    val answerLiveData by QuizLiveDataDelegate<QuizQuestionUIModel?>(null)
+    val finishQuizLiveData by QuizLiveDataDelegate(false)
+    val answerSelectedLiveData by QuizLiveDataDelegate(false)
+    val userScoreLiveData by QuizLiveDataDelegate(0)
+    val quizMaxQuestionLiveData by QuizLiveDataDelegate(0)
+    val usernameLiveData by QuizLiveDataDelegate("")
 
-    // viewModel shouldn't store all questions but one question per request
     private val allQuestions = mutableListOf<QuizQuestionUIModel>()
     var questionIndex = 0
 
-    // ViewModel shouldn't store all questions in advance. Retrieve one question per time from a database.
-    fun getAllQuestions(subjectTitle: String) {
+    fun getAllQuestionsBySubject(subjectTitle: String) {
         viewModelScope {
-            val result = quizQuestionsRepository.getQuestionsFromDatabase((subjectTitle))
+            val result = quizQuestionsRepository.getQuestionsByTitle((subjectTitle))
             allQuestions.addAll(result.map { questionsDomainMapper(it) })
             setQuizMaxQuestionsNumber()
             setQuestions()
@@ -46,13 +42,13 @@ class QuizQuestionsViewModel(
     }
 
     fun answerSelected() {
-        answerSelectedState.addValue(true)
+        answerSelectedLiveData.addValue(true)
     }
 
     fun setQuestions() {
         val currentQuestion = allQuestions[questionIndex]
-        questionState.addValue(currentQuestion)
-        answerState.addValue(currentQuestion)
+        questionLiveData.addValue(currentQuestion)
+        answerLiveData.addValue(currentQuestion)
         if (questionIndex < allQuestions.lastIndex) {
             questionIndex += 1
             return
@@ -67,12 +63,12 @@ class QuizQuestionsViewModel(
     }
 
     fun submitQuizScore() {
-        userScoreState.addValue(userScoreState.value?.plus(1) ?: 0)
+        userScoreLiveData.addValue(userScoreLiveData.value?.plus(1) ?: 0)
     }
 
     fun saveUserScore(username: String, subject: QuizSubjectUIModel, score: Int) {
         viewModelScope {
-            val subjectTitle = quizSubjectUIToDomainMapper(subject)
+            val subjectTitle = subjectUIMapper(subject)
             quizUserSubjectsRepository.saveUserScore(username, score, subjectTitle)
             calculateAndSaveGPA()
         }
@@ -80,22 +76,22 @@ class QuizQuestionsViewModel(
 
     private fun setQuizMaxQuestionsNumber() {
         val maxQuestion = allQuestions.size
-        quizMaxQuestionState.addValue(maxQuestion)
+        quizMaxQuestionLiveData.addValue(maxQuestion)
     }
 
     private fun finishQuiz() {
-        finishQuizState.addValue(true)
+        finishQuizLiveData.addValue(true)
     }
 
     private fun getUsername() {
         viewModelScope {
             val username = quizUserRepository.getUsernameIfLoggedIn()
-            username?.let { usernameState.addValue(it.username) }
+            username?.let { usernameLiveData.addValue(it.username) }
         }
     }
 
     private suspend fun calculateAndSaveGPA() {
-        usernameState.value?.let { username ->
+        usernameLiveData.value?.let { username ->
             val userSubjectPercentages = mutableListOf<Float>()
             quizUserSubjectsRepository.getUserSubjects(username).forEach {
                 userSubjectPercentages.add(it.score.toFloat() / it.questionsCount)

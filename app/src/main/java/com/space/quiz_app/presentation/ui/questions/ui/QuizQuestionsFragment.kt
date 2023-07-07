@@ -3,8 +3,8 @@ package com.space.quiz_app.presentation.ui.questions.ui
 import androidx.activity.addCallback
 import androidx.navigation.fragment.navArgs
 import com.space.quiz_app.R
-import com.space.quiz_app.common.extensions.observeLiveData
-import com.space.quiz_app.common.extensions.observeLiveDataNonNull
+import com.space.quiz_app.common.extensions.observeValue
+import com.space.quiz_app.common.extensions.observeNonNullValue
 import com.space.quiz_app.common.extensions.showCancelDialog
 import com.space.quiz_app.common.extensions.showCongratsDialog
 import com.space.quiz_app.common.extensions.viewBinding
@@ -34,7 +34,7 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
 
     override fun onCreateFragment() {
         val subjectTitle = args.subjectUIModel.quizTitle
-        viewModel.getAllQuestions(subjectTitle)
+        viewModel.getAllQuestionsBySubject(subjectTitle)
     }
 
     override fun onBind() {
@@ -54,25 +54,25 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
     private fun observe() {
         // question and answer states
         with(binding) {
-            observeLiveDataNonNull(viewModel.questionState) {
+            observeNonNullValue(viewModel.questionLiveData) {
                 quizTitleTextView.text = it.subjectTitle
                 progressBar.updateProgressBar(it.questionIndex + 1)
                 questionBackground.setQuestion(it.questionTitle)
             }
-            observeLiveDataNonNull(viewModel.answerState) { answers ->
+            observeNonNullValue(viewModel.answerLiveData) { answers ->
                 answers.let {
                     answersAdapter.submitList(listOf(it))
                 }
             }
-            observeLiveData(viewModel.answerSelectedState) {
+            observeValue(viewModel.answerSelectedLiveData) {
                 nextButton.isEnabled = it
                 nextButton.isClickable = it
             }
-            observeLiveData(viewModel.userScoreState) {
+            observeValue(viewModel.userScoreLiveData) {
                 userScore = it
                 progressBar.setCurrentScore(userScore)
             }
-            observeLiveData(viewModel.quizMaxQuestionState) {
+            observeValue(viewModel.quizMaxQuestionLiveData) {
                 progressBar.setMaxQuestion(it)
             }
         }
@@ -95,7 +95,7 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
     }
 
     private fun updateButtonText() {
-        observeLiveData(viewModel.finishQuizState) { isLastQuestion ->
+        observeValue(viewModel.finishQuizLiveData) { isLastQuestion ->
             if (isLastQuestion) {
                 binding.nextButton.text = getString(R.string.finish_button)
                 binding.nextButton.setOnClickListener {
@@ -108,10 +108,10 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
     }
 
     private fun finishQuiz() {
-        observeLiveData(viewModel.usernameState) {
+        observeValue(viewModel.usernameLiveData) {
             val username = it
             val subjectTitle = args.subjectUIModel
-            val userScore = viewModel.userScoreState.value ?: 0
+            val userScore = viewModel.userScoreLiveData.value ?: 0
             viewModel.saveUserScore(username, subjectTitle, userScore)
         }
         if (userScore == 0) {

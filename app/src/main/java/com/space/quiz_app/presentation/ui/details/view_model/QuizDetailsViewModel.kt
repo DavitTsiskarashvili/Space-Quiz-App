@@ -20,32 +20,32 @@ class QuizDetailsViewModel(
     private val userSubjectDomainToUIMapper: QuizUserSubjectDomainToUIMapper
 ) : QuizBaseViewModel() {
 
-    val userSubjectsState by QuizLiveDataDelegate<List<QuizUserSubjectUIModel>?>(null)
-    val loadingState by QuizLiveDataDelegate(true)
+    val userSubjectsLiveData by QuizLiveDataDelegate<List<QuizUserSubjectUIModel>?>(null)
+    val loadingLiveData by QuizLiveDataDelegate(true)
 
     fun getUserSubjects() {
         viewModelScope {
-            val username = quizUserRepository.getUsernameIfLoggedIn()!!.username
-            val result = userSubjectsRepository.getUserSubjects(username)
-            userSubjectsState.addValue(result.map { userSubjectDomainToUIMapper(it) })
-            loadingState.addValue(false)
+            val result = userSubjectsRepository.getUserSubjects(getUsername()!!.username)
+            userSubjectsLiveData.addValue(result.map { userSubjectDomainToUIMapper(it) })
+            loadingLiveData.addValue(false)
         }
     }
 
     fun logOutUser(navigate: () -> Unit) {
         viewModelScope {
-            val replaceUsername = quizUserRepository.getUsernameIfLoggedIn()
-            replaceUsername(quizUserDomainToUIMapper(replaceUsername!!.copy(isLoggedIn = false)))
+            replaceUsername(quizUserDomainToUIMapper(getUsername()!!.copy(isLoggedIn = false)))
             navigate()
         }
     }
+
+    private suspend fun getUsername() = quizUserRepository.getUsernameIfLoggedIn()
 
     private suspend fun replaceUsername(username: QuizUserUIModel) {
         quizUserRepository.insertUsername(quizUserUIToDomainMapper(username))
     }
 
     fun navigateToHome() {
-        navigate(QuizDetailsFragmentDirections.actionGlobalLoginFragment())
+        navigate(QuizDetailsFragmentDirections.actionGlobalHomeFragment())
     }
 
     fun navigateToLogin() {

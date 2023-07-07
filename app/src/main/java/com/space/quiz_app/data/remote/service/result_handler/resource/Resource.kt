@@ -1,7 +1,6 @@
 package com.space.quiz_app.data.remote.service.result_handler.resource
 
-sealed class Resource<Any>(val loader: Boolean) {
-    data class Success<Any>(val data: Any) : Resource<Any>(false)
-    data class Error<T>(val errorMessage: Throwable) : Resource<T>(false)
-    class Loader<T : Any>() : Resource<T>(true)
+sealed class Resource<MODEL: Any>(val loader: Boolean) {
+    data class Success<MODEL: Any>(val data: MODEL) : Resource<MODEL>(false)
+    data class Error<T: Any>(val errorMessage: Throwable) : Resource<T>(false)
 }

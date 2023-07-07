@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.space.quiz_app.common.extensions.observeNonNullValue
+import com.space.quiz_app.common.extensions.showToast
+import com.space.quiz_app.common.utils.observeNonNull
 import com.space.quiz_app.presentation.feature.base.view_model.QuizBaseViewModel
 import com.space.quiz_app.presentation.feature.navigation.NavigationCommand
-import com.space.quiz_app.common.utils.observeNonNull
 import org.koin.androidx.viewmodel.ext.android.viewModelForClass
 import kotlin.reflect.KClass
 
@@ -39,12 +42,12 @@ abstract class QuizBaseFragment<VM : QuizBaseViewModel> : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         onBind()
         observeNavigation()
-        findNavController().popBackStack()
+        observeError()
     }
 
     private fun observeNavigation() {
-        viewModel.navigation.observeNonNull(viewLifecycleOwner) {
-            it.getContentIfNotHandled()?.let { navigationCommand ->
+        viewModel.navigationLiveData.observeNonNull(viewLifecycleOwner) {
+            it?.getContentIfNotHandled()?.let { navigationCommand ->
                 handleNavigation(navigationCommand)
             }
         }
@@ -56,4 +59,15 @@ abstract class QuizBaseFragment<VM : QuizBaseViewModel> : Fragment() {
             is NavigationCommand.Back -> findNavController().navigateUp()
         }
     }
+
+    private fun observeError() {
+        observeNonNullValue(viewModel.errorLiveData) {
+            handleErrorState(it)
+        }
+    }
+
+    open fun handleErrorState(@StringRes error: Int) {
+        requireContext().showToast(error)
+    }
+
 }

@@ -1,10 +1,10 @@
 package com.space.quiz_app.presentation.ui.home.ui
 
-import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.core.view.isVisible
 import com.space.quiz_app.R
-import com.space.quiz_app.common.extensions.observeLiveData
-import com.space.quiz_app.common.extensions.observeLiveDataNonNull
+import com.space.quiz_app.common.extensions.observeNonNullValue
+import com.space.quiz_app.common.extensions.observeValue
 import com.space.quiz_app.common.extensions.viewBinding
 import com.space.quiz_app.databinding.QuizHomeFragmentBinding
 import com.space.quiz_app.presentation.feature.base.fragment.QuizBaseFragment
@@ -39,26 +39,19 @@ class QuizHomeFragment : QuizBaseFragment<QuizHomeViewModel>() {
     }
 
     private fun observe() {
-        observeLiveData(viewModel.userState) {
+        observeValue(viewModel.userLiveData) {
             it?.let {
                 binding.greetingTextView.text =
                     getString(R.string.hello_user, it.username)
                 binding.gpaButton.setScore(it.gpa)
             }
         }
-        observeLiveData(viewModel.loadingState) {
+        observeValue(viewModel.loadingLiveData) {
             binding.progressBar.isVisible = it
         }
-        observeLiveDataNonNull(viewModel.subjectsState) { subjects ->
+        observeNonNullValue(viewModel.subjectsLiveData) { subjects ->
             subjects.let {
                 subjectsAdapter.submitList(it)
-            }
-            observeLiveDataNonNull(viewModel.errorState) {
-                Toast.makeText(
-                    requireContext(),
-                    getString(R.string.username_invalid_characters),
-                    Toast.LENGTH_SHORT
-                ).show()
             }
         }
     }
@@ -93,6 +86,9 @@ class QuizHomeFragment : QuizBaseFragment<QuizHomeViewModel>() {
         subjectsAdapter.onItemClickListener { subject ->
             viewModel.onSubjectItemClick(subject)
             viewModel.navigateToQuiz(subject)
+        }
+        requireActivity().onBackPressedDispatcher.addCallback {
+            requireActivity().finish()
         }
     }
 
