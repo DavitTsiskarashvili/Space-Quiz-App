@@ -3,8 +3,8 @@ package com.space.quiz_app.presentation.ui.questions.ui
 import androidx.activity.addCallback
 import androidx.navigation.fragment.navArgs
 import com.space.quiz_app.R
-import com.space.quiz_app.common.extensions.observeValue
 import com.space.quiz_app.common.extensions.observeNonNullValue
+import com.space.quiz_app.common.extensions.observeValue
 import com.space.quiz_app.common.extensions.showCancelDialog
 import com.space.quiz_app.common.extensions.showCongratsDialog
 import com.space.quiz_app.common.extensions.viewBinding
@@ -54,12 +54,12 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
     private fun observe() {
         // question and answer states
         with(binding) {
-            observeNonNullValue(viewModel.questionLiveData) {
+            observeNonNullValue(viewModel.quizLiveData) {
                 quizTitleTextView.text = it.subjectTitle
                 progressBar.updateProgressBar(it.questionIndex + 1)
                 questionBackground.setQuestion(it.questionTitle)
             }
-            observeNonNullValue(viewModel.answerLiveData) { answers ->
+            observeNonNullValue(viewModel.quizLiveData) { answers ->
                 answers.let {
                     answersAdapter.submitList(listOf(it))
                 }
@@ -89,7 +89,7 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
     private fun nextQuestion() {
         with(binding) {
             nextButton.setOnClickListener {
-                viewModel.setQuestions()
+                viewModel.setQuestionAndAnswers()
             }
         }
     }
@@ -149,10 +149,10 @@ class QuizQuestionsFragment : QuizBaseFragment<QuizQuestionsViewModel>() {
     private fun showFinishDialog(noScore: Boolean) {
         showCongratsDialog {
             if (noScore) {
-                setIcon("\uD83D\uDE2D")
+                setIcon(R.string.low_score_emoji)
                 setScore(String.format(getString(R.string.your_score_is), userScore))
             } else {
-                setIcon("\uD83E\uDD73")
+                setIcon(R.string.congrats_emoji)
                 setMessage(getString(R.string.congratulations))
             }
             setScore(String.format(getString(R.string.your_score_is), userScore))

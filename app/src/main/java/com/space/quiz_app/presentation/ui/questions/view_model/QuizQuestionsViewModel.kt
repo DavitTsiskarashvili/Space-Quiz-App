@@ -1,11 +1,12 @@
 package com.space.quiz_app.presentation.ui.questions.view_model
 
-import com.space.quiz_app.common.extensions.roundToSingleDecimal
 import com.space.quiz_app.common.extensions.viewModelScope
 import com.space.quiz_app.common.utils.QuizLiveDataDelegate
-import com.space.quiz_app.domain.repository.QuizQuestionsRepository
-import com.space.quiz_app.domain.repository.QuizUserRepository
-import com.space.quiz_app.domain.repository.QuizUserSubjectsRepository
+import com.space.quiz_app.domain.usecase.question.CalculateGPAUseCase
+import com.space.quiz_app.domain.usecase.question.GetQuestionsUseCase
+import com.space.quiz_app.domain.usecase.question.SaveUserScore
+import com.space.quiz_app.domain.usecase.question.SaveUserScoreUseCase
+import com.space.quiz_app.domain.usecase.user.CurrentUserUseCase
 import com.space.quiz_app.presentation.feature.base.view_model.QuizBaseViewModel
 import com.space.quiz_app.presentation.feature.model.mapper.question.QuizQuestionDomainMapper
 import com.space.quiz_app.presentation.feature.model.mapper.subject.QuizSubjectUIToDomainMapper
@@ -14,15 +15,15 @@ import com.space.quiz_app.presentation.feature.model.subject.QuizSubjectUIModel
 import com.space.quiz_app.presentation.ui.home.ui.QuizHomeFragmentDirections
 
 class QuizQuestionsViewModel(
-    private val quizQuestionsRepository: QuizQuestionsRepository,
-    private val quizUserSubjectsRepository: QuizUserSubjectsRepository,
-    private val quizUserRepository: QuizUserRepository,
+    private val currentUser: CurrentUserUseCase,
+    private val getQuestionsUseCase: GetQuestionsUseCase,
+    private val saveUserScoreUseCase: SaveUserScoreUseCase,
+    private val calculateGPA: CalculateGPAUseCase,
     private val questionsDomainMapper: QuizQuestionDomainMapper,
     private val subjectUIMapper: QuizSubjectUIToDomainMapper,
 ) : QuizBaseViewModel() {
 
-    val questionLiveData by QuizLiveDataDelegate<QuizQuestionUIModel?>(null)
-    val answerLiveData by QuizLiveDataDelegate<QuizQuestionUIModel?>(null)
+    val quizLiveData by QuizLiveDataDelegate<QuizQuestionUIModel?>(null)
     val finishQuizLiveData by QuizLiveDataDelegate(false)
     val answerSelectedLiveData by QuizLiveDataDelegate(false)
     val userScoreLiveData by QuizLiveDataDelegate(0)
@@ -32,23 +33,21 @@ class QuizQuestionsViewModel(
     private val allQuestions = mutableListOf<QuizQuestionUIModel>()
     var questionIndex = 0
 
+    init {
+        getUsername()
+    }
+
     fun getAllQuestionsBySubject(subjectTitle: String) {
         viewModelScope {
-            val result = quizQuestionsRepository.getQuestionsByTitle((subjectTitle))
-            allQuestions.addAll(result.map { questionsDomainMapper(it) })
+            allQuestions.addAll(getQuestionsUseCase(subjectTitle).map { questionsDomainMapper(it) })
             setQuizMaxQuestionsNumber()
-            setQuestions()
+            setQuestionAndAnswers()
         }
     }
 
-    fun answerSelected() {
-        answerSelectedLiveData.addValue(true)
-    }
-
-    fun setQuestions() {
+    fun setQuestionAndAnswers() {
         val currentQuestion = allQuestions[questionIndex]
-        questionLiveData.addValue(currentQuestion)
-        answerLiveData.addValue(currentQuestion)
+        quizLiveData.addValue(currentQuestion)
         if (questionIndex < allQuestions.lastIndex) {
             questionIndex += 1
             return
@@ -58,8 +57,8 @@ class QuizQuestionsViewModel(
         }
     }
 
-    init {
-        getUsername()
+    fun answerSelected() {
+        answerSelectedLiveData.addValue(true)
     }
 
     fun submitQuizScore() {
@@ -69,7 +68,7 @@ class QuizQuestionsViewModel(
     fun saveUserScore(username: String, subject: QuizSubjectUIModel, score: Int) {
         viewModelScope {
             val subjectTitle = subjectUIMapper(subject)
-            quizUserSubjectsRepository.saveUserScore(username, score, subjectTitle)
+            saveUserScoreUseCase(SaveUserScore(username, subjectTitle, score))
             calculateAndSaveGPA()
         }
     }
@@ -85,19 +84,13 @@ class QuizQuestionsViewModel(
 
     private fun getUsername() {
         viewModelScope {
-            val username = quizUserRepository.getUsernameIfLoggedIn()
-            username?.let { usernameLiveData.addValue(it.username) }
+            currentUser()?.let { usernameLiveData.addValue(it.username) }
         }
     }
 
     private suspend fun calculateAndSaveGPA() {
         usernameLiveData.value?.let { username ->
-            val userSubjectPercentages = mutableListOf<Float>()
-            quizUserSubjectsRepository.getUserSubjects(username).forEach {
-                userSubjectPercentages.add(it.score.toFloat() / it.questionsCount)
-            }
-            val gpa = userSubjectPercentages.average() * 4
-            quizUserRepository.saveGPA(username, gpa.toFloat().roundToSingleDecimal())
+            calculateGPA(username)
         }
     }
 

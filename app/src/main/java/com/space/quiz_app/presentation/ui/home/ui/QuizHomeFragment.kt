@@ -28,7 +28,7 @@ class QuizHomeFragment : QuizBaseFragment<QuizHomeViewModel>() {
     }
 
     override fun onCreateFragment() {
-        viewModel.getUsername()
+        viewModel.getUser()
     }
 
     override fun onBind() {
@@ -57,7 +57,7 @@ class QuizHomeFragment : QuizBaseFragment<QuizHomeViewModel>() {
     }
 
     private fun initRecycler() {
-        viewModel.getSubjects()
+        viewModel.retrieveSubjects()
         binding.subjectsRecyclerView.adapter = subjectsAdapter
     }
 

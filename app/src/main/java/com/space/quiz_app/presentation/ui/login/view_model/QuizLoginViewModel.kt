@@ -2,12 +2,15 @@ package com.space.quiz_app.presentation.ui.login.view_model
 
 import com.space.quiz_app.common.extensions.viewModelScope
 import com.space.quiz_app.common.utils.QuizUsernameValidation
+import com.space.quiz_app.domain.model.user.QuizUserDomainModel
 import com.space.quiz_app.domain.repository.QuizUserRepository
+import com.space.quiz_app.domain.usecase.user.LoginUseCase
 import com.space.quiz_app.presentation.feature.base.view_model.QuizBaseViewModel
 import com.space.quiz_app.presentation.ui.login.ui.QuizLoginFragmentDirections
 
 class QuizLoginViewModel(
     private val quizUserRepository: QuizUserRepository,
+    private val loginUseCase: LoginUseCase
 ) : QuizBaseViewModel() {
 
     fun checkUserLoggedInStatus() {
@@ -18,23 +21,14 @@ class QuizLoginViewModel(
         }
     }
 
-    fun checkUsernameValidity(username: String) {
+    fun login(username: String) {
         viewModelScope {
-            val validity = QuizUsernameValidation.validate(username)
-            when (validity) {
+            val validUsername = loginUseCase(QuizUserDomainModel(username, 0f, true))
+            when (validUsername) {
                 QuizUsernameValidation.USERNAME_VALID -> {
-                    loginUser(username)
                     navigateToHome()
                 }
-                else -> showError(validity.errorRes)
-            }
-        }
-    }
-
-    private suspend fun loginUser(username: String) {
-        when (quizUserRepository.getUsernameIfLoggedIn()) {
-            null -> {
-                quizUserRepository.loginUser(username)
+                else -> showError(validUsername.errorRes)
             }
         }
     }
